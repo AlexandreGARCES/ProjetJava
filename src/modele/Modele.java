@@ -29,8 +29,8 @@ public class Modele {
 		this.texture = null;
 		this.etat = Etat.COULEUR;
 		this.setTerrain(new Groupe());
-		for(int i =0; i< largeur; i++) {	
-    		for(int j = 0; j<longueur; j++) {
+		for(int i =-largeur/2; i< largeur/2; i++) {	
+    		for(int j = -longueur/2; j<longueur/2; j++) {
     			Boite box = new Boite(50, 50, 50, this, null);
     			box.getShape().translateXProperty().set(i*50);
     			box.getShape().translateZProperty().set(j*50);
