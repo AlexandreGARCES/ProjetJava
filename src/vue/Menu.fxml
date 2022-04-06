@@ -1,8 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="659.0" prefWidth="1003.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="application.Controleur">
-	<!-- TODO Add Nodes -->
+<AnchorPane prefHeight="764.0" prefWidth="1146.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.ControleurMenu">
+   <children>
+      <ImageView fx:id="imageFond" fitHeight="764.0" fitWidth="1147.0" focusTraversable="true" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../ImagesMenu/imageFond.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imageLogo" fitHeight="221.0" fitWidth="403.0" layoutX="382.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../ImagesMenu/logoLego.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="boutonJouer" layoutX="372.0" layoutY="275.0" mnemonicParsing="false" onAction="#afficherJeu" prefHeight="184.0" prefWidth="403.0" text="JOUER" textAlignment="JUSTIFY" textFill="RED">
+         <font>
+            <Font name="Wingdings 3" size="69.0" />
+         </font>
+      </Button>
+      <Button fx:id="boutonCatalgue" layoutX="372.0" layoutY="459.0" mnemonicParsing="false" prefHeight="184.0" prefWidth="403.0" text="CATALOGUE">
+         <font>
+            <Font name="Wingdings 2" size="56.0" />
+         </font>
+      </Button>
+   </children>
 </AnchorPane>

@@ -9,6 +9,7 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Camera;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.PerspectiveCamera;
 import javafx.scene.Scene;
 import javafx.scene.SubScene;
@@ -34,52 +35,12 @@ public class Main extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		Modele mod = new Modele(); 	
-		Group group = mod.getTerrain();
-		AnchorPane pane = new AnchorPane();
-		SubScene subScene = new SubScene(group, WIDTH, HEIGHT, true, null);
-		
-		Camera camera = new PerspectiveCamera();
-	    camera.setTranslateZ(-30);
-	    subScene.setCamera(camera);
+		Parent root = FXMLLoader.load((getClass().getResource("Menu.fxml")));
+	    Scene scene = new Scene(root);
 	    
-	    group.translateZProperty().set(3000);
-	    
-	    subScene.addEventHandler(KeyEvent.KEY_PRESSED, event->{
-    		switch(event.getCode())
-    		{
-    		case W:
-    			mod.setCouleur(Color.WHITE);
-    			break;
-    		case B:
-    			mod.setCouleur(Color.BLUE);
-    			break;
-    		
-	    	case R:
-				mod.setCouleur(Color.RED);
-				break;
-			
-	    	case V:
-				mod.setCouleur(Color.GREEN);
-				break;
-			default:
-				break;
-    
-		}
-    		
-    	});
-
-		initMouseControl(group,  subScene);
-		
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource("Jeu.fxml"));
-	    pane = loader.load();
-	    pane.getChildren().add(subScene);
-	    Scene scene = new Scene(pane);
-	    
-	    primaryStage.setTitle("lego");
+	    primaryStage.setTitle("Lego");
 	    primaryStage.setScene(scene);
 	    primaryStage.show();
-		
 	}
 
 	public static void main(String[] args) {	
