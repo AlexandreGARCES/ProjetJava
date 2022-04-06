@@ -14,7 +14,8 @@ public class Element{
 	public Modele modele;
 	private boolean destructible;
 	private Shape3D shape;
-	public int hauteur;
+	public int[] taille= {0, 0, 0};
+	public int[] pos_relative = {0, 0, 0};
 	
 	public Element(Modele mod, Element pere) {
 		this.fils = new ArrayList<Element>();
@@ -60,9 +61,15 @@ public class Element{
 		shape.setOnMousePressed(event -> {
 		    {
 		    	if (event.isPrimaryButtonDown()) {
-		    		if (this.fils.isEmpty()) {		    			
+		    		if (this.fils.isEmpty()) {
+		    			for(int i:this.taille) {
+		    				System.out.println(i);
+		    			}
 		    			Element elem = this.modele.ajouter(this);
 		    			this.fils.add(elem);
+		    			for(Element enfant: elem.fils) {
+		    				this.modele.getTerrain().getChildren().add(enfant.getShape());
+		    			}
 		    			
 		    		}
 		    		
