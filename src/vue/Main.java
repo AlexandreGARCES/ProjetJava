@@ -44,10 +44,34 @@ public class Main extends Application {
 	    subScene.setCamera(camera);
 	    
 	    group.translateZProperty().set(3000);
+	    
+	    subScene.addEventHandler(KeyEvent.KEY_PRESSED, event->{
+    		switch(event.getCode())
+    		{
+    		case W:
+    			mod.setCouleur(Color.WHITE);
+    			break;
+    		case B:
+    			mod.setCouleur(Color.BLUE);
+    			break;
+    		
+	    	case R:
+				mod.setCouleur(Color.RED);
+				break;
+			
+	    	case V:
+				mod.setCouleur(Color.GREEN);
+				break;
+			default:
+				break;
+    
+		}
+    		
+    	});
 
 		initMouseControl(group,  subScene);
 		
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource("Interface.fxml"));
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("Jeu.fxml"));
 	    pane = loader.load();
 	    pane.getChildren().add(subScene);
 	    Scene scene = new Scene(pane);
