@@ -4,9 +4,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Region?>
 
-<AnchorPane prefHeight="882.0" prefWidth="1437.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.ControleurJeu">
+<AnchorPane prefHeight="900.0" prefWidth="1700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.ControleurJeu">
    <children>
-      <SubScene fx:id="subScene" height="738.0" layoutX="47.0" layoutY="44.0" width="1205.0">
+      <SubScene fx:id="subScene" height="738.0" layoutX="232.0" width="1205.0">
         <root>
           <Region />
         </root>
