@@ -14,8 +14,10 @@ import javafx.scene.Scene;
 import javafx.scene.SubScene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import modele.Modele;
@@ -66,6 +68,29 @@ public class ControleurMenu {
 	    pane = loader.load();
 	    pane.getChildren().add(subScene);
 	    scene = new Scene(pane);
+	    	scene.addEventHandler(KeyEvent.KEY_PRESSED, e->{
+    		switch(e.getCode())
+    		{
+    		case W:
+    			mod.setCouleur(Color.WHITE);
+    			break;
+    		case B:
+    			mod.setCouleur(Color.BLUE);
+    			break;
+    		
+	    	case R:
+				mod.setCouleur(Color.RED);
+				break;
+			
+	    	case V:
+				mod.setCouleur(Color.GREEN);
+				break;
+			default:
+				break;
+    
+		}
+    		
+    	});
 	    
 	    window.setScene(scene);
 	    window.show();
