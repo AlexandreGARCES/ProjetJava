@@ -23,16 +23,6 @@ import javafx.scene.layout.AnchorPane;
  
 public class Main extends Application {
 	
-
-    private static final int WIDTH = 1400;
-	private static final int HEIGHT = 800;
-	
-	private double anchorX, anchorY;
-	private double anchorAngleX = 0;
-	private double anchorAngleY = 0;
-	private final DoubleProperty angleX = new SimpleDoubleProperty(21.0);
-	private final DoubleProperty angleY = new SimpleDoubleProperty(46.0);
-	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		Parent root = FXMLLoader.load((getClass().getResource("Menu.fxml")));
@@ -85,34 +75,6 @@ public Scene getScene() throws IOException {
 	}
 
 
-	private void initMouseControl(Group group,SubScene  subScene) {
-    	Rotate xRotate;
-    	Rotate yRotate;
-    	group.getTransforms().addAll(
-    			xRotate = new Rotate(0, Rotate.X_AXIS),
-    			yRotate = new Rotate(0, Rotate.Y_AXIS));
-    	
-    	xRotate.angleProperty().bind(angleX);
-    	yRotate.angleProperty().bind(angleY);
-    	
-    	subScene.setOnMousePressed(event -> {
-    		anchorX = event.getSceneX();
-    		anchorY = event.getSceneY();
-    		anchorAngleX = angleX.get();
-    		anchorAngleY = angleY.get();
-    	});
-    	
-    	subScene.setOnMouseDragged(event -> {
-    		angleX.set(anchorAngleX-(anchorY- event.getSceneY()));
-    		angleY.set(anchorAngleY-(anchorX- event.getSceneX()));
-    		
-    	});
-    	
-    	subScene.addEventHandler(ScrollEvent.SCROLL, event ->{
-    		double delta = event.getDeltaY();
-    		group.translateZProperty().set(group.getTranslateZ() - 10*delta);
-    	});
-		
-	}
+	
 
 }
