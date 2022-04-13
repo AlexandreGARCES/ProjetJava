@@ -15,7 +15,7 @@ public class Modele {
 		COULEUR, TEXTURE
 	}
 	public enum Element_a_ajouter{
-		CUBE
+		CUBE, DEUXCUBES
 	}
 	private Element_a_ajouter element_a_ajouter;
 	private  Remplissage remplissage;
@@ -43,6 +43,7 @@ public class Modele {
 		
 		
 	}
+
 
 
 	public void setCouleur(Color coul) {
@@ -97,19 +98,30 @@ public class Modele {
 
 
 	public Element ajouter(Element pere) {
-		Element elem = null;
+		Element elem;
 		switch(this.getElement_a_ajouter()) {
 		case CUBE:
 			Cube b1 = new Cube(50, 50, 50, this, pere);
 			this.terrain.getChildren().add(b1.getShape());
 			elem = b1;
+		case DEUXCUBES:
+			DeuxCubes dc = new DeuxCubes(50, 50, 50, this, pere);
+			for(Cube i: dc.cubes) {
+				this.terrain.getChildren().add(i.getShape());
+			}
+			elem = dc.cubes.get(0);
+		default:
+			elem = null;
+		
 		}
+			
 		return elem;
 			
 		
 
 		
 	}
+	
 	
 	
 	

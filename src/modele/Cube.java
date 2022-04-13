@@ -1,14 +1,12 @@
 package modele;
 
-import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Box;
 import javafx.scene.shape.Shape3D;
 
 public class Cube extends Element{
 	
-
-	
 	public Cube(int longu, int haut,int prof, Modele mod, Element pere) {
+		
 		super(mod, pere);
 		Box b = new Box(longu, haut, prof);
 		this.pos_relative[1] = haut;
@@ -27,15 +25,7 @@ public class Cube extends Element{
 		}
 		
 		this.setRemplissage();
-		
 
-		
-		
-		
-		
-		
 	}
-
 	
-
 }
