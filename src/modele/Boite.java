@@ -30,7 +30,6 @@ public class Boite extends Element{
 
 		case COULEUR:
 			material.setDiffuseColor(this.modele.getCouleur());
-			System.out.println(this.modele.getCouleur().toString());
 		
 		case TEXTURE:
 			material.setDiffuseMap(this.modele.getTexture());

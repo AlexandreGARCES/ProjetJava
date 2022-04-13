@@ -63,7 +63,6 @@ public class Element{
 		    	if (event.isPrimaryButtonDown()) {
 		    		if (this.fils.isEmpty()) {
 		    			for(int i:this.taille) {
-		    				System.out.println(i);
 		    			}
 		    			Element elem = this.modele.ajouter(this);
 		    			this.fils.add(elem);
@@ -78,10 +77,8 @@ public class Element{
 		    	}
 		    	 if (event.isSecondaryButtonDown()) {	
 		    		if (this.destructible) {
-		    			System.out.println(this.pere +  " pere");
 		    			if(this.pere != null) {
 				    		this.pere.fils.remove(this);
-				    		System.out.println(this.pere.fils);
 		    			}
 		    			this.supprimer();
 		    			
