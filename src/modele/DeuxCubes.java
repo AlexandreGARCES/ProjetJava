@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class DeuxCubes {
 	
+	
 	public ArrayList<Cube> cubes;
 	
 	public DeuxCubes(int longu, int haut,int prof, Modele mod, Element pere) {
