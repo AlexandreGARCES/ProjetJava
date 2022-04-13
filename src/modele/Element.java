@@ -3,6 +3,7 @@ package modele;
 import java.util.ArrayList;
 import java.util.Stack;
 
+import javafx.scene.input.MouseButton;
 import javafx.scene.shape.Shape3D;
 
 public class Element{
@@ -58,9 +59,10 @@ public class Element{
 	
 	public void setShape(Shape3D sh) {
 		this.shape = sh;
-		shape.setOnMousePressed(event -> {
+		
+		shape.setOnMouseClicked(event -> {
 		    {
-		    	if (event.isPrimaryButtonDown()) {
+		    	if (event.getButton() == MouseButton.PRIMARY) {
 		    		if (this.fils.isEmpty()) {
 		    			for(int i:this.taille) {
 		    			}
@@ -75,7 +77,7 @@ public class Element{
 		    	}
 		    	              
 		    	}
-		    	 if (event.isSecondaryButtonDown()) {	
+		    	 if (event.getButton() == MouseButton.SECONDARY) {	
 		    		if (this.destructible) {
 		    			if(this.pere != null) {
 				    		this.pere.fils.remove(this);

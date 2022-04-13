@@ -56,9 +56,12 @@ public class ControleurMenu {
 		AnchorPane pane = new AnchorPane();
 		SubScene subScene = new SubScene(group, WIDTH, HEIGHT, true, null);
 		
+		
 		Camera camera = new PerspectiveCamera();
 	    camera.setTranslateZ(-30);
 	    subScene.setCamera(camera);
+
+	    
 	    group.translateZProperty().set(3000);
 		
 	    initMouseControl(group,subScene);
@@ -125,4 +128,5 @@ public class ControleurMenu {
     	});
 		
 	}
+    
 }
