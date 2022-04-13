@@ -61,7 +61,6 @@ public class ControleurMenu {
 	    camera.setTranslateZ(-30);
 	    subScene.setCamera(camera);
 
-	    
 	    group.translateZProperty().set(3000);
 		
 	    initMouseControl(group,subScene);
