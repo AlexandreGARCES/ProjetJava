@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 import javafx.scene.input.MouseButton;
+import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Shape3D;
 
 public class Element{
@@ -22,6 +23,7 @@ public class Element{
 		this.fils = new ArrayList<Element>();
 		this.modele = mod;
 		this.pere = pere;
+
 		
 		
 	}
@@ -64,8 +66,6 @@ public class Element{
 		    {
 		    	if (event.getButton() == MouseButton.PRIMARY) {
 		    		if (this.fils.isEmpty()) {
-		    			for(int i:this.taille) {
-		    			}
 		    			Element elem = this.modele.ajouter(this);
 		    			this.fils.add(elem);
 		    			for(Element enfant: elem.fils) {
@@ -104,6 +104,20 @@ public class Element{
 
 	public void setDestructible(boolean destructible) {
 		this.destructible = destructible;
+	}
+	
+	public void setRemplissage() {
+		PhongMaterial material = new PhongMaterial();
+		switch(this.modele.getRemplissage()) {
+
+		case COULEUR:
+			material.setDiffuseColor(this.modele.getCouleur());
+		
+		case TEXTURE:
+			material.setDiffuseMap(this.modele.getTexture());
+			
+		}
+		this.shape.setMaterial(material);
 	}
 
 }
