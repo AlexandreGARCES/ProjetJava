@@ -30,7 +30,6 @@ public class ControleurMenu {
 	private double anchorAngleY = 0;
 	private final DoubleProperty angleX = new SimpleDoubleProperty(21.0);
 	private final DoubleProperty angleY = new SimpleDoubleProperty(46.0);
-	
 	private static final int WIDTH = 1400;
 	private static final int HEIGHT = 800;
 	Stage window;
@@ -61,7 +60,8 @@ public class ControleurMenu {
 	    camera.setTranslateZ(-30);
 	    subScene.setCamera(camera);
 
-	    
+	    group.translateXProperty().set(WIDTH/2);
+	    group.translateYProperty().set(HEIGHT/2);
 	    group.translateZProperty().set(3000);
 		
 	    initMouseControl(group,subScene);
@@ -124,7 +124,10 @@ public class ControleurMenu {
     	
     	subScene.addEventHandler(ScrollEvent.SCROLL, event ->{
     		double delta = event.getDeltaY();
-    		group.translateZProperty().set(group.getTranslateZ() - 10*delta);
+    		if(group.getTranslateZ()>-1000 || delta<=0) {
+    			group.translateZProperty().set(group.getTranslateZ() - 10*delta);
+    		}
+    		
     	});
 		
 	}

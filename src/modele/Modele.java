@@ -41,8 +41,6 @@ public class Modele {
     		
     	}
 		this.setElement_a_ajouter(Element_a_ajouter.BOITE);
-    	this.getTerrain().translateXProperty().bind(larg);;
-    	this.getTerrain().translateYProperty().bind(longu);
 
 
 		
