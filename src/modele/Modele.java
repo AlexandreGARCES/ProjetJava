@@ -1,7 +1,6 @@
 package modele;
 
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
+
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 public class Modele {
@@ -10,28 +9,26 @@ public class Modele {
 	private Image texture;
 	public int largeur = 50;
 	public int longueur  = 50;
-    private final DoubleProperty larg = new SimpleDoubleProperty(largeur);
-    private final DoubleProperty longu = new SimpleDoubleProperty(longueur);
 
 	private Groupe terrain;
-	public enum Etat {
+	public enum Remplissage {
 		COULEUR, TEXTURE
 	}
 	public enum Element_a_ajouter{
-		BOITE
+		CUBE, DEUXCUBES
 	}
 	private Element_a_ajouter element_a_ajouter;
-	private  Etat etat;
+	private  Remplissage remplissage;
 	
 	public Modele() {
 		
 		this.couleur = Color.SILVER;
 		this.texture = null;
-		this.etat = Etat.COULEUR;
+		this.remplissage = Remplissage.COULEUR;
 		this.setTerrain(new Groupe());
 		for(int i =-largeur/2; i< largeur/2; i++) {	
     		for(int j = -longueur/2; j<longueur/2; j++) {
-    			Boite box = new Boite(50, 50, 50, this, null);
+    			Cube box = new Cube(50, 50, 50, this, null);
     			box.getShape().translateXProperty().set(i*50);
     			box.getShape().translateZProperty().set(j*50);
     			box.setDestructible(false);
@@ -40,7 +37,7 @@ public class Modele {
     		}
     		
     	}
-		this.setElement_a_ajouter(Element_a_ajouter.BOITE);
+		this.setElement_a_ajouter(Element_a_ajouter.CUBE);
 
 
 		
@@ -57,8 +54,8 @@ public class Modele {
 		return this.couleur;
 	}
 	
-	public Etat getEtat() {
-		return this.etat;
+	public Remplissage getRemplissage() {
+		return this.remplissage;
 	}
 
 
@@ -101,19 +98,30 @@ public class Modele {
 
 
 	public Element ajouter(Element pere) {
-		Element elem = null;
+		Element elem;
 		switch(this.getElement_a_ajouter()) {
-		case BOITE:
-			Boite b1 = new Boite(50, 50, 50, this, pere);
+		case CUBE:
+			Cube b1 = new Cube(50, 50, 50, this, pere);
 			this.terrain.getChildren().add(b1.getShape());
 			elem = b1;
+		case DEUXCUBES:
+			DeuxCubes dc = new DeuxCubes(50, 50, 50, this, pere);
+			for(Cube i: dc.cubes) {
+				this.terrain.getChildren().add(i.getShape());
+			}
+			elem = dc.cubes.get(0);
+		default:
+			elem = null;
+		
 		}
+			
 		return elem;
 			
 		
 
 		
 	}
+	
 	
 	
 	
