@@ -18,14 +18,14 @@
             <Image url="@../ImagesMenu/logoLego.png" />
          </image>
       </ImageView>
-      <Button fx:id="boutonJouer" layoutX="372.0" layoutY="275.0" mnemonicParsing="false" onAction="#afficherJeu" prefHeight="184.0" prefWidth="403.0" text="JOUER" textAlignment="JUSTIFY" textFill="RED">
+      <Button fx:id="boutonConstruction" layoutX="372.0" layoutY="275.0" mnemonicParsing="false" onAction="#switchFXMLConstruction" prefHeight="184.0" prefWidth="403.0" text="Construire" textAlignment="JUSTIFY" textFill="RED">
          <font>
-            <Font name="Wingdings 3" size="69.0" />
+            <Font name="Wingdings 3" size="60.0" />
          </font>
       </Button>
-      <Button fx:id="boutonCatalgue" layoutX="372.0" layoutY="459.0" mnemonicParsing="false" prefHeight="184.0" prefWidth="403.0" text="CATALOGUE">
+      <Button fx:id="boutonVisualisation" layoutX="372.0" layoutY="459.0" mnemonicParsing="false" onAction="#switchFXMLVisualisation" prefHeight="184.0" prefWidth="403.0" text="Visualiser">
          <font>
-            <Font name="Wingdings 2" size="56.0" />
+            <Font name="Wingdings 2" size="64.0" />
          </font>
       </Button>
    </children>

@@ -67,8 +67,8 @@ public class Modele {
 		return texture;
 	}
 
-
-
+	
+	
 	public void setTexture(Image texture) {
 		this.texture = texture;
 	}

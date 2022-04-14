@@ -9,22 +9,21 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Camera;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.PerspectiveCamera;
 import javafx.scene.Scene;
 import javafx.scene.SubScene;
 import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.transform.Rotate;
-import javafx.scene.Node;
 import javafx.stage.Stage;
 import modele.Modele;
 
-public class ControleurMenu {
-	
+public class ControleurVisualisation {
+
 	private double anchorX, anchorY;
 	private double anchorAngleX = 0;
 	private double anchorAngleY = 0;
@@ -34,21 +33,15 @@ public class ControleurMenu {
 	private static final int HEIGHT = 800;
 	Stage window;
 	Scene scene;
+	
+    @FXML
+    private Button boutonModifier;
 
     @FXML
-    private Button boutonConstruction;
+    private SubScene subScene;
 
     @FXML
-    private Button boutonVisualisation;
-
-    @FXML
-    private ImageView imageFond;
-
-    @FXML
-    private ImageView imageLogo;
-
-    @FXML
-    void switchFXMLConstruction(ActionEvent event) throws IOException {
+    void SwitchFXMLConstruction(ActionEvent event) throws IOException {
     	Modele mod = new Modele(); 	
 		Group group = mod.getTerrain();
 		AnchorPane pane = new AnchorPane();
@@ -98,59 +91,6 @@ public class ControleurMenu {
 	    window.show();
     }
     
-    
-    @FXML
-    void switchFXMLVisualisation(ActionEvent event) throws IOException {
-    	Modele mod = new Modele(); 	
-		Group group = mod.getTerrain();
-		AnchorPane pane = new AnchorPane();
-		SubScene subScene = new SubScene(group, WIDTH, HEIGHT, true, null);
-		
-		
-		Camera camera = new PerspectiveCamera();
-	    camera.setTranslateZ(-30);
-	    subScene.setCamera(camera);
-
-	    group.translateXProperty().set(WIDTH/2);
-	    group.translateYProperty().set(HEIGHT/2);
-	    group.translateZProperty().set(3000);
-		
-	    initMouseControl(group,subScene);
-	    
-	   	FXMLLoader loader = new FXMLLoader(getClass().getResource("../vue/Visualisation.fxml"));
-	   	window = (Stage)((Node)event.getSource()).getScene().getWindow();
-	    pane = loader.load();
-	    pane.getChildren().add(subScene);
-	    scene = new Scene(pane);
-	    	scene.addEventHandler(KeyEvent.KEY_PRESSED, e->{
-    		switch(e.getCode())
-    		{
-    		case W:
-    			mod.setCouleur(Color.WHITE);
-    			break;
-    		case B:
-    			mod.setCouleur(Color.BLUE);
-    			break;
-    		
-	    	case R:
-				mod.setCouleur(Color.RED);
-				break;
-			
-	    	case V:
-				mod.setCouleur(Color.GREEN);
-				break;
-			default:
-				break;
-    
-		}
-    		
-    	});
-	    
-	    window.setScene(scene);
-	    window.show();
-    }
-    
-    
     private void initMouseControl(Group group,SubScene  subScene) {
     	Rotate xRotate;
     	Rotate yRotate;
@@ -183,5 +123,5 @@ public class ControleurMenu {
     	});
 		
 	}
-}
 
+}
