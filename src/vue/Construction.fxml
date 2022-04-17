@@ -12,34 +12,38 @@
    <children>
       <SplitPane dividerPositions="0.5" prefHeight="900.0" prefWidth="1700.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
-            <AnchorPane prefHeight="900.0" prefWidth="1400.0">
+            <AnchorPane maxHeight="900.0" maxWidth="1400.0" prefHeight="900.0" prefWidth="1400.0">
                <children>
                   <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="900.0" prefWidth="1400.0">
                     <items>
-                        <AnchorPane fx:id="paneSubscene" minHeight="0.0" minWidth="300.0" prefHeight="800.0" prefWidth="1400.0">
+                        <AnchorPane fx:id="paneSubscene" maxHeight="800.0" maxWidth="1400.0" minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="1400.0">
                            <children>
-                              <SubScene fx:id="subScene" height="800.0" width="1400.0">
+                              <SubScene fx:id="subScene" height="800.0" layoutY="-4.0" width="1400.0">
                                 <root>
                                   <Region />
                                 </root>
                               </SubScene>
                            </children>
                         </AnchorPane>
-                        <HBox alignment="CENTER" maxHeight="100.0" maxWidth="1700.0" prefHeight="100.0" prefWidth="1700.0">
+                        <AnchorPane maxHeight="100.0" maxWidth="1400.0" prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <Button alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-border-color: RED; -fx-background-color: YELLOW;" text="Annuler">
-                                 <HBox.margin>
-                                    <Insets right="700.0" />
-                                 </HBox.margin>
-                              </Button>
-                              <Button alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="Plein écran" />
+                              <HBox alignment="CENTER" maxHeight="100.0" maxWidth="1400.0" prefHeight="100.0" prefWidth="1700.0">
+                                 <children>
+                                    <Button alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-border-color: RED; -fx-background-color: YELLOW;" text="Annuler">
+                                       <HBox.margin>
+                                          <Insets right="700.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="Plein écran" />
+                                 </children>
+                              </HBox>
                            </children>
-                        </HBox>
+                        </AnchorPane>
                     </items>
                   </SplitPane>
                </children>
             </AnchorPane>
+          <AnchorPane maxHeight="900.0" maxWidth="300.0" minHeight="0.0" minWidth="0.0" prefHeight="900.0" prefWidth="300.0" />
         </items>
       </SplitPane>
    </children>
