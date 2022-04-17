@@ -46,12 +46,13 @@ public class ControleurMenu {
 
     @FXML
     private ImageView imageLogo;
+    
 
     @FXML
     void switchFXMLConstruction(ActionEvent event) throws IOException {
     	Modele mod = new Modele(); 	
 		Group group = mod.getTerrain();
-		AnchorPane pane = new AnchorPane();
+		AnchorPane paneSubscene=new AnchorPane();
 		SubScene subScene = new SubScene(group, WIDTH, HEIGHT, true, null);
 		
 		
@@ -67,9 +68,9 @@ public class ControleurMenu {
 	    
 	   	FXMLLoader loader = new FXMLLoader(getClass().getResource("../vue/Construction.fxml"));
 	   	window = (Stage)((Node)event.getSource()).getScene().getWindow();
-	    pane = loader.load();
-	    pane.getChildren().add(subScene);
-	    scene = new Scene(pane);
+	    paneSubscene = loader.load();
+	    paneSubscene.getChildren().add(subScene);
+	    scene = new Scene(paneSubscene);
 	    	scene.addEventHandler(KeyEvent.KEY_PRESSED, e->{
     		switch(e.getCode())
     		{

@@ -12,11 +12,7 @@
    <children>
       <HBox prefHeight="900.0" prefWidth="1700.0">
          <children>
-            <VBox prefHeight="900.0" prefWidth="304.0">
-               <children>
-                  <Button mnemonicParsing="false" prefHeight="198.0" prefWidth="345.0" text="Button" />
-               </children>
-            </VBox>
+            <VBox prefHeight="900.0" prefWidth="304.0" />
             <VBox prefHeight="900.0" prefWidth="1400.0">
                <children>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
@@ -30,7 +26,7 @@
                   </AnchorPane>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1400.0">
                      <children>
-                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-border-color: RED; -fx-background-color: YELLOW;" text="Modifier">
+                        <Button fx:id="boutonModifier" alignment="CENTER" mnemonicParsing="false" onAction="#SwitchFXMLConstruction" prefHeight="50.0" prefWidth="120.0" text="Modifier">
                            <HBox.margin>
                               <Insets right="700.0" />
                            </HBox.margin>
