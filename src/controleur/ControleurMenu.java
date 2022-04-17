@@ -24,14 +24,7 @@ import javafx.stage.Stage;
 import modele.Modele;
 
 public class ControleurMenu {
-	
-	private double anchorX, anchorY;
-	private double anchorAngleX = 0;
-	private double anchorAngleY = 0;
-	private final DoubleProperty angleX = new SimpleDoubleProperty(21.0);
-	private final DoubleProperty angleY = new SimpleDoubleProperty(46.0);
-	private static final int WIDTH = 1400;
-	private static final int HEIGHT = 800;
+
 	Stage window;
 	Scene scene;
 
@@ -151,6 +144,16 @@ public class ControleurMenu {
 	    window.show();
     }
     
+    
+    
+    
+    private double anchorX, anchorY;
+	private double anchorAngleX = 0;
+	private double anchorAngleY = 0;
+	private final DoubleProperty angleX = new SimpleDoubleProperty(21.0);
+	private final DoubleProperty angleY = new SimpleDoubleProperty(46.0);
+	private static final int WIDTH = 1400;
+	private static final int HEIGHT = 800;
     
     private void initMouseControl(Group group,SubScene  subScene) {
     	Rotate xRotate;

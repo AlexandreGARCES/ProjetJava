@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="900.0" prefWidth="1700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.ControleurVisualisation">
    <children>
@@ -18,16 +19,21 @@
                     <items>
                       <AnchorPane maxHeight="800.0" maxWidth="1400.0" minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="1400.0">
                            <children>
-                              <SubScene fx:id="subScene" height="800.0" layoutX="-9.0" layoutY="-4.0" width="1400.0">
+                              <SubScene fx:id="subScene" blendMode="EXCLUSION" height="800.0" layoutX="-9.0" layoutY="-4.0" width="1400.0">
                                 <root>
                                   <Region />
                                 </root>
                               </SubScene>
+                              <Button fx:id="boutonMenu" mnemonicParsing="false" onAction="#SwitchFXMLMenu" prefHeight="20.0" prefWidth="19.0" text="X">
+                                 <font>
+                                    <Font name="Arial" size="13.0" />
+                                 </font>
+                              </Button>
                            </children>
                         </AnchorPane>
                       <AnchorPane maxHeight="100.0" maxWidth="1400.0" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="100.0">
                            <children>
-                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1400.0">
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1400.0" style="-fx-background-color: grey;">
                                  <children>
                                     <Button fx:id="boutonModifier" alignment="CENTER" mnemonicParsing="false" onAction="#SwitchFXMLConstruction" prefHeight="50.0" prefWidth="120.0" text="Modifier">
                                        <HBox.margin>

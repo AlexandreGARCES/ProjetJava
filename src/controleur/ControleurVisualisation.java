@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Camera;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.PerspectiveCamera;
 import javafx.scene.Scene;
 import javafx.scene.SubScene;
@@ -23,23 +24,20 @@ import javafx.stage.Stage;
 import modele.Modele;
 
 public class ControleurVisualisation {
-
-	private double anchorX, anchorY;
-	private double anchorAngleX = 0;
-	private double anchorAngleY = 0;
-	private final DoubleProperty angleX = new SimpleDoubleProperty(21.0);
-	private final DoubleProperty angleY = new SimpleDoubleProperty(46.0);
-	private static final int WIDTH = 1400;
-	private static final int HEIGHT = 800;
+	
 	Stage window;
 	Scene scene;
 	
+	@FXML
+    private Button boutonMenu;
+
     @FXML
     private Button boutonModifier;
 
     @FXML
     private SubScene subScene;
 
+    
     @FXML
     void SwitchFXMLConstruction(ActionEvent event) throws IOException {
     	Modele mod = new Modele(); 	
@@ -90,6 +88,28 @@ public class ControleurVisualisation {
 	    window.setScene(scene);
 	    window.show();
     }
+    
+    @FXML
+    void SwitchFXMLMenu(ActionEvent event) throws IOException {
+    	window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    	
+    	Parent root = FXMLLoader.load((getClass().getResource("../vue/Menu.fxml")));
+	    scene = new Scene(root);
+	    
+	    window.setTitle("LEGO");
+	    window.setScene(scene);
+	    window.show();
+    }
+    
+    
+    
+    private double anchorX, anchorY;
+	private double anchorAngleX = 0;
+	private double anchorAngleY = 0;
+	private final DoubleProperty angleX = new SimpleDoubleProperty(21.0);
+	private final DoubleProperty angleY = new SimpleDoubleProperty(46.0);
+	private static final int WIDTH = 1400;
+	private static final int HEIGHT = 800;
     
     private void initMouseControl(Group group,SubScene  subScene) {
     	Rotate xRotate;
