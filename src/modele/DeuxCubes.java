@@ -8,7 +8,7 @@ public class DeuxCubes {
 	
 	public DeuxCubes(int longu, int haut,int prof, Modele mod, Element pere) {
 		
-		cubes.add( new Cube(longu,haut,prof, mod, pere));
+		cubes.add(new Cube(longu,haut,prof, mod, pere));
 		cubes.add(new Cube(longu, haut, prof,mod, cubes.get(0)));
 
 	}
