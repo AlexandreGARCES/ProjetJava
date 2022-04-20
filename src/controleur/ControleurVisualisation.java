@@ -9,92 +9,37 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Camera;
 import javafx.scene.Group;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.PerspectiveCamera;
 import javafx.scene.Scene;
 import javafx.scene.SubScene;
 import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.transform.Rotate;
-import javafx.scene.Node;
 import javafx.stage.Stage;
 import modele.Modele;
 
-public class ControleurMenu {
-
+public class ControleurVisualisation {
+	
 	Stage window;
 	Scene scene;
+	
+	@FXML
+    private Button boutonMenu;
 
     @FXML
-    private Button boutonConstruction;
+    private Button boutonModifier;
 
     @FXML
-    private Button boutonVisualisation;
+    private SubScene subScene;
 
-    @FXML
-    private ImageView imageFond;
-
-    @FXML
-    private ImageView imageLogo;
-    
-
-    @FXML
-    void switchFXMLConstruction(ActionEvent event) throws IOException {
-    	Modele mod = new Modele(); 	
-		Group group = mod.getTerrain();
-		AnchorPane paneSubscene=new AnchorPane();
-		SubScene subScene = new SubScene(group, WIDTH, HEIGHT, true, null);
-		
-		
-		Camera camera = new PerspectiveCamera();
-	    camera.setTranslateZ(-30);
-	    subScene.setCamera(camera);
-
-	    group.translateXProperty().set(WIDTH/2);
-	    group.translateYProperty().set(HEIGHT/2);
-	    group.translateZProperty().set(3000);
-		
-	    initMouseControl(group,subScene);
-	    
-	   	FXMLLoader loader = new FXMLLoader(getClass().getResource("../vue/Construction.fxml"));
-	   	window = (Stage)((Node)event.getSource()).getScene().getWindow();
-	    paneSubscene = loader.load();
-	    paneSubscene.getChildren().add(subScene);
-	    scene = new Scene(paneSubscene);
-	    	scene.addEventHandler(KeyEvent.KEY_PRESSED, e->{
-    		switch(e.getCode())
-    		{
-    		case W:
-    			mod.setCouleur(Color.WHITE);
-    			break;
-    		case B:
-    			mod.setCouleur(Color.BLUE);
-    			break;
-    		
-	    	case R:
-				mod.setCouleur(Color.RED);
-				break;
-			
-	    	case V:
-				mod.setCouleur(Color.GREEN);
-				break;
-			default:
-				break;
-    
-		}
-    		
-    	});
-	    
-	    window.setScene(scene);
-	    window.show();
-    }
-    
     
     @FXML
-    void switchFXMLVisualisation(ActionEvent event) throws IOException {
+    void SwitchFXMLConstruction(ActionEvent event) throws IOException {
     	Modele mod = new Modele(); 	
 		Group group = mod.getTerrain();
 		AnchorPane pane = new AnchorPane();
@@ -111,7 +56,7 @@ public class ControleurMenu {
 		
 	    initMouseControl(group,subScene);
 	    
-	   	FXMLLoader loader = new FXMLLoader(getClass().getResource("../vue/Visualisation.fxml"));
+	   	FXMLLoader loader = new FXMLLoader(getClass().getResource("../vue/Construction.fxml"));
 	   	window = (Stage)((Node)event.getSource()).getScene().getWindow();
 	    pane = loader.load();
 	    pane.getChildren().add(subScene);
@@ -144,6 +89,17 @@ public class ControleurMenu {
 	    window.show();
     }
     
+    @FXML
+    void SwitchFXMLMenu(ActionEvent event) throws IOException {
+    	window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    	
+    	Parent root = FXMLLoader.load((getClass().getResource("../vue/Menu.fxml")));
+	    scene = new Scene(root);
+	    
+	    window.setTitle("LEGO");
+	    window.setScene(scene);
+	    window.show();
+    }
     
     
     
@@ -187,5 +143,5 @@ public class ControleurMenu {
     	});
 		
 	}
-}
 
+}

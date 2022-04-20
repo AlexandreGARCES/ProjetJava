@@ -16,7 +16,7 @@ public class Main extends Application {
 		Parent root = FXMLLoader.load((getClass().getResource("Menu.fxml")));
 	    Scene scene = new Scene(root);
 	    
-	    primaryStage.setTitle("Lego");
+	    primaryStage.setTitle("LEGO");
 	    primaryStage.setScene(scene);
 	    primaryStage.show();
 	}
