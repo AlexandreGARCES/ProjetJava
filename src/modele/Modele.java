@@ -98,21 +98,15 @@ public class Modele {
 
 
 	public Element ajouter(Element pere) {
-		Element elem;
+		Element elem = null;
 		switch(this.getElement_a_ajouter()) {
 		case CUBE:
 			Cube b1 = new Cube(50, 50, 50, this, pere);
 			this.terrain.getChildren().add(b1.getShape());
 			elem = b1;
-		case DEUXCUBES:
-			DeuxCubes dc = new DeuxCubes(50, 50, 50, this, pere);
-			for(Cube i: dc.cubes) {
-				this.terrain.getChildren().add(i.getShape());
-			}
-			elem = dc.cubes.get(0);
 		default:
-			elem = null;
-		
+			break;
+
 		}
 			
 		return elem;
