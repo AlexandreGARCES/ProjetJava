@@ -19,7 +19,7 @@
                     <items>
                         <AnchorPane maxHeight="800.0" maxWidth="1400.0" minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="1400.0">
                            <children>
-                              <SubScene fx:id="subScene" blendMode="EXCLUSION" height="800.0" layoutY="-4.0" width="1400.0">
+                              <SubScene fx:id="subScene" height="800.0" layoutY="-4.0" width="1400.0">
                                 <root>
                                   <Region />
                                 </root>
@@ -35,9 +35,19 @@
                            <children>
                               <HBox alignment="CENTER" maxHeight="100.0" maxWidth="1400.0" prefHeight="100.0" prefWidth="1700.0">
                                  <children>
-                                    <Button alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-border-color: RED; -fx-background-color: YELLOW;" text="Annuler">
+                                    <Button fx:id="boutonUndo" alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-border-color: RED; -fx-background-color: YELLOW;" text="Undo">
                                        <HBox.margin>
-                                          <Insets right="700.0" />
+                                          <Insets right="50.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button fx:id="boutonRedo" alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-border-color: RED; -fx-background-color: YELLOW;" text="Redo">
+                                       <HBox.margin>
+                                          <Insets right="500.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button fx:id="boutonSauvegarder" alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-border-color: RED; -fx-background-color: YELLOW;" text="Sauvegarder">
+                                       <HBox.margin>
+                                          <Insets right="100.0" />
                                        </HBox.margin>
                                     </Button>
                                     <Button alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="Plein écran" />

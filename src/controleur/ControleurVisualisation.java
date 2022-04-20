@@ -27,6 +27,8 @@ public class ControleurVisualisation {
 	
 	Stage window;
 	Scene scene;
+	Modele mod = new Modele(); 	
+	Group group = mod.getTerrain();
 	
 	@FXML
     private Button boutonMenu;
@@ -35,16 +37,15 @@ public class ControleurVisualisation {
     private Button boutonModifier;
 
     @FXML
-    private SubScene subScene;
+    private Button boutonPleinEcran;
+    
+    @FXML
+    private SubScene subScene = new SubScene(group, WIDTH, HEIGHT, true, null);
 
     
     @FXML
     void SwitchFXMLConstruction(ActionEvent event) throws IOException {
-    	Modele mod = new Modele(); 	
-		Group group = mod.getTerrain();
 		AnchorPane pane = new AnchorPane();
-		SubScene subScene = new SubScene(group, WIDTH, HEIGHT, true, null);
-		
 		
 		Camera camera = new PerspectiveCamera();
 	    camera.setTranslateZ(-30);
@@ -101,6 +102,53 @@ public class ControleurVisualisation {
 	    window.show();
     }
     
+    @FXML
+    void SwitchFXMLPleinEcran(ActionEvent event) throws IOException {
+		AnchorPane pane = new AnchorPane();
+		
+		
+		Camera camera = new PerspectiveCamera();
+	    camera.setTranslateZ(-30);
+	    subScene.setCamera(camera);
+
+	    group.translateXProperty().set(WIDTH/2);
+	    group.translateYProperty().set(HEIGHT/2);
+	    group.translateZProperty().set(3000);
+		
+	    initMouseControl(group,subScene);
+	    
+	   	FXMLLoader loader = new FXMLLoader(getClass().getResource("../vue/PleinEcran.fxml"));
+	   	window = (Stage)((Node)event.getSource()).getScene().getWindow();
+	    pane = loader.load();
+	    pane.getChildren().add(subScene);
+	    scene = new Scene(pane);
+	    	scene.addEventHandler(KeyEvent.KEY_PRESSED, e->{
+    		switch(e.getCode())
+    		{
+    		case W:
+    			mod.setCouleur(Color.WHITE);
+    			break;
+    		case B:
+    			mod.setCouleur(Color.BLUE);
+    			break;
+    		
+	    	case R:
+				mod.setCouleur(Color.RED);
+				break;
+			
+	    	case V:
+				mod.setCouleur(Color.GREEN);
+				break;
+			default:
+				break;
+    
+		}
+    		
+    	});
+	    
+	    window.setScene(scene);
+	    window.show();
+    }
     
     
     private double anchorX, anchorY;
