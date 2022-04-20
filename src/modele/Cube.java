@@ -18,6 +18,7 @@ public class Cube extends Element{
 
 		if (pere != null) {
 			Shape3D pereShape = pere.getShape();
+			this.pere.fils.add(this);
 			this.getShape().translateXProperty().set(pereShape.getTranslateX()- this.pere.pos_relative[0]);
 			this.getShape().translateYProperty().set(pereShape.getTranslateY() - this.pere.pos_relative[1]);
 			this.getShape().translateZProperty().set(pereShape.getTranslateZ()- this.pere.pos_relative[2]);
