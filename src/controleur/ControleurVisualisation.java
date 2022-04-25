@@ -1,12 +1,18 @@
 package controleur;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Camera;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -20,17 +26,25 @@ import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.transform.Rotate;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import modele.Modele;
+import modele.Modele.Modes;
 
-public class ControleurVisualisation {
+public class ControleurVisualisation implements Initializable {
 	
 	Stage window;
 	Scene scene;
 	Modele mod = new Modele(); 	
 	Group group = mod.getTerrain();
 	
+	Modes[] modl = {Modes.VISUALISATION, Modes.CONSTRUCTION};
+	Modes modeActuel;
+	
 	@FXML
+    private ListView<Modes> listeMode;
+	
+    @FXML
     private Button boutonMenu;
 
     @FXML
@@ -42,6 +56,25 @@ public class ControleurVisualisation {
     @FXML
     private SubScene subScene = new SubScene(group, WIDTH, HEIGHT, true, null);
 
+    
+    @Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+    	
+    	listeMode.getItems().addAll(modl);
+    	
+    	listeMode.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Modes>() {
+
+			@Override
+			public void changed(ObservableValue<? extends Modes> arg0, Modes arg1, Modes arg2) {
+				
+				modeActuel = listeMode.getSelectionModel().getSelectedItem();
+				
+				mod.setModeTerrain(modeActuel);
+			}
+    		
+    	});
+		
+	}
     
     @FXML
     void SwitchFXMLConstruction(ActionEvent event) throws IOException {
