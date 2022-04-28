@@ -60,9 +60,21 @@ public class Modele {
 		
 		
 	}
-
-
-
+	
+	//-----------------------------------------------------
+	
+	//changeConstructionAAfficher
+	//rendreConstructionModifiable
+	//rendreConstructionNonModifiable
+	//enregisterEnXML(ou FXML)
+	//chargerXML(ou FXML)
+	//changerLaCouleurBriqueAPlacer (ou texture)
+	//gererLaRechercheMultiCritere
+	//doit contenir la liste de toutes les constructions existantes
+	
+	
+	//-----------------------------------------------------
+	
 	public void setCouleur(Color coul) {
 		this.couleur = coul;;
 	}

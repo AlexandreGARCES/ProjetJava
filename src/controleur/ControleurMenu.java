@@ -27,6 +27,19 @@ public class ControleurMenu {
 
 	Stage window;
 	Scene scene;
+	
+	
+	//-----------------------------------------------------
+	
+	//PasserAUneAutreScene
+	
+	Controleur3D ctrl3D;
+	
+	public ControleurMenu() {
+		System.out.println("nouveau Controleur menu");
+	}
+	
+	//-----------------------------------------------------
 
     @FXML
     private Button boutonConstruction;
@@ -43,6 +56,7 @@ public class ControleurMenu {
 
     @FXML
     void switchFXMLConstruction(ActionEvent event) throws IOException {
+    	
     	Modele mod = new Modele(); 	
 		Group group = mod.getTerrain();
 		AnchorPane paneSubscene=new AnchorPane();

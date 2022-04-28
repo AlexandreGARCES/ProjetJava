@@ -17,6 +17,26 @@ public class ControleurConstruction {
 	Stage window;
 	Scene scene;
 	
+	
+	//-----------------------------------------------------
+	
+	Controleur3D ctrl3D;
+	
+	//lancerAffichage3D
+	//gererInteractions3D (+ annuler et redo)
+	//sauvegarderModele
+	//changerScene (revenir au menu ou passer en visualisation ou en plein ecran)
+	//rechercheMultiCrit (ici changer brique ou construction à rajouter à la construction actuelle)
+	//prevenirQueBlocSelectionneEstModifié (le bloc a placer)
+	//demanderSauvegardeAuModele
+	
+	
+	public ControleurConstruction() {
+		System.out.println("nouveau controleur construction");
+	}
+	
+	//-----------------------------------------------------
+	
 	@FXML
     private Button boutonMenu;
 

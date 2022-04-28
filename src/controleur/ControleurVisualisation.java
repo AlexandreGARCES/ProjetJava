@@ -42,6 +42,17 @@ public class ControleurVisualisation implements Initializable {
 	Modes[] modl = {Modes.VISUALISATION, Modes.CONSTRUCTION};
 	Modes modeActuel;
 	
+	
+	//-----------------------------------------------------
+	
+	//lancerAffichage3D
+	//gererInteractions3D
+	//changerScene (revenir au menu ou passer en construction ou en plein ecran)
+	//rechercheMultiCrit (ici changer construction à afficher dans le modele)
+	
+	//-----------------------------------------------------
+	
+	
 	@FXML
     private ListView<Modes> listeMode;
 	
