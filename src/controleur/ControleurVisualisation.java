@@ -3,6 +3,7 @@ package controleur;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 import javafx.beans.property.DoubleProperty;
@@ -70,6 +71,8 @@ public class ControleurVisualisation implements Initializable {
 				modeActuel = listeMode.getSelectionModel().getSelectedItem();
 				
 				mod.setModeTerrain(modeActuel);
+				System.out.println(mod.getModeTerrain());
+				group = mod.getTerrain();
 			}
     		
     	});
@@ -139,11 +142,10 @@ public class ControleurVisualisation implements Initializable {
     void SwitchFXMLPleinEcran(ActionEvent event) throws IOException {
 		AnchorPane pane = new AnchorPane();
 		
-		
 		Camera camera = new PerspectiveCamera();
 	    camera.setTranslateZ(-30);
 	    subScene.setCamera(camera);
-
+	    
 	    group.translateXProperty().set(WIDTH/2);
 	    group.translateYProperty().set(HEIGHT/2);
 	    group.translateZProperty().set(3000);

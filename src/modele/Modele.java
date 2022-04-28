@@ -36,8 +36,8 @@ public class Modele {
 		this.setTerrain(new Groupe());
 		
 		this.setElement_a_ajouter(Element_a_ajouter.CUBE);
-		//this.setModeTerrain(Modes.CONSTRUCTION);
-		this.setModeTerrain(Modes.VISUALISATION);
+		this.setModeTerrain(Modes.CONSTRUCTION);
+		//this.setModeTerrain(Modes.VISUALISATION);
 		
 		
 		this.constructions = new ArrayList<Construction>();
