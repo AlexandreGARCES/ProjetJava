@@ -11,17 +11,17 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="900.0" prefWidth="1700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.ControleurVisualisation">
+<AnchorPane prefHeight="700.0" prefWidth="1700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.ControleurVisualisation">
    <children>
-      <SplitPane dividerPositions="0.29797979797979796" prefHeight="900.0" prefWidth="1700.0">
+      <SplitPane dividerPositions="0.29797979797979796" prefHeight="700.0" prefWidth="1700.0">
         <items>
-          <AnchorPane maxHeight="900.0" maxWidth="1400.0" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane maxHeight="700.0" maxWidth="1400.0" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="900.0" prefWidth="1400.0">
+                  <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="700.0" prefWidth="1400.0">
                     <items>
                       <AnchorPane maxHeight="800.0" maxWidth="1400.0" minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="1400.0">
                            <children>
-                              <SubScene fx:id="subScene" height="800.0" layoutX="-9.0" layoutY="-4.0" width="1400.0">
+                              <SubScene fx:id="subSceneVisu" height="800.0" layoutX="-9.0" layoutY="-4.0" width="1400.0">
                                 <root>
                                   <Region />
                                 </root>
@@ -51,7 +51,7 @@
                   </SplitPane>
                </children>
             </AnchorPane>
-          <AnchorPane maxHeight="900.0" maxWidth="300.0" minHeight="0.0" minWidth="0.0" prefHeight="900.0" prefWidth="300.0">
+          <AnchorPane maxHeight="700.0" maxWidth="300.0" minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="300.0">
                <children>
                   <TitledPane animated="false" prefHeight="330.0" prefWidth="300.0" text="untitled">
                     <content>

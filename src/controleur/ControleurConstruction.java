@@ -41,7 +41,7 @@ public class ControleurConstruction {
     private Button boutonMenu;
 
     @FXML
-    private SubScene subScene;
+    private SubScene subScene3D;
     
     
     @FXML

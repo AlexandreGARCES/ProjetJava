@@ -31,6 +31,7 @@ import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import modele.Modele;
 import modele.Modele.Modes;
+import vue.Gestion3D;
 
 public class ControleurVisualisation implements Initializable {
 	
@@ -65,8 +66,6 @@ public class ControleurVisualisation implements Initializable {
     @FXML
     private Button boutonPleinEcran;
     
-    @FXML
-    private SubScene subScene = new SubScene(group, WIDTH, HEIGHT, true, null);
 
     
     @Override
@@ -92,46 +91,25 @@ public class ControleurVisualisation implements Initializable {
     
     @FXML
     void SwitchFXMLConstruction(ActionEvent event) throws IOException {
-		AnchorPane pane = new AnchorPane();
-		
-		Camera camera = new PerspectiveCamera();
-	    camera.setTranslateZ(-30);
-	    subScene.setCamera(camera);
 
-	    group.translateXProperty().set(WIDTH/2);
-	    group.translateYProperty().set(HEIGHT/2);
-	    group.translateZProperty().set(3000);
-		
-	    initMouseControl(group,subScene);
-	    
-	   	FXMLLoader loader = new FXMLLoader(getClass().getResource("../vue/Construction.fxml"));
-	   	window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    	System.out.println(((Node)event.getSource()).getParent().getScene().getRoot());
+    	
+    	SubScene subScene3D=(SubScene) ((Node)event.getSource()).getParent().getScene().getRoot().getChildrenUnmodifiable().get(1);
+    	
+    	Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    	
+    	AnchorPane pane = new AnchorPane();
+    	
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("../vue/Construction.fxml"));
+	   	
 	    pane = loader.load();
-	    pane.getChildren().add(subScene);
+
+	   	//Gestion3D gestion3D=new Gestion3D(window);
+	   	
+	    pane.getChildren().add(subScene3D);
 	    scene = new Scene(pane);
-	    	scene.addEventHandler(KeyEvent.KEY_PRESSED, e->{
-    		switch(e.getCode())
-    		{
-    		case W:
-    			mod.setCouleur(Color.WHITE);
-    			break;
-    		case B:
-    			mod.setCouleur(Color.BLUE);
-    			break;
-    		
-	    	case R:
-				mod.setCouleur(Color.RED);
-				break;
-			
-	    	case V:
-				mod.setCouleur(Color.GREEN);
-				break;
-			default:
-				break;
-    
-		}
-    		
-    	});
+	    
+	    //gestion3D.addTouches(scene);
 	    
 	    window.setScene(scene);
 	    window.show();
@@ -139,6 +117,13 @@ public class ControleurVisualisation implements Initializable {
     
     @FXML
     void SwitchFXMLMenu(ActionEvent event) throws IOException {
+    	
+    	System.out.println("aaaa");
+    	System.out.println(   ((Node)event.getSource()).getParent().getScene().getRoot().getChildrenUnmodifiable());//.get(1).getScene()    );
+    	System.out.println("bbbbb");
+    	
+    	
+    	
     	window = (Stage)((Node)event.getSource()).getScene().getWindow();
     	
     	Parent root = FXMLLoader.load((getClass().getResource("../vue/Menu.fxml")));
@@ -151,91 +136,25 @@ public class ControleurVisualisation implements Initializable {
     
     @FXML
     void SwitchFXMLPleinEcran(ActionEvent event) throws IOException {
-		AnchorPane pane = new AnchorPane();
-		
-		Camera camera = new PerspectiveCamera();
-	    camera.setTranslateZ(-30);
-	    subScene.setCamera(camera);
-	    
-	    group.translateXProperty().set(WIDTH/2);
-	    group.translateYProperty().set(HEIGHT/2);
-	    group.translateZProperty().set(3000);
-		
-	    initMouseControl(group,subScene);
-	    
-	   	FXMLLoader loader = new FXMLLoader(getClass().getResource("../vue/PleinEcran.fxml"));
-	   	window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    	SubScene subScene3D=(SubScene) ((Node)event.getSource()).getParent().getScene().getRoot().getChildrenUnmodifiable().get(1);
+    	
+    	Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    	
+    	AnchorPane pane = new AnchorPane();
+    	
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("../vue/PleinEcran.fxml"));
+
 	    pane = loader.load();
-	    pane.getChildren().add(subScene);
+
+	   	//Gestion3D gestion3D=new Gestion3D(window);
+
+	    pane.getChildren().add(subScene3D);
 	    scene = new Scene(pane);
-	    	scene.addEventHandler(KeyEvent.KEY_PRESSED, e->{
-    		switch(e.getCode())
-    		{
-    		case W:
-    			mod.setCouleur(Color.WHITE);
-    			break;
-    		case B:
-    			mod.setCouleur(Color.BLUE);
-    			break;
-    		
-	    	case R:
-				mod.setCouleur(Color.RED);
-				break;
-			
-	    	case V:
-				mod.setCouleur(Color.GREEN);
-				break;
-			default:
-				break;
-    
-		}
-    		
-    	});
 	    
+	    //gestion3D.addTouches(scene);
 	    window.setScene(scene);
 	    window.show();
     }
     
     
-    private double anchorX, anchorY;
-	private double anchorAngleX = 0;
-	private double anchorAngleY = 0;
-	private final DoubleProperty angleX = new SimpleDoubleProperty(21.0);
-	private final DoubleProperty angleY = new SimpleDoubleProperty(46.0);
-	private static final int WIDTH = 1400;
-	private static final int HEIGHT = 800;
-    
-    private void initMouseControl(Group group,SubScene  subScene) {
-    	Rotate xRotate;
-    	Rotate yRotate;
-    	group.getTransforms().addAll(
-    			xRotate = new Rotate(0, Rotate.X_AXIS),
-    			yRotate = new Rotate(0, Rotate.Y_AXIS));
-    	
-    	xRotate.angleProperty().bind(angleX);
-    	yRotate.angleProperty().bind(angleY);
-    	
-    	subScene.setOnMousePressed(event -> {
-    		anchorX = event.getSceneX();
-    		anchorY = event.getSceneY();
-    		anchorAngleX = angleX.get();
-    		anchorAngleY = angleY.get();
-    	});
-    	
-    	subScene.setOnMouseDragged(event -> {
-    		angleX.set(anchorAngleX-(anchorY- event.getSceneY()));
-    		angleY.set(anchorAngleY-(anchorX- event.getSceneX()));
-    		
-    	});
-    	
-    	subScene.addEventHandler(ScrollEvent.SCROLL, event ->{
-    		double delta = event.getDeltaY();
-    		if(group.getTranslateZ()>-1000 || delta<=0) {
-    			group.translateZProperty().set(group.getTranslateZ() - 10*delta);
-    		}
-    		
-    	});
-		
-	}
-
 }
