@@ -22,7 +22,7 @@ public class Gestion3D {
 	private final DoubleProperty angleX = new SimpleDoubleProperty(21.0);
 	private final DoubleProperty angleY = new SimpleDoubleProperty(46.0);
 	private static final int WIDTH = 1400;
-	private static final int HEIGHT = 800;
+	private static final int HEIGHT = 600;
 	
 	public Modele mod;
 	public Group group;
