@@ -1,17 +1,27 @@
 package modele;
 
 
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+
+
 public class Modele {
 	
 	private Color couleur;
 	private Image texture;
 	public int largeur = 50;
 	public int longueur  = 50;
+	public File fichier;
 
 	private Groupe terrain;
 	private ArrayList<Construction> constructions;
@@ -39,8 +49,11 @@ public class Modele {
 		this.setModeTerrain(Modes.CONSTRUCTION);
 		//this.setModeTerrain(Modes.VISUALISATION);
 		
-		
-		this.constructions = new ArrayList<Construction>();
+		this.fichier = new File("constructions.xml");
+		charger();
+		if (this.constructions == null) {
+			this.constructions = new ArrayList<Construction>();
+		}
 
 		
 		Cube c = new Cube(50, 50, 50, this, null);
@@ -108,7 +121,7 @@ public class Modele {
 		case CONSTRUCTION:
 			return this.terrain;
 		case VISUALISATION:
-			return this.constructions.get(1).groupe;
+			return this.constructions.get(1).getGroupe();
 		default:
 			return null;
 		}
@@ -133,7 +146,44 @@ public class Modele {
 	}
 
 
+	@SuppressWarnings("resource")
+	public void sauvegarder() {
+		XMLEncoder encoder = null;
+		try {
+			FileOutputStream fos = new FileOutputStream("construction.xml");
+			BufferedOutputStream bos = new BufferedOutputStream(fos);
+			encoder = new XMLEncoder(bos);
+			encoder.writeObject(this.constructions);
+			encoder.flush();
+				}
+		catch (Exception e){
+			throw new RuntimeException("Ecriture des données impossible");
+		}
+		finally {
+			if (encoder != null) encoder.close();
+			
+		}
+			
+	}
 
+	@SuppressWarnings("unchecked")
+	public void charger() {
+		XMLDecoder decoder = null;
+		try {
+			FileInputStream fis = new FileInputStream("construction.xml");
+			BufferedInputStream bis = new BufferedInputStream(fis);
+			decoder = new XMLDecoder(bis);
+			this.constructions = (ArrayList<Construction>) decoder.readObject();
+			}
+		catch (Exception e){
+			throw new RuntimeException("chargement des données impossible");
+		}
+		finally {
+			if (decoder != null) decoder.close();
+			
+		}
+			
+	}
 	public Element_a_ajouter getElement_a_ajouter() {
 		return element_a_ajouter;
 	}

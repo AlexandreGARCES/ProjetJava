@@ -1,12 +1,18 @@
 package modele;
 
-import javafx.scene.Group;
+import java.io.Serializable;
 
-public class Construction {
+public class Construction implements Serializable{
 	
-	public Element base;
-	public Groupe groupe;
-	public String nom;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Element base;
+	
+
+	private Groupe groupe;
+	private String nom;
 	
 	
 	public Construction (Element elem, String nom) {
@@ -20,11 +26,34 @@ public class Construction {
 	}
 	
 	public void ajoutRec(Element elem) {
-		for (Element i : elem.fils) {
+		for (Element i : elem.getFils()) {
 			this.groupe.getChildren().add(i.getShape());
 			ajoutRec(i);
 		}
 		
+	}
+	public Element getBase() {
+		return base;
+	}
+
+	public void setBase(Element base) {
+		this.base = base;
+	}
+
+	public Groupe getGroupe() {
+		return groupe;
+	}
+
+	public void setGroupe(Groupe groupe) {
+		this.groupe = groupe;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 
 }
