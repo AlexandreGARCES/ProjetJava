@@ -148,6 +148,9 @@ public class ControleurVisualisation implements Initializable {
 
 	   	//Gestion3D gestion3D=new Gestion3D(window);
 
+	    subScene3D.heightProperty().bind(pane.heightProperty());
+	    subScene3D.widthProperty().bind(pane.widthProperty());
+	    
 	    pane.getChildren().add(subScene3D);
 	    scene = new Scene(pane);
 	    

@@ -10,7 +10,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.SubScene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import vue.Gestion3D;
 
 public class ControleurConstruction {
 	
@@ -39,6 +41,9 @@ public class ControleurConstruction {
 	
 	@FXML
     private Button boutonMenu;
+	
+	@FXML
+    private Button boutonPleinEcran;
 
     @FXML
     private SubScene subScene3D;
@@ -56,5 +61,30 @@ public class ControleurConstruction {
 	    window.show();
     }
     
+    
+    @FXML
+    void SwitchFXMLPleinEcran(ActionEvent event) throws IOException {
+    	SubScene subScene3D=(SubScene) ((Node)event.getSource()).getParent().getScene().getRoot().getChildrenUnmodifiable().get(1);
+    	
+    	Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    	
+    	AnchorPane pane = new AnchorPane();
+    	
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("../vue/PleinEcran.fxml"));
+
+	    pane = loader.load();
+
+	   	//Gestion3D gestion3D=new Gestion3D(window);
+
+	    subScene3D.heightProperty().bind(pane.heightProperty());
+	    subScene3D.widthProperty().bind(pane.widthProperty());
+	    
+	    pane.getChildren().add(subScene3D);
+	    scene = new Scene(pane);
+	    
+	    //gestion3D.addTouches(scene);
+	    window.setScene(scene);
+	    window.show();
+    }
 
 }
