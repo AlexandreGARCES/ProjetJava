@@ -9,19 +9,19 @@ public class Cube extends Element{
 		
 		super(mod, pere);
 		Box b = new Box(longu, haut, prof);
-		this.pos_relative[1] = haut;
-		this.taille[0] = longu;
-		this.taille[2] = prof;
-		this.taille[1] = haut;
+		this.getPos_relative()[1] = haut;
+		this.getTaille()[0] = longu;
+		this.getTaille()[2] = prof;
+		this.getTaille()[1] = haut;
 		this.setShape(b);
 		this.setDestructible(true);
 
 		if (pere != null) {
 			Shape3D pereShape = pere.getShape();
-			this.pere.fils.add(this);
-			this.getShape().translateXProperty().set(pereShape.getTranslateX()- this.pere.pos_relative[0]);
-			this.getShape().translateYProperty().set(pereShape.getTranslateY() - this.pere.pos_relative[1]);
-			this.getShape().translateZProperty().set(pereShape.getTranslateZ()- this.pere.pos_relative[2]);
+			this.getPere().getFils().add(this);
+			this.getShape().translateXProperty().set(pereShape.getTranslateX()- this.getPere().getPos_relative()[0]);
+			this.getShape().translateYProperty().set(pereShape.getTranslateY() - this.getPere().getPos_relative()[1]);
+			this.getShape().translateZProperty().set(pereShape.getTranslateZ()- this.getPere().getPos_relative()[2]);
 			
 		}
 		

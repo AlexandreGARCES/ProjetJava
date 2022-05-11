@@ -1,5 +1,6 @@
 package modele;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -7,17 +8,20 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Shape3D;
 
-public class Element{
+@SuppressWarnings("serial")
+public class Element implements Serializable{
 	
+	private ArrayList<Element> fils;
+	private Element pere;
+	private int n_fils;
 	
-	public ArrayList<Element> fils;
-	public Element pere;
-	public int n_fils;
-	public Modele modele;
+	private Modele modele;
 	private boolean destructible;
 	private Shape3D shape;
-	public int[] taille= {0, 0, 0};
-	public int[] pos_relative = {0, 0, 0};
+	private int[] taille= {0, 0, 0};
+	private int[] pos_relative = {0, 0, 0};
+	
+	public Element() {}
 	
 	public Element(Modele mod, Element pere) {
 		this.fils = new ArrayList<Element>();
@@ -118,6 +122,42 @@ public class Element{
 			
 		}
 		this.shape.setMaterial(material);
+	}
+	public int[] getPos_relative() {
+		return pos_relative;
+	}
+	public void setPos_relative(int[] pos_relative) {
+		this.pos_relative = pos_relative;
+	}
+	public int[] getTaille() {
+		return taille;
+	}
+	public void setTaille(int[] taille) {
+		this.taille = taille;
+	}
+	public int getN_fils() {
+		return n_fils;
+	}
+	public void setN_fils(int n_fils) {
+		this.n_fils = n_fils;
+	}
+	public ArrayList<Element> getFils() {
+		return fils;
+	}
+	public void setFils(ArrayList<Element> fils) {
+		this.fils = fils;
+	}
+	public Element getPere() {
+		return pere;
+	}
+	public void setPere(Element pere) {
+		this.pere = pere;
+	}
+	public Modele getModele() {
+		return modele;
+	}
+	public void setModele(Modele modele) {
+		this.modele = modele;
 	}
 
 }

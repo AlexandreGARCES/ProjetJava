@@ -1,7 +1,12 @@
 package modele;
 
+import java.io.Serializable;
+
 import javafx.scene.Group;
 
-public class Groupe extends Group{
+@SuppressWarnings("serial")
+public class Groupe extends Group implements Serializable{
+	
+	public Groupe() {}
 
 }
