@@ -51,6 +51,7 @@ public class Modele {
 		
 		this.fichier = new File("constructions.xml");
 		///charger();
+
 		if (this.constructions == null) {
 			this.constructions = new ArrayList<Construction>();
 		}

@@ -51,6 +51,7 @@ public class ControleurMenu {
     	
     	AnchorPane pane = new AnchorPane();
     	
+    	
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("../vue/Construction.fxml"));
 	   	
 	    pane = loader.load();
@@ -76,7 +77,8 @@ public class ControleurMenu {
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("../vue/Visualisation.fxml"));
 	   	
 	    pane = loader.load();
-
+	    
+	    
 	   	Gestion3D gestion3D=new Gestion3D(window);
 	   	
 	    pane.getChildren().add(gestion3D.subScene3D);

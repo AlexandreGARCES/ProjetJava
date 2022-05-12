@@ -10,7 +10,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.SubScene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import vue.Gestion3D;
 
 public class ControleurConstruction {
 	
@@ -39,6 +41,9 @@ public class ControleurConstruction {
 	
 	@FXML
     private Button boutonMenu;
+    
+    @FXML
+    private Button boutonSauvegarder;
 
     @FXML
     private SubScene subScene3D;
@@ -56,5 +61,10 @@ public class ControleurConstruction {
 	    window.show();
     }
     
+    
+    @FXML
+    void SauvegarderConstruction(ActionEvent event) {
+    	
+    }
 
 }
