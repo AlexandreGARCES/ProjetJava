@@ -35,6 +35,9 @@ import vue.Gestion3D;
 
 public class ControleurVisualisation implements Initializable {
 	
+	Stage window;
+	Scene scene;
+	
 	String[] construction = {"Construction1", "Construction2"};
 	
 	
@@ -60,7 +63,7 @@ public class ControleurVisualisation implements Initializable {
     @FXML
     private Button boutonPleinEcran;
     
-
+    
     
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -70,7 +73,7 @@ public class ControleurVisualisation implements Initializable {
     	listeMode.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 			@Override
 			public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {
-				// TODO Auto-generated method stub
+				
 				
 			}
     		
@@ -137,11 +140,13 @@ public class ControleurVisualisation implements Initializable {
 
 	   	//Gestion3D gestion3D=new Gestion3D(window);
 
-	    subScene3D.heightProperty().bind(pane.heightProperty());
-	    subScene3D.widthProperty().bind(pane.widthProperty());
+	    
 	    
 	    pane.getChildren().add(subScene3D);
 	    scene = new Scene(pane);
+	    
+	    subScene3D.heightProperty().bind(pane.heightProperty());
+	    subScene3D.widthProperty().bind(pane.widthProperty());
 	    
 	    //gestion3D.addTouches(scene);
 	    window.setScene(scene);
