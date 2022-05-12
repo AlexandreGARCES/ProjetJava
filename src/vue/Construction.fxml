@@ -19,7 +19,7 @@
                     <items>
                         <AnchorPane maxHeight="800.0" maxWidth="1400.0" minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="1400.0">
                            <children>
-                              <SubScene fx:id="subScene3D" height="800.0" layoutY="-4.0" width="1400.0">
+                              <SubScene fx:id="subScene3D" height="600.0" layoutY="-4.0" width="1400.0">
                                 <root>
                                   <Region />
                                 </root>
@@ -42,7 +42,7 @@
                                     </Button>
                                     <Button fx:id="boutonRedo" alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="Redo">
                                        <HBox.margin>
-                                          <Insets right="500.0" />
+                                          <Insets right="600.0" />
                                        </HBox.margin>
                                     </Button>
                                     <Button fx:id="boutonSauvegarder" alignment="CENTER" mnemonicParsing="false" onAction="#SauvegarderConstruction" prefHeight="50.0" prefWidth="120.0" text="Sauvegarder">
@@ -50,7 +50,6 @@
                                           <Insets right="100.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button fx:id="boutonPleinEcran" alignment="CENTER" mnemonicParsing="false" onAction="#SwitchFXMLPleinEcran" prefHeight="50.0" prefWidth="120.0" text="Plein écran" />
                                  </children>
                               </HBox>
                            </children>
