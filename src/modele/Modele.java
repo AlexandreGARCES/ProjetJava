@@ -17,15 +17,15 @@ import javafx.scene.paint.Color;
 
 public class Modele {
 	
-	private Color couleur;
-	private Image texture;
+	public static Color couleur;
+	public static Image texture;
 	public int largeur = 50;
 	public int longueur  = 50;
 	public File fichier;
-
-	private Groupe terrain;
+	public  Group groupe = new Group();
+	private Construction terrain;
 	private ArrayList<Construction> constructions;
-	private Modes modeTerrain;
+	public static Modes modeTerrain;
 	public enum Modes{
 		VISUALISATION, CONSTRUCTION
 	}
@@ -35,41 +35,47 @@ public class Modele {
 	public enum Element_a_ajouter{
 		CUBE
 	}
-	private Element_a_ajouter element_a_ajouter;
-	private  Remplissage remplissage;
+	public static Element_a_ajouter element_a_ajouter;
+	public static  Remplissage remplissage;
 	
 	public Modele() {
 		
 		this.couleur = Color.SILVER;
 		this.texture = null;
-		this.remplissage = Remplissage.COULEUR;
-		this.setTerrain(new Groupe());
+		Modele.remplissage = Remplissage.COULEUR;
+		this.createTerrain();
 		
 		this.setElement_a_ajouter(Element_a_ajouter.CUBE);
 		this.setModeTerrain(Modes.CONSTRUCTION);
 		//this.setModeTerrain(Modes.VISUALISATION);
 		
 		this.fichier = new File("constructions.xml");
-		//charger();
+		///charger();
+
 		if (this.constructions == null) {
 			this.constructions = new ArrayList<Construction>();
 		}
 
 		
-		Cube c = new Cube(50, 50, 50, this, null);
-		Cube c2 = new Cube(50,50, 50, this, c);
-		Cube c3 = new Cube(50, 50, 50, this, c2);
-		Cube c4= new Cube(50,50, 50, this, c3);
-		Construction constr = new Construction (c, "pile grise");
+		Cube c = new Cube(50, 50, 50,null);
+		Cube c2 = new Cube(50,50, 50, c);
+		Cube c3 = new Cube(50, 50, 50, c2);
+		Cube c4= new Cube(50,50, 50, c3);
+		ArrayList<Element> ar = new ArrayList<Element>();
+		ar.add(c);
+		Construction constr = new Construction (ar, "pile grise");
 		this.constructions.add(constr);
-		this.couleur = Color.AQUA;
-		Cube cc = new Cube(50, 50, 50, this, null);
-		Cube cc2 = new Cube(50,50, 50, this, cc);
-		Cube cc3 = new Cube(50, 50, 50, this, cc2);
-		Cube cc4= new Cube(50,50, 50, this, cc3);
-		Construction constr1 = new Construction (cc, "pile bleue");
+		this.setCouleur(Color.AQUA);
+		Cube cc = new Cube(50, 50, 50, null);
+		Cube cc2 = new Cube(50,50, 50,cc);
+		Cube cc3 = new Cube(50, 50, 50,cc2);
+		Cube cc4= new Cube(50,50, 50, cc3);
+		ArrayList<Element> arr = new ArrayList<Element>();
+		arr.add(cc);
+		Construction constr1 = new Construction (arr, "pile bleue");
 		this.constructions.add(constr1);
 		System.out.println(this.constructions.toString());
+		this.majGroup(this.getTerrain());
 		
 		
 	}
@@ -89,15 +95,15 @@ public class Modele {
 	//-----------------------------------------------------
 	
 	public void setCouleur(Color coul) {
-		this.couleur = coul;;
+		Modele.couleur = coul;;
 	}
 	
 	public Color getCouleur() {
-		return this.couleur;
+		return Modele.couleur;
 	}
 	
 	public Remplissage getRemplissage() {
-		return this.remplissage;
+		return Modele.remplissage;
 	}
 
 
@@ -109,19 +115,21 @@ public class Modele {
 	
 	
 	public void setTexture(Image texture) {
-		this.texture = texture;
+		Modele.texture = texture;
 	}
 	
 
 
 
-	public Group getTerrain() {
+	public Construction getTerrain() {
 		
-		switch(this.modeTerrain) {
+		switch(Modele.modeTerrain) {
 		case CONSTRUCTION:
+			this.majGroup(this.terrain);
 			return this.terrain;
 		case VISUALISATION:
-			return this.constructions.get(1).getGroupe();
+			this.majGroup(this.constructions.get(1));
+			return this.constructions.get(1);
 		default:
 			return null;
 		}
@@ -130,19 +138,18 @@ public class Modele {
 
 
 
-	public void setTerrain(Groupe terrain) {
+	public void createTerrain() {
+		ArrayList<Element> ar = new ArrayList<Element>();
 		for(int i =-largeur/2; i< largeur/2; i++) {	
     		for(int j = -longueur/2; j<longueur/2; j++) {
-    			Cube box = new Cube(50, 50, 50, this, null);
-    			box.getShape().translateXProperty().set(i*50);
-    			box.getShape().translateZProperty().set(j*50);
-    			box.setDestructible(false);
-    			terrain.getChildren().add(box.getShape());
+    			int[] pos = {i*50, 0, j*50};
+    			Cube box = new Cube(50, 50, 50,null, pos);
+    			ar.add(box);
     			
     		}
     		
     	}
-		this.terrain = terrain;
+		this.terrain = new Construction(ar, "terrain");
 	}
 
 
@@ -170,7 +177,9 @@ public class Modele {
 	public void charger() {
 		XMLDecoder decoder = null;
 		try {
+			System.out.println("oui");
 			FileInputStream fis = new FileInputStream("construction.xml");
+			System.out.println("file");
 			BufferedInputStream bis = new BufferedInputStream(fis);
 			decoder = new XMLDecoder(bis);
 			this.constructions = (ArrayList<Construction>) decoder.readObject();
@@ -184,47 +193,20 @@ public class Modele {
 		}
 			
 	}
-	public Element_a_ajouter getElement_a_ajouter() {
-		return element_a_ajouter;
-	}
 
 
 
 	public void setElement_a_ajouter(Element_a_ajouter element_a_ajouter) {
-		this.element_a_ajouter = element_a_ajouter;
+		Modele.element_a_ajouter = element_a_ajouter;
 	}
 
 
 
-	public Element ajouter(Element pere) {
-		Element elem = null;
-		switch(this.getElement_a_ajouter()) {
-		case CUBE:
-			Cube b1 = new Cube(50, 50, 50, this, pere);
-			this.terrain.getChildren().add(b1.getShape());
-			elem = b1;
-		default:
-			break;
-
-		}
-			
-		return elem;
-			
-		
-
-		
-	}
-
-
-
-	public Modes getModeTerrain() {
-		return modeTerrain;
-	}
 
 
 
 	public void setModeTerrain(Modes modeTerrain) {
-		this.modeTerrain = modeTerrain;
+		Modele.modeTerrain = modeTerrain;
 	}
 
 
@@ -239,8 +221,15 @@ public class Modele {
 		this.constructions = constructions;
 	}
 	
-	
-	
+	public  void majGroup(Construction constr) {
+		this.groupe =  new Group();
+		for(Element elem: constr.getBase()) {
+			elem.construire(this.groupe, this);
+		}
+		
+	}
+	public Group getGroupe() {
+		return this.groupe;	}
 	
 	
 

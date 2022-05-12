@@ -4,103 +4,54 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Stack;
 
+import javafx.scene.Group;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Shape3D;
 
 @SuppressWarnings("serial")
 public class Element implements Serializable{
 	
+	private Color couleur;
+	private Image texture;
+	
+	
 	private ArrayList<Element> fils;
 	private Element pere;
 	private int n_fils;
-	
-	private Modele modele;
+	private Modele.Remplissage type_Remplissage;
 	private boolean destructible;
-	private Shape3D shape;
 	private int[] taille= {0, 0, 0};
-	private int[] pos_relative = {0, 0, 0};
+	private int[] pos = {0, 0, 0};
 	
 	public Element() {}
 	
-	public Element(Modele mod, Element pere) {
+	public Element( Element pere) {
 		this.fils = new ArrayList<Element>();
-		this.modele = mod;
 		this.pere = pere;
 
 		
 		
 	}
-	private void supprimerFils() {
+	
+	public void construire(Group groupe, Modele mod) {
 		
-		Stack<Element> stack = new Stack<Element>();
+	}
+	public void setRemplissage(Shape3D shape) {
+        PhongMaterial material = new PhongMaterial();
+        switch(this.getType_Remplissage()) {
 
-		for(Element elem : this.fils) {
-			stack.add(elem);
-			
-		}
-		while(!(stack.isEmpty())){
-			stack.pop().supprimerFils();
-		}
-		if (this.pere != null) {
-			this.pere.fils.remove(this);
-		}
-		this.modele.getTerrain().getChildren().remove(this.getShape());
-		
-		
-	}
-	
-	private void supprimer() {
-		
-		if (this.pere != null) {
-			this.pere.fils.remove(this);
-		}
-		for(Element elem : this.fils) {
-			elem.pere = null;
-			
-		}
-		this.modele.getTerrain().getChildren().remove(this.getShape());
-		
-	}
-	
-	public void setShape(Shape3D sh) {
-		this.shape = sh;
-		
-		shape.setOnMouseClicked(event -> {
-		    {
-		    	if (event.getButton() == MouseButton.PRIMARY) {
-		    		if (this.fils.isEmpty()) {
-		    			Element elem = this.modele.ajouter(this);
-		    			this.fils.add(elem);
-		    			for(Element enfant: elem.fils) {
-		    				this.modele.getTerrain().getChildren().add(enfant.getShape());
-		    			}
-		    			
-		    		}
-		    		
-		    	}
-		    	              
-		    	}
-		    	 if (event.getButton() == MouseButton.SECONDARY) {	
-		    		if (this.destructible) {
-		    			if(this.pere != null) {
-				    		this.pere.fils.remove(this);
-		    			}
-		    			this.supprimer();
-		    			
-		    		}
+        case COULEUR:
+            material.setDiffuseColor(this.getCouleur());
 
-		    	              
-		    	}
+        case TEXTURE:
+            material.setDiffuseMap(this.getTexture());
 
-    	});
-		
-	}
-	
-	public Shape3D getShape() {
-		return this.shape;
-	}
-	
+        }
+        shape.setMaterial(material);
+    }
 
 	public boolean isDestructible() {
 		return destructible;
@@ -109,7 +60,7 @@ public class Element implements Serializable{
 	public void setDestructible(boolean destructible) {
 		this.destructible = destructible;
 	}
-	
+	/*
 	public void setRemplissage() {
 		PhongMaterial material = new PhongMaterial();
 		switch(this.modele.getRemplissage()) {
@@ -123,11 +74,12 @@ public class Element implements Serializable{
 		}
 		this.shape.setMaterial(material);
 	}
-	public int[] getPos_relative() {
-		return pos_relative;
+	*/
+	public int[] getPos() {
+		return pos;
 	}
-	public void setPos_relative(int[] pos_relative) {
-		this.pos_relative = pos_relative;
+	public void setPos(int[] pos_relative) {
+		this.pos= pos_relative;
 	}
 	public int[] getTaille() {
 		return taille;
@@ -153,12 +105,31 @@ public class Element implements Serializable{
 	public void setPere(Element pere) {
 		this.pere = pere;
 	}
-	public Modele getModele() {
-		return modele;
+	
+	public Color getCouleur() {
+		return couleur;
 	}
-	public void setModele(Modele modele) {
-		this.modele = modele;
+
+	public void setCouleur(Color couleur) {
+		this.couleur = couleur;
+	}
+
+	public Image getTexture() {
+		return texture;
+	}
+
+	public void setTexture(Image texture) {
+		this.texture = texture;
+	}
+
+	public Modele.Remplissage getType_Remplissage() {
+		return type_Remplissage;
+	}
+
+	public void setType_Remplissage(Modele.Remplissage type_Remplissage) {
+		this.type_Remplissage = type_Remplissage;
 	}
 
 }
+
 
