@@ -35,13 +35,7 @@ import vue.Gestion3D;
 
 public class ControleurVisualisation implements Initializable {
 	
-	Stage window;
-	Scene scene;
-	Modele mod = new Modele(); 	
-	Group group = mod.getTerrain();
-	
-	Modes[] modl = {Modes.VISUALISATION, Modes.CONSTRUCTION};
-	Modes modeActuel;
+	String[] construction = {"Construction1", "Construction2"};
 	
 	
 	//-----------------------------------------------------
@@ -55,7 +49,7 @@ public class ControleurVisualisation implements Initializable {
 	
 	
 	@FXML
-    private ListView<Modes> listeMode;
+    private ListView<String> listeMode;
 	
     @FXML
     private Button boutonMenu;
@@ -71,18 +65,13 @@ public class ControleurVisualisation implements Initializable {
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
     	
-    	listeMode.getItems().addAll(modl);
+    	listeMode.getItems().addAll(construction);
     	
-    	listeMode.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Modes>() {
-
+    	listeMode.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 			@Override
-			public void changed(ObservableValue<? extends Modes> arg0, Modes arg1, Modes arg2) {
+			public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {
+				// TODO Auto-generated method stub
 				
-				modeActuel = listeMode.getSelectionModel().getSelectedItem();
-				
-				mod.setModeTerrain(modeActuel);
-				System.out.println(mod.getModeTerrain());
-				group = mod.getTerrain();
 			}
     		
     	});
