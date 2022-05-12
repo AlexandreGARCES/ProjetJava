@@ -32,7 +32,7 @@ public class Gestion3D {
 	
 	public Gestion3D(Stage window) {
 		this.mod = new Modele(); 	
-		this.group = mod.getTerrain();
+		this.group = mod.getGroupe();
 		this.subScene3D = new SubScene(group, WIDTH, HEIGHT, true, null);
 		
 		
@@ -90,7 +90,9 @@ public class Gestion3D {
     		switch(e.getCode())
     		{
     		case W:
+    			
     			mod.setCouleur(Color.WHITE);
+    			System.out.println(mod.getCouleur());
     			break;
     		case B:
     			mod.setCouleur(Color.BLUE);

@@ -38,7 +38,7 @@ public class ControleurVisualisation implements Initializable {
 	Stage window;
 	Scene scene;
 	Modele mod = new Modele(); 	
-	Group group = mod.getTerrain();
+	Group group = mod.getGroupe();
 	
 	Modes[] modl = {Modes.VISUALISATION, Modes.CONSTRUCTION};
 	Modes modeActuel;
@@ -81,8 +81,8 @@ public class ControleurVisualisation implements Initializable {
 				modeActuel = listeMode.getSelectionModel().getSelectedItem();
 				
 				mod.setModeTerrain(modeActuel);
-				System.out.println(mod.getModeTerrain());
-				group = mod.getTerrain();
+				System.out.println(Modele.modeTerrain);
+				group = mod.getGroupe();
 			}
     		
     	});

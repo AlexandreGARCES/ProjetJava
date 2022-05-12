@@ -1,6 +1,7 @@
 package modele;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Construction implements Serializable{
 	
@@ -8,45 +9,36 @@ public class Construction implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Element base;
-	
-
-	private Groupe groupe;
+	private ArrayList<Element> base;
 	private String nom;
 	
 	
-	public Construction (Element elem, String nom) {
+	public Construction (ArrayList<Element> tab_elem, String nom) {
 		
-		this.groupe = new Groupe();
 		this.nom = nom;
-		this.base = elem;
-		this.groupe.getChildren().add(elem.getShape());
-		ajoutRec(elem);
+		this.base = tab_elem;
+		for(Element elem: this.base) {
+			ajoutRec(elem);
+		}
 		
 	}
 	
 	public void ajoutRec(Element elem) {
-		for (Element i : elem.getFils()) {
-			this.groupe.getChildren().add(i.getShape());
-			ajoutRec(i);
+
+			for (Element i : elem.getFils()) {
+				ajoutRec(i);
+			}	
 		}
 		
-	}
-	public Element getBase() {
+	
+	public ArrayList<Element> getBase() {
 		return base;
 	}
 
-	public void setBase(Element base) {
+	public void setBase(ArrayList<Element> base) {
 		this.base = base;
 	}
 
-	public Groupe getGroupe() {
-		return groupe;
-	}
-
-	public void setGroupe(Groupe groupe) {
-		this.groupe = groupe;
-	}
 
 	public String getNom() {
 		return nom;
