@@ -50,7 +50,7 @@ public class Modele {
 		//this.setModeTerrain(Modes.VISUALISATION);
 		
 		this.fichier = new File("constructions.xml");
-		charger();
+		//charger();
 		if (this.constructions == null) {
 			this.constructions = new ArrayList<Construction>();
 		}

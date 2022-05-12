@@ -41,6 +41,9 @@ public class ControleurConstruction {
 	
 	@FXML
     private Button boutonMenu;
+    
+    @FXML
+    private Button boutonSauvegarder;
 	
 	@FXML
     private Button boutonPleinEcran;
@@ -85,6 +88,11 @@ public class ControleurConstruction {
 	    //gestion3D.addTouches(scene);
 	    window.setScene(scene);
 	    window.show();
+    }
+    
+    @FXML
+    void SauvegarderConstruction(ActionEvent event) {
+    	
     }
 
 }

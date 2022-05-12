@@ -45,7 +45,7 @@
                                           <Insets right="500.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button fx:id="boutonSauvegarder" alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="Sauvegarder">
+                                    <Button fx:id="boutonSauvegarder" alignment="CENTER" mnemonicParsing="false" onAction="#SauvegarderConstruction" prefHeight="50.0" prefWidth="120.0" text="Sauvegarder">
                                        <HBox.margin>
                                           <Insets right="100.0" />
                                        </HBox.margin>
