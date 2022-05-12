@@ -37,16 +37,9 @@ public class ControleurVisualisation implements Initializable {
 	
 	Stage window;
 	Scene scene;
-<<<<<<< HEAD
 	
 	String[] construction = {"Construction1", "Construction2"};
-=======
-	Modele mod = new Modele(); 	
-	Group group = mod.getGroupe();
-	
-	Modes[] modl = {Modes.VISUALISATION, Modes.CONSTRUCTION};
-	Modes modeActuel;
->>>>>>> a9992983726d2136d7fbfdde7393352272141f64
+
 	
 	
 	//-----------------------------------------------------
@@ -60,7 +53,7 @@ public class ControleurVisualisation implements Initializable {
 	
 	
 	@FXML
-    private ListView<Modes> listeMode;
+    private ListView<String> listeMode;
 	
     @FXML
     private Button boutonMenu;
@@ -76,23 +69,13 @@ public class ControleurVisualisation implements Initializable {
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
     	
-    	listeMode.getItems().addAll(modl);
+    	listeMode.getItems().addAll(construction);
     	
-    	listeMode.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Modes>() {
+    	listeMode.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 
 			@Override
-<<<<<<< HEAD
 			public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {
-				
-=======
-			public void changed(ObservableValue<? extends Modes> arg0, Modes arg1, Modes arg2) {
->>>>>>> a9992983726d2136d7fbfdde7393352272141f64
-				
-				modeActuel = listeMode.getSelectionModel().getSelectedItem();
-				
-				mod.setModeTerrain(modeActuel);
-				System.out.println(Modele.modeTerrain);
-				group = mod.getGroupe();
+
 			}
     		
     	});
