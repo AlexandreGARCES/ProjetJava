@@ -28,8 +28,6 @@ public class ControleurConstruction implements Initializable {
 	
 	//-----------------------------------------------------
 	
-	Controleur3D ctrl3D;
-	
 	//lancerAffichage3D
 	//gererInteractions3D (+ annuler et redo)
 	//sauvegarderModele
