@@ -45,8 +45,8 @@ public class Modele {
 		
 		
 		this.setElement_a_ajouter(Element_a_ajouter.CUBE);
-		//this.setModeTerrain(Modes.CONSTRUCTION);
-		this.setModeTerrain(Modes.VISUALISATION);
+		this.setModeTerrain(Modes.CONSTRUCTION);
+		//this.setModeTerrain(Modes.VISUALISATION);
 		
 		this.fichier = new File("construction.xml");
 		try {

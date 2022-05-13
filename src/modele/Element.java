@@ -11,9 +11,7 @@ import javafx.scene.shape.Shape3D;
 @SuppressWarnings("serial")
 public class Element implements Serializable{
 	
-	private int couleur;
-	
-	
+	private int couleur;	
 	private ArrayList<Element> fils;
 	private Element pere;
 	private int n_fils;
