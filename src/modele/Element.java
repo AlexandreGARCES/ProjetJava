@@ -21,15 +21,17 @@ public class Element implements Serializable{
 	
 	public Element() {}
 	
+	
+	
 	public Element( Element pere) {
 		this.fils = new ArrayList<Element>();
 		this.pere = pere;
-
-		
-		
+		if (this.getPere() != null) {
+			this.getPere().getFils().add(this);
+		}
 	}
 	
-	public void construire(Group groupe, Modele mod) {
+	public void afficher(Group groupe, Modele mod) {
 		
 	}
 	public void setRemplissage(Shape3D shape) {

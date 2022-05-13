@@ -4,6 +4,7 @@ import javafx.scene.Group;
 import javafx.scene.input.MouseButton;
 import javafx.scene.shape.Box;
 import javafx.scene.shape.Shape3D;
+import modele.Modele.Modes;
 
 @SuppressWarnings("serial")
 public class Cube extends Element{
@@ -60,7 +61,7 @@ public class Cube extends Element{
 	}
 
 	@Override
-	public void construire(Group groupe, Modele mod) {
+	public void afficher(Group groupe, Modele mod) {
 		Box shape = new Box(this.getTaille()[0], this.getTaille()[1], this.getTaille()[2]);
 
 
@@ -71,13 +72,12 @@ public class Cube extends Element{
 
 		this.setRemplissage(shape);
 		groupe.getChildren().add(shape);
-
 		shape.setOnMouseClicked(event -> {
-			{
+			{if (Modele.modeTerrain == Modes.CONSTRUCTION) {
 				if (event.getButton() == MouseButton.PRIMARY) {
-					if (this.getFils().isEmpty()) {
+					if (this.getFils().isEmpty()) {///à changer si plusieurs enfants
 						Element elem = null;
-						switch(Modele.element_a_ajouter) {
+						switch(Modele.element_a_ajouter) {///ce sera une construction
 						case CUBE:
 							Cube b1 = new Cube(50, 50, 50,this);
 							elem = b1;
@@ -85,34 +85,28 @@ public class Cube extends Element{
 							break;
 
 						}
-						elem.construire(groupe, mod);
+						elem.afficher(groupe, mod);
+					}
 
-						this.getFils().add(elem);
-						for(Element enfant: elem.getFils()) {
-							enfant.construire(groupe, mod);
+				}
+
+
+				if (event.getButton() == MouseButton.SECONDARY) {	
+					if (this.isDestructible()) {
+						if(this.getPere() != null) {
+							this.getPere().getFils().remove(this);
 						}
+						for(Element elem : this.getFils()) {
+							elem.setPere(this.getPere());
 
+						}
+						groupe.getChildren().remove(shape);
 					}
+
 
 				}
-				mod.majGroup(mod.getTerrain());
-
 			}
-			if (event.getButton() == MouseButton.SECONDARY) {	
-				if (this.isDestructible()) {
-					if(this.getPere() != null) {
-						this.getPere().getFils().remove(this);
-					}
-					for(Element elem : this.getFils()) {
-						elem.setPere(null);
-
-					}
-					groupe.getChildren().remove(shape);
-				}
-
-
 			}
-			mod.majGroup(mod.getTerrain());
 
 		});
 
