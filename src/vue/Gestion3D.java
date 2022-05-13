@@ -1,5 +1,7 @@
 package vue;
 
+import java.io.IOException;
+
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.scene.Camera;

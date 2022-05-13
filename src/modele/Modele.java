@@ -8,6 +8,7 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javafx.scene.Group;
@@ -38,7 +39,7 @@ public class Modele {
 	public static Element_a_ajouter element_a_ajouter;
 	public static  Remplissage remplissage;
 	
-	public Modele() {
+	public Modele(){
 		
 		this.couleur = Color.SILVER;
 		this.texture = null;
@@ -49,8 +50,15 @@ public class Modele {
 		this.setModeTerrain(Modes.CONSTRUCTION);
 		//this.setModeTerrain(Modes.VISUALISATION);
 		
-		this.fichier = new File("constructions.xml");
-		///charger();
+		this.fichier = new File("construction.xml");
+		try {
+			this.fichier.createNewFile();
+		}
+		catch (Exception e) {
+			 e.getStackTrace();
+		}
+
+		
 
 		if (this.constructions == null) {
 			this.constructions = new ArrayList<Construction>();
@@ -76,7 +84,7 @@ public class Modele {
 		this.constructions.add(constr1);
 		System.out.println(this.constructions.toString());
 		this.majGroup(this.getTerrain());
-		
+		///sauvegarder();
 		
 	}
 	
@@ -175,17 +183,19 @@ public class Modele {
 
 	@SuppressWarnings("unchecked")
 	public void charger() {
+		
 		XMLDecoder decoder = null;
 		try {
-			System.out.println("oui");
+			
 			FileInputStream fis = new FileInputStream("construction.xml");
+			System.out.println("oui");
 			System.out.println("file");
 			BufferedInputStream bis = new BufferedInputStream(fis);
 			decoder = new XMLDecoder(bis);
 			this.constructions = (ArrayList<Construction>) decoder.readObject();
 			}
 		catch (Exception e){
-			throw new RuntimeException("chargement des données impossible");
+			throw new RuntimeException("Chargement des données impossible");
 		}
 		finally {
 			if (decoder != null) decoder.close();

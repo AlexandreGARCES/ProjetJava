@@ -12,6 +12,8 @@ public class Construction implements Serializable{
 	private ArrayList<Element> base;
 	private String nom;
 	
+	public Construction() {};
+	
 	
 	public Construction (ArrayList<Element> tab_elem, String nom) {
 		

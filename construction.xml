@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="11.0.14.1" class="java.beans.XMLDecoder">
+ <object class="java.util.ArrayList">
+  <void method="add">
+   <object class="modele.Construction">
+    <void property="base">
+     <object class="java.util.ArrayList">
+      <void method="add">
+       <object class="modele.Cube" id="Cube0">
+        <void property="destructible">
+         <boolean>true</boolean>
+        </void>
+        <void property="fils">
+         <object class="java.util.ArrayList"/>
+        </void>
+        <void property="pos">
+         <void index="1">
+          <int>50</int>
+         </void>
+        </void>
+        <void property="taille">
+         <void index="0">
+          <int>50</int>
+         </void>
+         <void index="1">
+          <int>50</int>
+         </void>
+         <void index="2">
+          <int>50</int>
+         </void>
+        </void>
+        <void property="type_Remplissage">
+         <object class="java.lang.Enum" id="Modele$Remplissage0" method="valueOf">
+          <class>modele.Modele$Remplissage</class>
+          <string>COULEUR</string>
+         </object>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void property="nom">
+     <string>pile grise</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="modele.Construction">
+    <void property="base">
+     <object class="java.util.ArrayList">
+      <void method="add">
+       <object class="modele.Cube" id="Cube1">
+        <void property="destructible">
+         <boolean>true</boolean>
+        </void>
+        <void property="fils">
+         <object class="java.util.ArrayList"/>
+        </void>
+        <void property="pos">
+         <void index="1">
+          <int>50</int>
+         </void>
+        </void>
+        <void property="taille">
+         <void index="0">
+          <int>50</int>
+         </void>
+         <void index="1">
+          <int>50</int>
+         </void>
+         <void index="2">
+          <int>50</int>
+         </void>
+        </void>
+        <void property="type_Remplissage">
+         <object idref="Modele$Remplissage0"/>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void property="nom">
+     <string>pile bleue</string>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>

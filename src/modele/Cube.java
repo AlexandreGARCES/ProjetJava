@@ -8,6 +8,8 @@ import javafx.scene.shape.Shape3D;
 @SuppressWarnings("serial")
 public class Cube extends Element{
 	
+	public Cube() {}
+	
 	
 	public Cube(int longu, int haut,int prof, Element pere) {
 		
