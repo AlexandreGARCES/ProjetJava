@@ -37,11 +37,9 @@ public class ControleurVisualisation implements Initializable {
 	
 	Stage window;
 	Scene scene;
-	Modele mod = new Modele(); 	
-	Group group = mod.getGroupe();
 	
-	Modes[] modl = {Modes.VISUALISATION, Modes.CONSTRUCTION};
-	Modes modeActuel;
+	String[] construction = {"Construction1", "Construction2"};
+
 	
 	
 	//-----------------------------------------------------
@@ -55,7 +53,7 @@ public class ControleurVisualisation implements Initializable {
 	
 	
 	@FXML
-    private ListView<Modes> listeMode;
+    private ListView<String> listeMode;
 	
     @FXML
     private Button boutonMenu;
@@ -66,23 +64,18 @@ public class ControleurVisualisation implements Initializable {
     @FXML
     private Button boutonPleinEcran;
     
-
+    
     
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
     	
-    	listeMode.getItems().addAll(modl);
+    	listeMode.getItems().addAll(construction);
     	
-    	listeMode.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Modes>() {
+    	listeMode.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 
 			@Override
-			public void changed(ObservableValue<? extends Modes> arg0, Modes arg1, Modes arg2) {
-				
-				modeActuel = listeMode.getSelectionModel().getSelectedItem();
-				
-				mod.setModeTerrain(modeActuel);
-				System.out.println(Modele.modeTerrain);
-				group = mod.getGroupe();
+			public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {
+
 			}
     		
     	});
@@ -150,6 +143,9 @@ public class ControleurVisualisation implements Initializable {
 
 	    pane.getChildren().add(subScene3D);
 	    scene = new Scene(pane);
+	    
+	    subScene3D.heightProperty().bind(pane.heightProperty());
+	    subScene3D.widthProperty().bind(pane.widthProperty());
 	    
 	    //gestion3D.addTouches(scene);
 	    window.setScene(scene);
