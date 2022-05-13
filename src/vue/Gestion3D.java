@@ -93,19 +93,19 @@ public class Gestion3D {
     		{
     		case W:
     			
-    			mod.setCouleur(Color.WHITE);
+    			mod.setCouleur(4);
     			System.out.println(mod.getCouleur());
     			break;
     		case B:
-    			mod.setCouleur(Color.BLUE);
+    			mod.setCouleur(3);
     			break;
     		
 	    	case R:
-				mod.setCouleur(Color.RED);
+				mod.setCouleur(0);
 				break;
 			
 	    	case V:
-				mod.setCouleur(Color.GREEN);
+				mod.setCouleur(1);
 				break;
 			default:
 				break;

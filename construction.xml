@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="11.0.14.1" class="java.beans.XMLDecoder">
+<java version="11.0.15" class="java.beans.XMLDecoder">
  <object class="java.util.ArrayList">
   <void method="add">
    <object class="modele.Construction">
@@ -7,6 +7,9 @@
      <object class="java.util.ArrayList">
       <void method="add">
        <object class="modele.Cube" id="Cube0">
+        <void property="couleur">
+         <int>5</int>
+        </void>
         <void property="destructible">
          <boolean>true</boolean>
         </void>
@@ -28,12 +31,6 @@
          <void index="2">
           <int>50</int>
          </void>
-        </void>
-        <void property="type_Remplissage">
-         <object class="java.lang.Enum" id="Modele$Remplissage0" method="valueOf">
-          <class>modele.Modele$Remplissage</class>
-          <string>COULEUR</string>
-         </object>
         </void>
        </object>
       </void>
@@ -50,6 +47,9 @@
      <object class="java.util.ArrayList">
       <void method="add">
        <object class="modele.Cube" id="Cube1">
+        <void property="couleur">
+         <int>2</int>
+        </void>
         <void property="destructible">
          <boolean>true</boolean>
         </void>
@@ -71,9 +71,6 @@
          <void index="2">
           <int>50</int>
          </void>
-        </void>
-        <void property="type_Remplissage">
-         <object idref="Modele$Remplissage0"/>
         </void>
        </object>
       </void>

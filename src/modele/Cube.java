@@ -19,17 +19,7 @@ public class Cube extends Element{
 		this.getTaille()[2] = prof;
 		this.getTaille()[1] = haut;
 		this.setDestructible(true);
-		System.out.println(Modele.remplissage);
-		switch(Modele.remplissage) {
-		case COULEUR:
-			this.setCouleur(Modele.couleur);
-			System.out.println(this.getCouleur());
-			this.setType_Remplissage(Modele.remplissage);
-		case TEXTURE:
-			this.setTexture(Modele.texture);
-			this.setType_Remplissage(Modele.remplissage);
-		}
-		System.out.println(this.getType_Remplissage());
+		this.setCouleur(Modele.couleur);
 		if (this.getPere() != null) {
 		int [] tab = new int[3];
 		for(int i =0; i < 3; i++) {
@@ -64,14 +54,7 @@ public class Cube extends Element{
 		}
 		this.setDestructible(false);
 		
-		switch(Modele.remplissage) {
-		case COULEUR:
-			this.setCouleur(Modele.couleur);
-			this.setType_Remplissage(Modele.Remplissage.COULEUR);
-		case TEXTURE:
-			this.setTexture(Modele.texture);
-			this.setType_Remplissage(Modele.Remplissage.TEXTURE);
-		}
+		this.setCouleur(Modele.couleur);
 
 		
 	}
