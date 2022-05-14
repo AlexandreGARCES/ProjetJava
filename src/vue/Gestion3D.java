@@ -125,12 +125,12 @@ public class Gestion3D implements Observer{
 	
 	public void majGroup() {//A VERIFIER ET DEPLACER AAAAAAAAAAAAAAAAAAAAAAAAA
 		this.groupe =  new Group();
+		System.out.println(this.mod.constructionActuelle.getCouleurBase());
 		this.mod.constructionActuelle.afficher(this.groupe);
 	}
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		System.out.println("well well");
 		this.majGroup();
 		}
 

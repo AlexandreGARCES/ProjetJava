@@ -19,7 +19,7 @@ import javafx.scene.paint.PhongMaterial;
 
 public class Modele extends Observable{
 	
-	public static int couleurChoisie=5;//posé à gris au démarrage de l'appli AAAAAAAAA
+	public static int couleurChoisie=4;//défini à blanc au démarrage de l'appli
 	
 	public static Modes mode;
 	public enum Modes{
@@ -31,11 +31,11 @@ public class Modele extends Observable{
 	}
 	public static Element_a_ajouter element_a_ajouter;////construction plus tard
 	
-	private ArrayList<Construction> constructions; /// les constructions dissponible, à organiser en bibliothèque
+	private ArrayList<Construction> constructions; /// les constructions disponibles, à organiser en bibliothèque
 	public Construction constructionActuelle;
 	
 	public Modele(){
-		this.constructionActuelle= new Construction("terrain",5);//vérifier qu'il s'affiche à un moment AAAAAAAAAA
+		this.constructionActuelle= new Construction("terrain",1);//ça marche vraiment ça???
 		this.setElement_a_ajouter(Element_a_ajouter.CUBE);////construction plus tard
 		
 		
