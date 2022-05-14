@@ -31,7 +31,7 @@ public class Gestion3D implements Observer{
 	private final DoubleProperty angleX = new SimpleDoubleProperty(21.0);
 	private final DoubleProperty angleY = new SimpleDoubleProperty(46.0);
 	
-	public Modele mod;
+	public static Modele mod=new Modele();
 	public Group groupe;
 	public Camera camera;
 	public SubScene subScene3D;
@@ -47,13 +47,11 @@ public class Gestion3D implements Observer{
 		return materiaux;	
 	}
 	
-	public Gestion3D(Stage window) {//ai-je besoin du stage?
-		this.mod = new Modele();
+	public Gestion3D() {
+		System.out.println("nouveau gestion3D");
 		mod.addObserver(this);
 		
 		this.majGroup();
-		//faut voir en fonction du modèle AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-		//si le modèle à une construction actuelle à afficher il faut la récupérer et en créer le groupe correspondant
 		this.subScene3D = new SubScene(groupe, WIDTH, HEIGHT, true, null);
 		
 		this.camera = new PerspectiveCamera();

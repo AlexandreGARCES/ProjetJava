@@ -18,6 +18,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import modele.Modele;
+import vue.Gestion3D;
 
 public class ControleurConstruction implements Initializable {
 	
@@ -148,22 +150,19 @@ public class ControleurConstruction implements Initializable {
     
     @FXML
     void SwitchFXMLVisualisation(ActionEvent event) throws IOException {
-    	SubScene subScene3D=(SubScene) ((Node)event.getSource()).getParent().getScene().getRoot().getChildrenUnmodifiable().get(1);
-    	
     	Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     	
     	AnchorPane pane = new AnchorPane();
-    	
+
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("../vue/Visualisation.fxml"));
-	   	
 	    pane = loader.load();
 
-	   	//Gestion3D gestion3D=new Gestion3D(window);
-	   	
-	    pane.getChildren().add(subScene3D);
+	   	Gestion3D gestion3D=new Gestion3D();
+	   	pane.getChildren().add(gestion3D.subScene3D);
 	    scene = new Scene(pane);
+	    gestion3D.addTouches(scene);
 	    
-	    //gestion3D.addTouches(scene);
+	    Modele.setMode(false);
 	    
 	    window.setScene(scene);
 	    window.show();

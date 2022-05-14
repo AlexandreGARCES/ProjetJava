@@ -18,6 +18,8 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
+import modele.Modele;
+import vue.Gestion3D;
 
 public class ControleurVisualisation implements Initializable {
 	
@@ -70,25 +72,19 @@ public class ControleurVisualisation implements Initializable {
     
     @FXML
     void SwitchFXMLConstruction(ActionEvent event) throws IOException {
-
-    	System.out.println(((Node)event.getSource()).getParent().getScene().getRoot());
-    	
-    	SubScene subScene3D=(SubScene) ((Node)event.getSource()).getParent().getScene().getRoot().getChildrenUnmodifiable().get(1);
-    	
     	Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     	
     	AnchorPane pane = new AnchorPane();
-    	
+
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("../vue/Construction.fxml"));
-	   	
 	    pane = loader.load();
 
-	   	//Gestion3D gestion3D=new Gestion3D(window);
-	   	
-	    pane.getChildren().add(subScene3D);
+	   	Gestion3D gestion3D=new Gestion3D();
+	   	pane.getChildren().add(gestion3D.subScene3D);
 	    scene = new Scene(pane);
+	    gestion3D.addTouches(scene);
 	    
-	    //gestion3D.addTouches(scene);
+	    Modele.setMode(true);
 	    
 	    window.setScene(scene);
 	    window.show();
@@ -115,25 +111,20 @@ public class ControleurVisualisation implements Initializable {
     
     @FXML
     void SwitchFXMLPleinEcran(ActionEvent event) throws IOException {
-    	SubScene subScene3D=(SubScene) ((Node)event.getSource()).getParent().getScene().getRoot().getChildrenUnmodifiable().get(1);
-    	
     	Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     	
     	AnchorPane pane = new AnchorPane();
-    	
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("../vue/PleinEcran.fxml"));
 
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("../vue/PleinEcran.fxml"));
 	    pane = loader.load();
 
-	   	//Gestion3D gestion3D=new Gestion3D(window);
-
-	    pane.getChildren().add(subScene3D);
+	   	Gestion3D gestion3D=new Gestion3D();
+	   	pane.getChildren().add(gestion3D.subScene3D);
 	    scene = new Scene(pane);
+	    gestion3D.addTouches(scene);
 	    
-	    subScene3D.heightProperty().bind(pane.heightProperty());
-	    subScene3D.widthProperty().bind(pane.widthProperty());
+	    Modele.setMode(false);
 	    
-	    //gestion3D.addTouches(scene);
 	    window.setScene(scene);
 	    window.show();
     }

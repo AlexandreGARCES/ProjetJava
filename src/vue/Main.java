@@ -14,7 +14,6 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws IOException{
 		Parent root = FXMLLoader.load((getClass().getResource("Menu.fxml")));
-		root.setId("testMorti");
 	    Scene scene = new Scene(root);
 	    
 	    primaryStage.setTitle("LEGO");

@@ -12,6 +12,8 @@ import javafx.scene.SubScene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import modele.Modele;
+import vue.Gestion3D;
 
 public class ControleurPleinEcran {
 
@@ -29,12 +31,20 @@ public class ControleurPleinEcran {
 
     @FXML
     void SwitchFXMLMenu(ActionEvent event) throws IOException {
-    	window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    	Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     	
-    	Parent root = FXMLLoader.load((getClass().getResource("../vue/Menu.fxml")));
-    	scene = new Scene(root);
+    	AnchorPane pane = new AnchorPane();
+
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("../vue/Visualisation.fxml"));
+	    pane = loader.load();
+
+	   	Gestion3D gestion3D=new Gestion3D();
+	   	pane.getChildren().add(gestion3D.subScene3D);
+	    scene = new Scene(pane);
+	    gestion3D.addTouches(scene);
 	    
-	    window.setTitle("LEGO");
+	    Modele.setMode(false);
+	    
 	    window.setScene(scene);
 	    window.show();
     }
