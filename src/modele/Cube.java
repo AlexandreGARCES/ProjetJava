@@ -12,15 +12,14 @@ public class Cube extends Element{
 	public Cube() {}
 	
 	
-	public Cube(int longu, int haut,int prof, Element pere) {
+	public Cube(int longu, int haut,int prof, Element pere, int couleur) {
 		
-		super(pere);
+		super(pere,couleur);
 		this.getPos()[1] = haut;
 		this.getTaille()[0] = longu;
 		this.getTaille()[2] = prof;
 		this.getTaille()[1] = haut;
 		this.setDestructible(true);
-		this.setCouleur(Modele.couleur);
 		if (this.getPere() != null) {
 		int [] tab = new int[3];
 		for(int i =0; i < 3; i++) {
@@ -37,8 +36,8 @@ public class Cube extends Element{
 		
 	}
 	
-	public Cube(int longu, int haut,int prof,Element pere, int[] pos) {
-		super(pere);
+	public Cube(int longu, int haut,int prof,Element pere, int[] pos,int couleur) {
+		super(pere,couleur);
 		this.getTaille()[0] = longu;
 		this.getTaille()[2] = prof;
 		this.getTaille()[1] = haut;
@@ -54,14 +53,12 @@ public class Cube extends Element{
 			this.setPos(pos);
 		}
 		this.setDestructible(false);
-		
-		this.setCouleur(Modele.couleur);
 
 		
 	}
 
 	@Override
-	public void afficher(Group groupe, Modele mod) {
+	public void afficher(Group groupe) {
 		Box shape = new Box(this.getTaille()[0], this.getTaille()[1], this.getTaille()[2]);
 
 
@@ -73,23 +70,20 @@ public class Cube extends Element{
 		this.setRemplissage(shape);
 		groupe.getChildren().add(shape);
 		shape.setOnMouseClicked(event -> {
-			{if (Modele.modeTerrain == Modes.CONSTRUCTION) {
+			{if (Modele.mode == Modes.CONSTRUCTION) {
 				if (event.getButton() == MouseButton.PRIMARY) {
 					if (this.getFils().isEmpty()) {///à changer si plusieurs enfants
 						Element elem = null;
 						switch(Modele.element_a_ajouter) {///ce sera une construction
 						case CUBE:
-							Cube b1 = new Cube(50, 50, 50,this);
+							Cube b1 = new Cube(50, 50, 50,this,Modele.couleurChoisie);
 							elem = b1;
 						default:
 							break;
-
 						}
-						elem.afficher(groupe, mod);
+						elem.afficher(groupe);
 					}
-
 				}
-
 
 				if (event.getButton() == MouseButton.SECONDARY) {	
 					if (this.isDestructible()) {
@@ -98,19 +92,13 @@ public class Cube extends Element{
 						}
 						for(Element elem : this.getFils()) {
 							elem.setPere(this.getPere());
-
 						}
 						groupe.getChildren().remove(shape);
 					}
-
-
 				}
 			}
 			}
-
 		});
-
-
 	}
 
 }

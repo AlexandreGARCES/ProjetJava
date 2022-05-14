@@ -82,7 +82,7 @@ public class ControleurConstruction implements Initializable {
     private CheckBox boxBleuBloc;
 
     @FXML
-    private CheckBox boxCarréBloc;
+    private CheckBox boxCarrÃ©Bloc;
 
     @FXML
     private CheckBox boxCyanBloc;
@@ -130,7 +130,7 @@ public class ControleurConstruction implements Initializable {
     	//Listener pour obtenir le bloc sur lequel vous avez clicker
     	//listeResultatRechercheBloc.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
     	
-    		//la méthode correspondante.
+    		//la mï¿½thode correspondante.
 			//@Override
 			//public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {
     		//
@@ -177,22 +177,22 @@ public class ControleurConstruction implements Initializable {
     
     @FXML
     void SauvegarderConstruction(ActionEvent event) {
-    	// la methode qui va appelé sauvegarder du Modèle
+    	// la methode qui va appelï¿½ sauvegarder du Modï¿½le
     }
     
     @FXML
     void rechercheMultiCritBloc(ActionEvent event) {
-    	//Pour savoir si boxRougeBloc est activée:
-    	//if(boxRougeBloc.isSelected()){ ---> renvoie un booléen
+    	//Pour savoir si boxRougeBloc est activï¿½e:
+    	//if(boxRougeBloc.isSelected()){ ---> renvoie un boolï¿½en
     	//
     	//}
     	//(Pareil pour les autres box bien sur)
     	//
-    	//Si tu veux pas avoir plus box selectionnées en même temps:
+    	//Si tu veux pas avoir plus box selectionnï¿½es en mï¿½me temps:
     	//if(boxRougeBloc.isSelected()){
-    	//	boxBleuBloc.setSelected(false);  ( déselectionne la checkBox )
+    	//	boxBleuBloc.setSelected(false);  ( dï¿½selectionne la checkBox )
     	//}
-    	//Apres si il vous manque des choses youtube est ton meilleur amis car je vois pas d'autre méthodes utiles.
+    	//Apres si il vous manque des choses youtube est ton meilleur amis car je vois pas d'autre mï¿½thodes utiles.
     	
     	
     	

@@ -7,6 +7,7 @@ import javafx.scene.Group;
 
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Shape3D;
+import vue.Gestion3D;
 
 @SuppressWarnings("serial")
 public class Element implements Serializable{
@@ -23,19 +24,20 @@ public class Element implements Serializable{
 	
 	
 	
-	public Element( Element pere) {
+	public Element( Element pere, int couleur) {
 		this.fils = new ArrayList<Element>();
 		this.pere = pere;
 		if (this.getPere() != null) {
 			this.getPere().getFils().add(this);
 		}
+		this.couleur=couleur;
 	}
 	
-	public void afficher(Group groupe, Modele mod) {
+	public void afficher(Group groupe) {
 		
 	}
 	public void setRemplissage(Shape3D shape) {
-		PhongMaterial material = Modele.materiaux.get(this.couleur);
+		PhongMaterial material = Gestion3D.materiaux.get(this.couleur);
         shape.setMaterial(material);
 	}
 	

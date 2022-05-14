@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.Node;
 import javafx.stage.Stage;
+import modele.Modele;
 import vue.Gestion3D;
 
 public class ControleurMenu {
@@ -46,6 +47,7 @@ public class ControleurMenu {
 
     @FXML
     void switchFXMLConstruction(ActionEvent event) throws IOException {
+    	//penser à set le mode du modèle
     	System.out.println(((Node)event.getSource()).getParent().getScene().getRoot());
     	Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     	
@@ -62,6 +64,8 @@ public class ControleurMenu {
 	    scene = new Scene(pane);
 	    
 	    gestion3D.addTouches(scene);
+	    
+	    Modele.setMode(true);
 	    
 	    window.setScene(scene);
 	    window.show();
