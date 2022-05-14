@@ -22,30 +22,33 @@ public class Modele extends Observable{
 	}
 	
 	public enum Element_a_ajouter{////construction plus tard
-		CUBE
+		CUBE, CONSTRUCTION
 	}
 	public static Element_a_ajouter element_a_ajouter;////construction plus tard
 	
 	private ArrayList<Construction> constructions; /// les constructions disponibles, à organiser en bibliothèque
 	public Construction constructionActuelle;
+	public Construction constructionSelectionnee;
 	
 	public Modele(){
 		this.constructionActuelle= new Construction("terrain",1);//ça marche vraiment ça???
 		this.setElement_a_ajouter(Element_a_ajouter.CUBE);////construction plus tard
 		
 		
-		
+		this.constructionSelectionnee = null;
 		File fichier = new File("constructions.xml");
 		try {
 			fichier.createNewFile();
+			System.out.println("création du fichier");
 		}
 		catch (Exception e) {
-			 e.getStackTrace();
+			 System.out.println("le fichier n'est pas créé");
 		}
 		this.charger();
 		if (this.constructions == null) {
 			this.constructions = new ArrayList<Construction>();
 		}
+		this.constructionActuelle = this.constructions.get(0);
 		System.out.println(mode);
 	}
 	
@@ -74,7 +77,7 @@ public class Modele extends Observable{
 	}
 
 	@SuppressWarnings("resource")
-	public void sauvegarder() {
+	public void sauvegarderModele() {
 		XMLEncoder encoder = null;
 		try {
 			FileOutputStream fos = new FileOutputStream("constructions.xml");
@@ -90,6 +93,10 @@ public class Modele extends Observable{
 			if (encoder != null) encoder.close();
 		}	
 	}
+	
+	public void sauvegarder() {
+		this.constructions.add(this.constructionActuelle);
+	}
 
 	@SuppressWarnings("unchecked")
 	public void charger() {
@@ -99,7 +106,9 @@ public class Modele extends Observable{
 			System.out.println("oui");
 			System.out.println("file");
 			BufferedInputStream bis = new BufferedInputStream(fis);
+			System.out.println("bis");
 			decoder = new XMLDecoder(bis);
+			System.out.println("decoder");
 			this.constructions = (ArrayList<Construction>) decoder.readObject();
 			}
 		catch (Exception e){
