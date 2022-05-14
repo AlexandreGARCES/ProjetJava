@@ -56,7 +56,14 @@ public class Construction implements Serializable{
 			elem.afficher(groupe);
 		}
 	}
+	
+	public Construction copie(Element eleme) {
+		ArrayList<Element> ar = new ArrayList<Element>();
+		for(Element elem : this.base)
+			ar.add(((Cube)elem).copie((Cube)eleme));
+		return (new Construction(ar));
 		
+	}
 	
 	public ArrayList<Element> getBase() {
 		return base;

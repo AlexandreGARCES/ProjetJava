@@ -28,14 +28,14 @@ public class Modele extends Observable{
 	
 	private ArrayList<Construction> constructions; /// les constructions disponibles, à organiser en bibliothèque
 	public Construction constructionActuelle;
-	public Construction constructionSelectionnee;
+	public static Construction constructionaAjouter;
 	
 	public Modele(){
 		this.constructionActuelle= new Construction("terrain",1);//ça marche vraiment ça???
 		this.setElement_a_ajouter(Element_a_ajouter.CUBE);////construction plus tard
 		
 		
-		this.constructionSelectionnee = null;
+		
 		File fichier = new File("constructions.xml");
 		try {
 			fichier.createNewFile();
@@ -48,7 +48,15 @@ public class Modele extends Observable{
 		if (this.constructions == null) {
 			this.constructions = new ArrayList<Construction>();
 		}
-		this.constructionActuelle = this.constructions.get(0);
+		ArrayList<Element> ar = new ArrayList<Element>();
+		Cube c0 =  new Cube(50 ,50, 50, null, 0);
+		Cube c1 = new Cube(50, 50, 50, c0, 1);
+		Cube c2 =  new Cube(50 ,50, 50, c1, 2);
+		Cube c3 = new Cube(50, 50, 50, c2, 3);
+		ar.add(c0);
+		this.constructions.add(new Construction(ar));
+		
+		Modele.constructionaAjouter = this.constructions.get(1);
 		System.out.println(mode);
 	}
 	
@@ -95,6 +103,8 @@ public class Modele extends Observable{
 	}
 	
 	public void sauvegarder() {
+		int i = this.constructions.size();
+		this.constructionActuelle.setNom("construction" + i);
 		this.constructions.add(this.constructionActuelle);
 	}
 

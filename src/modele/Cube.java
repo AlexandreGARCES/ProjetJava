@@ -1,5 +1,7 @@
 package modele;
 
+import java.util.ArrayList;
+
 import javafx.scene.Group;
 import javafx.scene.input.MouseButton;
 import javafx.scene.shape.Box;
@@ -55,6 +57,21 @@ public class Cube extends Element{
 
 		
 	}
+	
+	public Cube copie(Cube pere) {
+		ArrayList<Element> ar = new ArrayList<Element>();
+		for(Element elel : this.getFils()) {
+			Cube c1 = ((Cube)elel).copie(this);
+			ar.add(c1);
+			
+		}
+		Cube Ccopie = new Cube(this.getTaille()[0], this.getTaille()[1], this.getTaille()[2], pere, this.getCouleur());
+		Ccopie.setFils(ar);
+		Ccopie.setN_fils(ar.size());
+		
+		return Ccopie;
+		
+	}
 
 	@Override
 	public void afficher(Group groupe) {
@@ -68,21 +85,31 @@ public class Cube extends Element{
 
 		this.setRemplissage(shape);
 		groupe.getChildren().add(shape);
+		for(Element elem : this.getFils()) {
+			elem.afficher(groupe);
+		}
 		shape.setOnMouseClicked(event -> {
 			{if (Modele.mode == Modes.CONSTRUCTION) {
 				if (event.getButton() == MouseButton.PRIMARY) {
 					if (this.getFils().isEmpty()) {///à changer si plusieurs enfants
-						Element elem = null;
+						System.out.println(Modele.element_a_ajouter);
 						switch(Modele.element_a_ajouter) {///ce sera une construction
 						case CUBE:
 							Cube b1 = new Cube(50, 50, 50,this,Modele.couleurChoisie);
-							elem = b1;
+							b1.afficher(groupe);
 						case CONSTRUCTION:
+							/*Construction cst = Modele.constructionaAjouter.copie(this);
+							for(Element eleme : cst.getBase()) {
+								eleme.afficher(groupe);
+							}
+							*/
+							
+							
 							
 						default:
 							break;
 						}
-						elem.afficher(groupe);
+
 					}
 				}
 
