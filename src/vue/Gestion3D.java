@@ -49,7 +49,7 @@ public class Gestion3D implements Observer{
 	
 	public Gestion3D() {
 		System.out.println("nouveau gestion3D");
-		mod.addObserver(this);
+		Gestion3D.mod.addObserver(this);
 		
 		this.majGroup();
 		this.subScene3D = new SubScene(groupe, WIDTH, HEIGHT, true, null);
@@ -101,16 +101,16 @@ public class Gestion3D implements Observer{
     		switch(e.getCode())
     		{
     		case W:
-    			mod.couleurChoisie=4;
+    			Modele.couleurChoisie=4;
     			break;
     		case B:
-    			mod.couleurChoisie=3;
+    			Modele.couleurChoisie=3;
     			break;
 	    	case R:
-	    		mod.couleurChoisie=0;
+	    		Modele.couleurChoisie=0;
 				break;
 	    	case V:
-	    		mod.couleurChoisie=1;
+	    		Modele.couleurChoisie=1;
 				break;
 			default:
 				break;
@@ -118,10 +118,10 @@ public class Gestion3D implements Observer{
     	});		
 	}
 	
-	public void majGroup() {//A VERIFIER ET DEPLACER AAAAAAAAAAAAAAAAAAAAAAAAA
+	public void majGroup() {
 		this.groupe =  new Group();
-		System.out.println(this.mod.constructionActuelle.getCouleurBase());
-		this.mod.constructionActuelle.afficher(this.groupe);
+		System.out.println("oui ça met à ,jour");
+		Gestion3D.mod.constructionActuelle.afficher(this.groupe);
 	}
 
 	@Override

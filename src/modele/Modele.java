@@ -48,7 +48,6 @@ public class Modele extends Observable{
 		if (this.constructions == null) {
 			this.constructions = new ArrayList<Construction>();
 		}
-		this.constructionActuelle = this.constructions.get(0);
 		System.out.println(mode);
 	}
 	
