@@ -120,7 +120,6 @@ public class Gestion3D implements Observer{
 	
 	public void majGroup() {
 		this.groupe =  new Group();
-		System.out.println("oui ça met à ,jour");
 		Gestion3D.mod.constructionActuelle.afficher(this.groupe);
 	}
 

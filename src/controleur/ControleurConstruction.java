@@ -21,10 +21,7 @@ import javafx.stage.Stage;
 import modele.Modele;
 import vue.Gestion3D;
 
-public class ControleurConstruction implements Initializable {
-	
-	Stage window;
-	Scene scene;
+public class ControleurConstruction extends Controleur implements Initializable {
 	
 	//-----------------------------------------------------
 	
@@ -35,12 +32,6 @@ public class ControleurConstruction implements Initializable {
 	//rechercheMultiCrit (ici changer brique ou construction à rajouter à la construction actuelle)
 	//prevenirQueBlocSelectionneEstModifié (le bloc a placer)
 	//demanderSauvegardeAuModele
-	
-	
-	public ControleurConstruction() {
-		System.out.println("nouveau controleur construction");
-	}
-	
 	//-----------------------------------------------------
 	
 	@FXML
@@ -69,7 +60,6 @@ public class ControleurConstruction implements Initializable {
 
     @FXML
     private SubScene subScene3D;
-    
     
     @FXML
     private CheckBox boxBlancBloc;
@@ -150,27 +140,12 @@ public class ControleurConstruction implements Initializable {
     
     @FXML
     void SwitchFXMLVisualisation(ActionEvent event) throws IOException {
-    	Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-    	
-    	AnchorPane pane = new AnchorPane();
-
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("../vue/Visualisation.fxml"));
-	    pane = loader.load();
-
-	   	Gestion3D gestion3D=new Gestion3D();
-	   	pane.getChildren().add(gestion3D.subScene3D);
-	    scene = new Scene(pane);
-	    gestion3D.addTouches(scene);
-	    
-	    Modele.setMode(false);
-	    
-	    window.setScene(scene);
-	    window.show();
+    	this.changerFenetre("Visualisation", event);
     }
     
     @FXML
     void SauvegarderConstruction(ActionEvent event) {
-    	
+    	this.mod.sauvegarder();
     	// la methode qui va appel� sauvegarder du Mod�le
     }
     
