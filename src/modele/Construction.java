@@ -28,9 +28,10 @@ public class Construction implements Serializable{
 	
 	public Construction (ArrayList<Element> elements) {
 		this.base= elements;
+
 	}
 	
-	public void createTerrain() {//A VERIFIER AAAAAAAAAAAAAAAAAAAAAAAAA
+	public void createTerrain() {
 		for(int i =-largeur/2; i< largeur/2; i++) {	
     		for(int j = -longueur/2; j<longueur/2; j++) {
     			int[] pos = {i*50, 0, j*50};

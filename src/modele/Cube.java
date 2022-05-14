@@ -77,6 +77,8 @@ public class Cube extends Element{
 						case CUBE:
 							Cube b1 = new Cube(50, 50, 50,this,Modele.couleurChoisie);
 							elem = b1;
+						case CONSTRUCTION:
+							
 						default:
 							break;
 						}
