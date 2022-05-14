@@ -3,7 +3,6 @@ package modele;
 import javafx.scene.Group;
 import javafx.scene.input.MouseButton;
 import javafx.scene.shape.Box;
-import javafx.scene.shape.Shape3D;
 import modele.Modele.Modes;
 
 @SuppressWarnings("serial")

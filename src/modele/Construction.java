@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import javafx.scene.Group;
-import modele.Modele.Modes;
-import vue.Gestion3D;
 
 public class Construction implements Serializable{
 	

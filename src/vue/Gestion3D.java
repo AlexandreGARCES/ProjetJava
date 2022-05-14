@@ -1,6 +1,5 @@
 package vue;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -18,8 +17,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
-import modele.Construction;
-import modele.Element;
 import modele.Modele;
 
 public class Gestion3D implements Observer{
