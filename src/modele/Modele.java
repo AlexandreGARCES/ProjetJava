@@ -48,15 +48,8 @@ public class Modele extends Observable{
 		if (this.constructions == null) {
 			this.constructions = new ArrayList<Construction>();
 		}
-		ArrayList<Element> ar = new ArrayList<Element>();
-		Cube c0 =  new Cube(50 ,50, 50, null, 0);
-		Cube c1 = new Cube(50, 50, 50, c0, 1);
-		Cube c2 =  new Cube(50 ,50, 50, c1, 2);
-		Cube c3 = new Cube(50, 50, 50, c2, 3);
-		ar.add(c0);
-		this.constructions.add(new Construction(ar));
-		
-		Modele.constructionaAjouter = this.constructions.get(1);
+	
+		Modele.constructionaAjouter = this.constructions.get(2);
 		System.out.println(mode);
 	}
 	

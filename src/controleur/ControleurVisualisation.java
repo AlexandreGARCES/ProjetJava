@@ -21,11 +21,8 @@ import javafx.stage.Stage;
 import modele.Modele;
 import vue.Gestion3D;
 
-public class ControleurVisualisation implements Initializable {
-	
-	Stage window;
-	Scene scene;
-	
+public class ControleurVisualisation extends Controleur implements Initializable {
+
 	String[] construction = {"Construction1", "Construction2"};
 
 	
@@ -72,33 +69,12 @@ public class ControleurVisualisation implements Initializable {
     
     @FXML
     void SwitchFXMLConstruction(ActionEvent event) throws IOException {
-    	Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-    	
-    	AnchorPane pane = new AnchorPane();
-
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("../vue/Construction.fxml"));
-	    pane = loader.load();
-
-	   	Gestion3D gestion3D=new Gestion3D();
-	   	pane.getChildren().add(gestion3D.subScene3D);
-	    scene = new Scene(pane);
-	    gestion3D.addTouches(scene);
-	    
-	    Modele.setMode(true);
-	    
-	    window.setScene(scene);
-	    window.show();
+    	this.changerFenetre("Construction", event);
     }
     
     @FXML
     void SwitchFXMLMenu(ActionEvent event) throws IOException {
-    	
-    	System.out.println("aaaa");
-    	System.out.println(   ((Node)event.getSource()).getParent().getScene().getRoot().getChildrenUnmodifiable());//.get(1).getScene()    );
-    	System.out.println("bbbbb");
-    	
-    	
-    	
+
     	window = (Stage)((Node)event.getSource()).getScene().getWindow();
     	
     	Parent root = FXMLLoader.load((getClass().getResource("../vue/Menu.fxml")));

@@ -60,15 +60,31 @@ public class Cube extends Element{
 	
 	public Cube copie(Cube pere) {
 		ArrayList<Element> ar = new ArrayList<Element>();
-		for(Element elel : this.getFils()) {
-			Cube c1 = ((Cube)elel).copie(this);
-			ar.add(c1);
-			
-		}
 		Cube Ccopie = new Cube(this.getTaille()[0], this.getTaille()[1], this.getTaille()[2], pere, this.getCouleur());
 		Ccopie.setFils(ar);
 		Ccopie.setN_fils(ar.size());
+		for(Element elel : this.getFils()) {
+			Cube c1 = ((Cube)elel).copie(Ccopie);
+			ar.add(c1);
+			
+		}
 		
+		
+		
+		return Ccopie;
+		
+	}
+	
+	public Cube copiePos(Cube pere, int[] posi) {
+		ArrayList<Element> ar = new ArrayList<Element>();
+		Cube Ccopie = new Cube(this.getTaille()[0], this.getTaille()[1], this.getTaille()[2], pere, this.getCouleur());
+		Ccopie.setFils(ar);
+		Ccopie.setN_fils(ar.size());
+		for(Element elel : this.getFils()) {
+			Cube c1 = ((Cube)elel).copie(Ccopie);
+			ar.add(c1);
+			
+		}
 		return Ccopie;
 		
 	}
@@ -93,22 +109,24 @@ public class Cube extends Element{
 				if (event.getButton() == MouseButton.PRIMARY) {
 					if (this.getFils().isEmpty()) {///à changer si plusieurs enfants
 						System.out.println(Modele.element_a_ajouter);
-						switch(Modele.element_a_ajouter) {///ce sera une construction
+						/*/switch(Modele.element_a_ajouter) {///ce sera une construction
 						case CUBE:
 							Cube b1 = new Cube(50, 50, 50,this,Modele.couleurChoisie);
 							b1.afficher(groupe);
 						case CONSTRUCTION:
-							/*Construction cst = Modele.constructionaAjouter.copie(this);
+												default:
+							break;
+						}
+						*/
+						Construction cst = Modele.constructionaAjouter.copie(this);
 							for(Element eleme : cst.getBase()) {
 								eleme.afficher(groupe);
 							}
-							*/
 							
 							
 							
-						default:
-							break;
-						}
+							
+
 
 					}
 				}

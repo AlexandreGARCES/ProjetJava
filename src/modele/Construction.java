@@ -59,8 +59,8 @@ public class Construction implements Serializable{
 	
 	public Construction copie(Element eleme) {
 		ArrayList<Element> ar = new ArrayList<Element>();
-		for(Element elem : this.base)
-			ar.add(((Cube)elem).copie((Cube)eleme));
+		for(Element elem : this.ConstructionSansBase().base)
+			ar.add(((Cube)elem).copiePos((Cube)eleme, eleme.getPos()));
 		return (new Construction(ar));
 		
 	}
