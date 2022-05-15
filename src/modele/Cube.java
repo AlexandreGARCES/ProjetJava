@@ -70,7 +70,6 @@ public class Cube extends Element{
 		}
 		
 		
-		
 		return Ccopie;
 		
 	}
