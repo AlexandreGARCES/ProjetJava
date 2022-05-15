@@ -5,6 +5,7 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -36,6 +37,17 @@ public class Controleur {
 	    Modele.setMode(fenetre=="Construction");
 	    
 	    window.setScene(this.scene);
+	    window.show();
+	}
+	
+	public void retourMenu(ActionEvent event) throws IOException {
+    	window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    	
+    	Parent root = FXMLLoader.load((getClass().getResource("../vue/Menu.fxml")));
+	    scene = new Scene(root);
+	    
+	    window.setTitle("LEGO");
+	    window.setScene(scene);
 	    window.show();
 	}
 

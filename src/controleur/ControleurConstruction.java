@@ -128,14 +128,7 @@ public class ControleurConstruction extends Controleur implements Initializable 
     
     @FXML
     void SwitchFXMLMenu(ActionEvent event) throws IOException {
-    	window = (Stage)((Node)event.getSource()).getScene().getWindow();
-    	
-    	Parent root = FXMLLoader.load((getClass().getResource("../vue/Menu.fxml")));
-    	scene = new Scene(root);
-	    
-	    window.setTitle("LEGO");
-	    window.setScene(scene);
-	    window.show();
+    	this.retourMenu(event);
     }
     
     @FXML
