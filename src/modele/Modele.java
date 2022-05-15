@@ -9,7 +9,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Observable;
+import java.util.Set;
 
 
 public class Modele extends Observable{
@@ -26,7 +28,7 @@ public class Modele extends Observable{
 	}
 	public static Element_a_ajouter element_a_ajouter;////construction plus tard
 	
-	private ArrayList<Construction> constructions; /// les constructions disponibles, à organiser en bibliothèque
+	private HashMap<String,Construction> constructions;
 	public Construction constructionActuelle;
 	public static Construction constructionaAjouter;
 	
@@ -46,17 +48,16 @@ public class Modele extends Observable{
 		}
 		this.charger();
 		if (this.constructions == null) {
-			this.constructions = new ArrayList<Construction>();
+			this.constructions = new HashMap<String,Construction>();
 		}
 		Cube c0 = new Cube(50, 50, 50, null, 0);
 		Cube c1 = new Cube(50, 50, 50, c0, 0);
 		ArrayList<Element> ar = new ArrayList<Element>();
 		ar.add(c0);
 		Construction constr = new Construction(ar);
-		
-		
 	
 		Modele.constructionaAjouter = constr;
+
 		System.out.println(mode);
 	}
 	
@@ -83,6 +84,22 @@ public class Modele extends Observable{
 			Modele.mode=Modes.VISUALISATION;
 		}
 	}
+	
+	public void changerConstructionActuelle(String selection) {
+		this.constructionActuelle=constructions.get(selection);
+		
+	}
+	
+	public ArrayList<String> getListeConstructions() {
+		Set<String> nomconstructions = this.getConstructions().keySet();
+		ArrayList<String> ar =new ArrayList<String>();
+		for(String nom : nomconstructions) {
+			ar.add(nom);
+			
+			
+		}
+		return ar;
+	}
 
 	@SuppressWarnings("resource")
 	public void sauvegarderModele() {
@@ -105,7 +122,7 @@ public class Modele extends Observable{
 	public void sauvegarder() {
 		int i = this.constructions.size();
 		this.constructionActuelle.setNom("construction" + i);
-		this.constructions.add(this.constructionActuelle);
+		this.constructions.put(this.constructionActuelle.getNom(), this.constructionActuelle);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -119,10 +136,10 @@ public class Modele extends Observable{
 			System.out.println("bis");
 			decoder = new XMLDecoder(bis);
 			System.out.println("decoder");
-			this.constructions = (ArrayList<Construction>) decoder.readObject();
+			this.constructions = (HashMap<String,Construction>) decoder.readObject();
 			}
 		catch (Exception e){
-			throw new RuntimeException("Chargement des données impossible");
+			throw new RuntimeException("Chargement des données impossible"+e);
 		}
 		finally {
 			if (decoder != null) decoder.close();
@@ -135,11 +152,11 @@ public class Modele extends Observable{
 	
 	//pour la sérialisation on as pas besoin de sérialiser les variables static non?
 
-	public ArrayList<Construction> getConstructions() {
+	public HashMap<String,Construction> getConstructions() {
 		return constructions;
 	}
 	
-	public void setConstructions(ArrayList<Construction> constructions) {
+	public void setConstructions(HashMap<String,Construction> constructions) {
 		this.constructions = constructions;
 	}
 
