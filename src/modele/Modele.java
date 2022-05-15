@@ -87,12 +87,16 @@ public class Modele extends Observable{
 	}
 	
 	public void changerConstructionActuelle(String selection) {
+		System.out.println(this.constructionActuelle);
 		this.constructionActuelle=constructions.get(selection);
+		System.out.println(this.constructionActuelle);
+		this.setChanged();
+        this.notifyObservers();
 		
 	}
 	
 	public ArrayList<String> getListeConstructions() {
-		Set<String> nomconstructions = this.getConstructions().keySet();
+		Set<String> nomconstructions = Modele.getConstructions().keySet();
 		ArrayList<String> ar =new ArrayList<String>();
 		for(String nom : nomconstructions) {
 			ar.add(nom);
@@ -121,9 +125,9 @@ public class Modele extends Observable{
 	}
 	
 	public void sauvegarder() {
-		int i = this.constructions.size();
+		int i = Modele.constructions.size();
 		this.constructionActuelle.setNom("construction" + i);
-		this.constructions.put(this.constructionActuelle.getNom(), this.constructionActuelle);
+		Modele.constructions.put(this.constructionActuelle.getNom(), this.constructionActuelle);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -137,7 +141,7 @@ public class Modele extends Observable{
 			System.out.println("bis");
 			decoder = new XMLDecoder(bis);
 			System.out.println("decoder");
-			this.constructions = (HashMap<String,Construction>) decoder.readObject();
+			Modele.constructions = (HashMap<String,Construction>) decoder.readObject();
 			}
 		catch (Exception e){
 			throw new RuntimeException("Chargement des données impossible"+e);

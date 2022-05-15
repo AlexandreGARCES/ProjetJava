@@ -14,7 +14,6 @@
         <void property="fils">
          <object class="java.util.ArrayList"/>
         </void>
-        <void id="Integer0" property="n_fils"/>
         <void property="pos">
          <void index="0">
           <int>-1250</int>
