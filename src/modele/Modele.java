@@ -88,7 +88,7 @@ public class Modele extends Observable{
 	}
 	
 	public void changerConstructionActuelle(String selection) {
-		this.constructionActuelle=constructions.get(selection);
+		this.constructionActuelle=constructions.get(selection).copie(null);
 		this.setChanged();
         this.notifyObservers();
 		

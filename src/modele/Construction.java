@@ -42,7 +42,7 @@ public class Construction implements Serializable{
     			else {
     				box = new Cube(50, 50, 50,null, pos,this.couleurBase);
     			}
-    			
+    			box.setDestructible(false);
 				this.base.add(box);
     		}
     	}
@@ -67,28 +67,32 @@ public class Construction implements Serializable{
 	
 	public Construction copie(Element element) {
 		ArrayList<Element> ar = new ArrayList<Element>();
+		Construction cstr;
+		if (element == null) {
+			for (Element elem: this.getBase()) {
+				int [] posi = elem.getPos();
+				ar.add(((Cube)elem).copiePos(null, posi));
+			}
+			cstr = new Construction(ar);
+
+		}
+		else {
+			
+		
 		for(Element elem : this.ConstructionSansBase().getBase()) {
 			int[] posi = elem.getPos();
 			Cube ccopie = ((Cube)elem).copiePos((Cube)element, posi);
 
 			ar.add(ccopie);
 		}
-			
-		return (new Construction(ar));
+			cstr = new Construction(ar);
 		
-	}
-
-	
-	public Construction copieTotale() {
-		ArrayList<Element> ar = new ArrayList<Element>();
-		for (Element elem: this.getBase()) {
-			int [] posi = elem.getPos();
-			ar.add(((Cube)elem).copiePos(null, posi));
 		}
-		Construction cstr = new Construction(ar);
+			
 		cstr.setCouleurBase(this.couleurBase);
 		return cstr;
-	}
+		}
+
 	public ArrayList<Element> getBase() {
 		return base;
 	}
