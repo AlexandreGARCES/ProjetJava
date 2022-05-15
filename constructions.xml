@@ -3,7 +3,7 @@
  <object class="java.util.HashMap">
   <void method="put">
    <string>construction0</string>
-   <object class="modele.Construction" id="Construction0">
+   <object class="modele.Construction">
     <void property="base">
      <object class="java.util.ArrayList">
       <void method="add">
@@ -72432,7 +72432,66 @@
   </void>
   <void method="put">
    <string>construction1</string>
-   <object idref="Construction0"/>
+   <object class="modele.Construction">
+    <void property="base">
+     <object class="java.util.ArrayList">
+      <void method="add">
+       <object class="modele.Cube" id="Cube2506">
+        <void property="destructible">
+         <boolean>true</boolean>
+        </void>
+        <void property="fils">
+         <object class="java.util.ArrayList">
+          <void method="add">
+           <object class="modele.Cube" id="Cube2507">
+            <void property="destructible">
+             <boolean>true</boolean>
+            </void>
+            <void property="fils">
+             <object class="java.util.ArrayList"/>
+            </void>
+            <void property="pere">
+             <object idref="Cube2506"/>
+            </void>
+            <void property="taille">
+             <void index="0">
+              <int>50</int>
+             </void>
+             <void index="1">
+              <int>50</int>
+             </void>
+             <void index="2">
+              <int>50</int>
+             </void>
+            </void>
+           </object>
+          </void>
+         </object>
+        </void>
+        <void property="pos">
+         <void index="1">
+          <int>50</int>
+         </void>
+        </void>
+        <void property="taille">
+         <void index="0">
+          <int>50</int>
+         </void>
+         <void index="1">
+          <int>50</int>
+         </void>
+         <void index="2">
+          <int>50</int>
+         </void>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void property="nom">
+     <string>construction1</string>
+    </void>
+   </object>
   </void>
  </object>
 </java>

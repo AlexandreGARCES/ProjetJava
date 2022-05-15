@@ -28,7 +28,7 @@ public class Modele extends Observable{
 	}
 	public static Element_a_ajouter element_a_ajouter;////construction plus tard
 	
-	private HashMap<String,Construction> constructions;
+	private static HashMap<String,Construction> constructions;
 	public Construction constructionActuelle;
 	public static Construction constructionaAjouter;
 	
@@ -47,16 +47,32 @@ public class Modele extends Observable{
 			 System.out.println("le fichier n'est pas créé");
 		}
 		this.charger();
-		if (this.constructions == null) {
-			this.constructions = new HashMap<String,Construction>();
+		if (Modele.constructions == null) {
+			Modele.constructions = new HashMap<String,Construction>();
 		}
 		Cube c0 = new Cube(50, 50, 50, null, 0);
 		Cube c1 = new Cube(50, 50, 50, c0, 0);
 		ArrayList<Element> ar = new ArrayList<Element>();
 		ar.add(c0);
 		Construction constr = new Construction(ar);
+		constr.setNom("construction1");
 	
 		Modele.constructionaAjouter = constr;
+		Modele.getConstructions().remove("construction1");
+		Modele.getConstructions().put("construction1", constr);
+		Modele.sauvegarderModele();
+		ArrayList<Element> arr = new ArrayList<Element>();
+		
+		Cube c00 = new Cube(50, 50, 50, null, 0);
+		Cube c11 = new Cube(50, 50, 50, c00, 0);
+		ar.add(c00);
+		Construction constrr = new Construction(arr);
+		constr.setNom("construction1");
+	
+		Modele.constructionaAjouter = constr;
+		Modele.getConstructions().remove("construction2");
+		constrr.setNom("construction2");
+		Modele.getConstructions().put("construction2", constrr);
 
 		System.out.println(mode);
 	}
@@ -86,29 +102,30 @@ public class Modele extends Observable{
 	}
 	
 	public void changerConstructionActuelle(String selection) {
+		System.out.println(selection);
+		System.out.println(Modele.getConstructions().get(selection));
+		System.out.println(Modele.getConstructions().get(selection).getNom());
 		this.constructionActuelle=constructions.get(selection);
 		
 	}
 	
 	public ArrayList<String> getListeConstructions() {
-		Set<String> nomconstructions = this.getConstructions().keySet();
+		Set<String> nomconstructions = Modele.getConstructions().keySet();
 		ArrayList<String> ar =new ArrayList<String>();
 		for(String nom : nomconstructions) {
-			ar.add(nom);
-			
-			
+			ar.add(nom);			
 		}
 		return ar;
 	}
 
 	@SuppressWarnings("resource")
-	public void sauvegarderModele() {
+	public static void sauvegarderModele() {
 		XMLEncoder encoder = null;
 		try {
 			FileOutputStream fos = new FileOutputStream("constructions.xml");
 			BufferedOutputStream bos = new BufferedOutputStream(fos);
 			encoder = new XMLEncoder(bos);
-			encoder.writeObject(this.constructions);
+			encoder.writeObject(Modele.constructions);
 			encoder.flush();
 				}
 		catch (Exception e){
@@ -120,9 +137,9 @@ public class Modele extends Observable{
 	}
 	
 	public void sauvegarder() {
-		int i = this.constructions.size();
+		int i = Modele.constructions.size();
 		this.constructionActuelle.setNom("construction" + i);
-		this.constructions.put(this.constructionActuelle.getNom(), this.constructionActuelle);
+		Modele.constructions.put(this.constructionActuelle.getNom(), this.constructionActuelle);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -136,7 +153,7 @@ public class Modele extends Observable{
 			System.out.println("bis");
 			decoder = new XMLDecoder(bis);
 			System.out.println("decoder");
-			this.constructions = (HashMap<String,Construction>) decoder.readObject();
+			Modele.constructions = (HashMap<String,Construction>) decoder.readObject();
 			}
 		catch (Exception e){
 			throw new RuntimeException("Chargement des données impossible"+e);
@@ -152,12 +169,12 @@ public class Modele extends Observable{
 	
 	//pour la sérialisation on as pas besoin de sérialiser les variables static non?
 
-	public HashMap<String,Construction> getConstructions() {
+	public static HashMap<String,Construction> getConstructions() {
 		return constructions;
 	}
 	
-	public void setConstructions(HashMap<String,Construction> constructions) {
-		this.constructions = constructions;
+	public static void setConstructions(HashMap<String,Construction> constructions) {
+		Modele.constructions = constructions;
 	}
 
 }
