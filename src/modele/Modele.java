@@ -8,6 +8,8 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Observable;
@@ -38,7 +40,7 @@ public class Modele extends Observable{
 		
 		
 		
-		File fichier = new File("constructions.xml");
+		File fichier = new File("constructions.dat");
 		try {
 			fichier.createNewFile();
 			System.out.println("création du fichier");
@@ -55,12 +57,10 @@ public class Modele extends Observable{
 		ArrayList<Element> ar = new ArrayList<Element>();
 		ar.add(c0);
 		Construction constr = new Construction(ar);
+		Modele.constructionaAjouter = constr;
+		Modele.constructionaAjouter = Modele.getConstructions().get("construction16").copie(null);
 
-		Modele.constructionaAjouter = Modele.getConstructions().get("construction4");
-		//Modele.constructionaAjouter = constr;
-
-
-		System.out.println(mode);
+		
 	}
 	
 	//-----------------------------------------------------
@@ -105,48 +105,41 @@ public class Modele extends Observable{
 		return ar;
 	}
 
-	@SuppressWarnings("resource")
 	public static void sauvegarderModele() {
-		XMLEncoder encoder = null;
 		try {
-			FileOutputStream fos = new FileOutputStream("constructions.xml");
-			BufferedOutputStream bos = new BufferedOutputStream(fos);
-			encoder = new XMLEncoder(bos);
-			encoder.writeObject(Modele.constructions);
-			encoder.flush();
+			File fichier = new File("constructions.dat");
+			FileOutputStream fos = new FileOutputStream(fichier);
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			oos.writeObject(Modele.getConstructions());
+			oos.close();
+			fos.close();
 				}
 		catch (Exception e){
 			throw new RuntimeException("Ecriture des données impossible");
 		}
-		finally {
-			if (encoder != null) encoder.close();
-		}	
 	}
 	
 	public void sauvegarder() {
 		int i = Modele.constructions.size();
 		this.constructionActuelle.setNom("construction" + i);
-		Modele.constructions.put(this.constructionActuelle.getNom(), this.constructionActuelle);
+		Modele.constructions.put(this.constructionActuelle.getNom(), this.constructionActuelle.copie(null));
 	}
 
 	@SuppressWarnings("unchecked")
 	public void charger() {
-		XMLDecoder decoder = null;
+		File fichier = new File("constructions.dat");
+
+
 		try {
-			FileInputStream fis = new FileInputStream("constructions.xml");
-			System.out.println("oui");
-			System.out.println("file");
-			BufferedInputStream bis = new BufferedInputStream(fis);
-			System.out.println("bis");
-			decoder = new XMLDecoder(bis);
-			System.out.println("decoder");
-			Modele.constructions = (HashMap<String,Construction>) decoder.readObject();
+			FileInputStream fis = new FileInputStream(fichier);
+			ObjectInputStream ois = new ObjectInputStream(fis);
+
+			Modele.constructions = (HashMap<String,Construction>)ois.readObject();
+			ois.close();
+			fis.close();
 			}
 		catch (Exception e){
 			throw new RuntimeException("Chargement des données impossible"+e);
-		}
-		finally {
-			if (decoder != null) decoder.close();
 		}	
 	}
 

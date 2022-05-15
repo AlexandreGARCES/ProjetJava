@@ -144,6 +144,7 @@ public class Cube extends Element{
 						}
 						for(Element elem : this.getFils()) {
 							elem.setPere(this.getPere());
+							this.getPere().getFils().add(elem);
 						}
 						groupe.getChildren().remove(shape);
 					}

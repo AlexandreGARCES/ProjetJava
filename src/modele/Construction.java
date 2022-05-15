@@ -71,6 +71,7 @@ public class Construction implements Serializable{
 		if (element == null) {
 			for (Element elem: this.getBase()) {
 				int [] posi = elem.getPos();
+				posi[1]-=100;
 				ar.add(((Cube)elem).copiePos(null, posi));
 			}
 			cstr = new Construction(ar);
