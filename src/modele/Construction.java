@@ -35,13 +35,21 @@ public class Construction implements Serializable{
 		for(int i =-largeur/2; i< largeur/2; i++) {	
     		for(int j = -longueur/2; j<longueur/2; j++) {
     			int[] pos = {i*50, 0, j*50};
-    			Cube box = new Cube(50, 50, 50,null, pos,this.couleurBase);
-    			this.base.add(box);
+    			Element box;
+    			if(( -1<=i && 1 >= i) && (-1 <= j && 1 >= j)) {
+    				box = new Cube(50, 50, 50,null, pos,6);
+    			}
+    			else {
+    				box = new Cube(50, 50, 50,null, pos,this.couleurBase);
+    			}
+    			
+				this.base.add(box);
     		}
     	}
 	}
 	
 	public Construction ConstructionSansBase() {
+		
 		ArrayList<Element> elements=new ArrayList<Element>();
 		for (Element elem : this.base) {
 			for (Element fils : elem.getFils()) {
@@ -59,12 +67,28 @@ public class Construction implements Serializable{
 	
 	public Construction copie(Element eleme) {
 		ArrayList<Element> ar = new ArrayList<Element>();
-		for(Element elem : this.ConstructionSansBase().base)
-			ar.add(((Cube)elem).copiePos((Cube)eleme, eleme.getPos()));
+		for(Element elem : this.ConstructionSansBase().getBase()) {
+			int[] oui = elem.getPos();
+			Cube ccopie = ((Cube)elem).copiePos((Cube)eleme, oui);
+
+			ar.add(ccopie);
+		}
+			
 		return (new Construction(ar));
 		
 	}
+
 	
+	public Construction copieTotale() {
+		ArrayList<Element> ar = new ArrayList<Element>();
+		for (Element elem: this.getBase()) {
+			int [] posi = elem.getPos();
+			ar.add(((Cube)elem).copiePos(null, posi));
+		}
+		Construction cstr = new Construction(ar);
+		cstr.setCouleurBase(this.couleurBase);
+		return cstr;
+	}
 	public ArrayList<Element> getBase() {
 		return base;
 	}
@@ -93,3 +117,5 @@ public class Construction implements Serializable{
 
 
 }
+
+

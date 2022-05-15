@@ -78,12 +78,18 @@ public class Cube extends Element{
 		ArrayList<Element> ar = new ArrayList<Element>();
 		Cube Ccopie = new Cube(this.getTaille()[0], this.getTaille()[1], this.getTaille()[2], pere, this.getCouleur());
 		Ccopie.setFils(ar);
-		Ccopie.setN_fils(ar.size());
+		int[] oui = Ccopie.getPos();
+		for(int i =0; i<oui.length;i++) {
+			oui[i] += posi[i];
+			
+		}
+		Ccopie.setPos(oui);
 		for(Element elel : this.getFils()) {
 			Cube c1 = ((Cube)elel).copie(Ccopie);
 			ar.add(c1);
 			
 		}
+		Ccopie.setN_fils(ar.size());
 		return Ccopie;
 		
 	}
@@ -107,19 +113,12 @@ public class Cube extends Element{
 			{if (Modele.mode == Modes.CONSTRUCTION) {
 				if (event.getButton() == MouseButton.PRIMARY) {
 					if (this.getFils().isEmpty()) {///à changer si plusieurs enfants
-						System.out.println(Modele.element_a_ajouter);
-						/*/switch(Modele.element_a_ajouter) {///ce sera une construction
-						case CUBE:
-							Cube b1 = new Cube(50, 50, 50,this,Modele.couleurChoisie);
-							b1.afficher(groupe);
-						case CONSTRUCTION:
-												default:
-							break;
-						}
-						*/
+						
 						Construction cst = Modele.constructionaAjouter.copie(this);
+						System.out.println(cst.getBase().size());
 							for(Element eleme : cst.getBase()) {
 								eleme.afficher(groupe);
+								this.getFils().add(eleme);
 							}
 							
 							

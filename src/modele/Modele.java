@@ -55,8 +55,9 @@ public class Modele extends Observable{
 		ArrayList<Element> ar = new ArrayList<Element>();
 		ar.add(c0);
 		Construction constr = new Construction(ar);
-		
-		Modele.constructionaAjouter = constr;
+
+		Modele.constructionaAjouter = Modele.getConstructions().get("construction4");
+		//Modele.constructionaAjouter = constr;
 
 
 		System.out.println(mode);
@@ -87,9 +88,7 @@ public class Modele extends Observable{
 	}
 	
 	public void changerConstructionActuelle(String selection) {
-		System.out.println(this.constructionActuelle);
 		this.constructionActuelle=constructions.get(selection);
-		System.out.println(this.constructionActuelle);
 		this.setChanged();
         this.notifyObservers();
 		
