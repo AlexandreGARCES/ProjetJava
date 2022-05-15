@@ -46,7 +46,6 @@ public class Modele extends Observable{
 		catch (Exception e) {
 			 System.out.println("le fichier n'est pas créé");
 		}
-		this.charger();
 		if (this.constructions == null) {
 			this.constructions = new HashMap<String,Construction>();
 		}
@@ -57,6 +56,7 @@ public class Modele extends Observable{
 		Construction constr = new Construction(ar);
 	
 		Modele.constructionaAjouter = constr;
+		this.sauvegarder();
 
 		System.out.println(mode);
 	}
@@ -94,9 +94,7 @@ public class Modele extends Observable{
 		Set<String> nomconstructions = this.getConstructions().keySet();
 		ArrayList<String> ar =new ArrayList<String>();
 		for(String nom : nomconstructions) {
-			ar.add(nom);
-			
-			
+			ar.add(nom);			
 		}
 		return ar;
 	}
