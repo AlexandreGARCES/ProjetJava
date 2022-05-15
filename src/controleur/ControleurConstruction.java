@@ -68,7 +68,7 @@ public class ControleurConstruction extends Controleur implements Initializable 
     private CheckBox boxBleuBloc;
 
     @FXML
-    private CheckBox boxCarr√©Bloc;
+    private CheckBox boxCarrÈBloc;
 
     @FXML
     private CheckBox boxCyanBloc;
