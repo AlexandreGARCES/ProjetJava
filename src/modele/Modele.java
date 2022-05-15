@@ -8,8 +8,12 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Observable;
+import java.util.Set;
 
 
 public class Modele extends Observable{
@@ -26,7 +30,7 @@ public class Modele extends Observable{
 	}
 	public static Element_a_ajouter element_a_ajouter;////construction plus tard
 	
-	private ArrayList<Construction> constructions; /// les constructions disponibles, à organiser en bibliothèque
+	private static HashMap<String,Construction> constructions;
 	public Construction constructionActuelle;
 	public static Construction constructionaAjouter;
 	
@@ -36,7 +40,7 @@ public class Modele extends Observable{
 		
 		
 		
-		File fichier = new File("constructions.xml");
+		File fichier = new File("constructions.dat");
 		try {
 			fichier.createNewFile();
 			System.out.println("création du fichier");
@@ -45,12 +49,18 @@ public class Modele extends Observable{
 			 System.out.println("le fichier n'est pas créé");
 		}
 		this.charger();
-		if (this.constructions == null) {
-			this.constructions = new ArrayList<Construction>();
+		if (Modele.constructions == null) {
+			Modele.constructions = new HashMap<String,Construction>();
 		}
-	
-		Modele.constructionaAjouter = this.constructions.get(2);
-		System.out.println(mode);
+		Cube c0 = new Cube(50, 50, 50, null, 0);
+		Cube c1 = new Cube(50, 50, 50, c0, 0);
+		ArrayList<Element> ar = new ArrayList<Element>();
+		ar.add(c0);
+		Construction constr = new Construction(ar);
+		Modele.constructionaAjouter = constr;
+		Modele.constructionaAjouter = Modele.getConstructions().get("construction16").copie(null);
+
+		
 	}
 	
 	//-----------------------------------------------------
@@ -76,49 +86,60 @@ public class Modele extends Observable{
 			Modele.mode=Modes.VISUALISATION;
 		}
 	}
+	
+	public void changerConstructionActuelle(String selection) {
+		this.constructionActuelle=constructions.get(selection).copie(null);
+		this.setChanged();
+        this.notifyObservers();
+		
+	}
+	
+	public ArrayList<String> getListeConstructions() {
+		Set<String> nomconstructions = Modele.getConstructions().keySet();
+		ArrayList<String> ar =new ArrayList<String>();
+		for(String nom : nomconstructions) {
+			ar.add(nom);
+			
+			
+		}
+		return ar;
+	}
 
-	@SuppressWarnings("resource")
-	public void sauvegarderModele() {
-		XMLEncoder encoder = null;
+	public static void sauvegarderModele() {
 		try {
-			FileOutputStream fos = new FileOutputStream("constructions.xml");
-			BufferedOutputStream bos = new BufferedOutputStream(fos);
-			encoder = new XMLEncoder(bos);
-			encoder.writeObject(this.constructions);
-			encoder.flush();
+			File fichier = new File("constructions.dat");
+			FileOutputStream fos = new FileOutputStream(fichier);
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			oos.writeObject(Modele.getConstructions());
+			oos.close();
+			fos.close();
 				}
 		catch (Exception e){
 			throw new RuntimeException("Ecriture des données impossible");
 		}
-		finally {
-			if (encoder != null) encoder.close();
-		}	
 	}
 	
 	public void sauvegarder() {
-		int i = this.constructions.size();
+		int i = Modele.constructions.size();
 		this.constructionActuelle.setNom("construction" + i);
-		this.constructions.add(this.constructionActuelle);
+		Modele.constructions.put(this.constructionActuelle.getNom(), this.constructionActuelle.copie(null));
 	}
 
 	@SuppressWarnings("unchecked")
 	public void charger() {
-		XMLDecoder decoder = null;
+		File fichier = new File("constructions.dat");
+
+
 		try {
-			FileInputStream fis = new FileInputStream("constructions.xml");
-			System.out.println("oui");
-			System.out.println("file");
-			BufferedInputStream bis = new BufferedInputStream(fis);
-			System.out.println("bis");
-			decoder = new XMLDecoder(bis);
-			System.out.println("decoder");
-			this.constructions = (ArrayList<Construction>) decoder.readObject();
+			FileInputStream fis = new FileInputStream(fichier);
+			ObjectInputStream ois = new ObjectInputStream(fis);
+
+			Modele.constructions = (HashMap<String,Construction>)ois.readObject();
+			ois.close();
+			fis.close();
 			}
 		catch (Exception e){
-			throw new RuntimeException("Chargement des données impossible");
-		}
-		finally {
-			if (decoder != null) decoder.close();
+			throw new RuntimeException("Chargement des données impossible"+e);
 		}	
 	}
 
@@ -128,12 +149,12 @@ public class Modele extends Observable{
 	
 	//pour la sérialisation on as pas besoin de sérialiser les variables static non?
 
-	public ArrayList<Construction> getConstructions() {
-		return constructions;
+	public static HashMap<String,Construction> getConstructions() {
+		return Modele.constructions;
 	}
 	
-	public void setConstructions(ArrayList<Construction> constructions) {
-		this.constructions = constructions;
+	public static void setConstructions(HashMap<String,Construction> constructions) {
+		Modele.constructions = constructions;
 	}
 
 }

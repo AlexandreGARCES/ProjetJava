@@ -2,8 +2,11 @@ package controleur;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,150 +28,237 @@ public class ControleurConstruction extends Controleur implements Initializable 
 	
 	//-----------------------------------------------------
 	
-	//lancerAffichage3D
-	//gererInteractions3D (+ annuler et redo)
-	//sauvegarderModele
-	//changerScene (revenir au menu ou passer en visualisation ou en plein ecran)
-	//rechercheMultiCrit (ici changer brique ou construction à rajouter à la construction actuelle)
-	//prevenirQueBlocSelectionneEstModifié (le bloc a placer)
-	//demanderSauvegardeAuModele
+	//sauvegarderModele quand on quitte
+	//rechercheMultiCrit (pour avoir la liste des briques ou constructions qui nous intéressent pour construire)
+	//lorsque click sur un élément de la liste: change Modele.constructionAAjouter
+
 	//-----------------------------------------------------
 	
 	@FXML
-    private ComboBox<CheckBox> CheckComboBox;
+    private SubScene subScene3D;
 	
 	@FXML
     private Button boutonMenu;
-
     @FXML
     private Button boutonQuitter;
-
     @FXML
     private Button boutonRedo;
-
     @FXML
     private Button boutonSauvegarder;
-
     @FXML
     private Button boutonUndo;
     
     @FXML
     private Button boutonRechercherBloc;
-
     @FXML
     private Button boutonRechercherConstruction;
 
     @FXML
-    private SubScene subScene3D;
-    
-    @FXML
     private CheckBox boxBlancBloc;
-
     @FXML
     private CheckBox boxBleuBloc;
-
-    @FXML
-    private CheckBox boxCarr�Bloc;
-
     @FXML
     private CheckBox boxCyanBloc;
-
-    @FXML
-    private CheckBox boxGrandBloc;
-
     @FXML
     private CheckBox boxGrisBloc;
-
     @FXML
     private CheckBox boxJauneBloc;
-
     @FXML
-    private CheckBox boxMagentaBloc;
-
-    @FXML
-    private CheckBox boxMoyenBloc;
-
+    private CheckBox boxOrangeBloc;
     @FXML
     private CheckBox boxNoirBloc;
-
+    @FXML
+    private CheckBox boxRougeBloc;
+    @FXML
+    private CheckBox boxVertBloc;
+    
+    @FXML
+    private CheckBox boxCarreBloc;
+    @FXML
+    private CheckBox boxRectBloc;
+    @FXML
+    private CheckBox boxRondBloc;
+    
+    @FXML
+    private CheckBox boxGrandBloc;
+    @FXML
+    private CheckBox boxMoyenBloc;
     @FXML
     private CheckBox boxPetitBloc;
 
-    @FXML
-    private CheckBox boxRectBloc;
-
-    @FXML
-    private CheckBox boxRondBloc;
-
-    @FXML
-    private CheckBox boxRougeBloc;
-    
-    
     @FXML //oubliez pas de lui mettre truc que vous voulez ( a la place du string )
     private ListView<String> listeResultatRechercheBloc;
+    private ArrayList<String> listeBlocs;
     
+    @FXML
+    void rechercheMultiCritBloc(ActionEvent event) {
+    	//réunir plusieurs checkbox ensemble nous simplifierais la vie
+    	
+    	ArrayList<Integer> couleurs=new ArrayList<Integer>();
+    	int cpt=0;
+    	if (boxBlancBloc.isSelected()) {
+    		couleurs.add(3);
+    	}else {
+    		cpt++;
+    	}
+    	if (boxBleuBloc.isSelected()) {
+    		couleurs.add(2);
+    	}else {
+    		cpt++;
+    	}
+    	if(boxCyanBloc.isSelected()) {
+    		couleurs.add(6);
+    	}else {
+    		cpt++;
+    	}
+    	if(boxGrisBloc.isSelected()) {
+    		couleurs.add(4);
+    	}else {
+    		cpt++;
+    	}
+    	if(boxOrangeBloc.isSelected()) {
+    		couleurs.add(8);
+    	}else {
+    		cpt++;
+    	}
+    	if(boxNoirBloc.isSelected()) {
+    		couleurs.add(5);
+    	}else {
+    		cpt++;
+    	}
+    	if(boxRougeBloc.isSelected()) {
+    		couleurs.add(0);
+    	}else {
+    		cpt++;
+    	}
+    	if(boxVertBloc.isSelected()) {
+    		couleurs.add(1);
+    	}else {
+    		cpt++;
+    	}
+    	if(boxJauneBloc.isSelected()){
+    		couleurs.add(7);
+    	}else {
+    		cpt++;
+    	}
+    	if (cpt==9) {//si aucun n'est sélectionné, tout mettre
+    		couleurs.clear();
+    		for (int i=0;i<9;i++) {
+    			couleurs.add(i);
+    		}
+    	}
+    	
+    	ArrayList<String> formes=new ArrayList<String>();//on rajoute les triangles les gars?
+    	cpt=0;
+    	if(boxCarreBloc.isSelected()) {
+    		formes.add("carre");
+    	}else {
+    		cpt++;
+    	}
+    	if(boxRectBloc.isSelected()) {
+    		formes.add("rect");
+    	}else {
+    		cpt++;
+    	}
+    	if(boxRondBloc.isSelected()) {
+    		formes.add("rond");
+    	}else {
+    		cpt++;
+    	}
+    	if(cpt==3) {
+    		formes.clear();
+    		formes.add("carre");
+    		formes.add("rect");
+    		formes.add("rond");
+    	}
+    	
+    	ArrayList<String> types=(ArrayList<String>) formes.clone();
+    	cpt=0;
+    	if(boxGrandBloc.isSelected()) {
+    		for (int i=0;i<types.size();i++) {
+    			types.set(i, types.get(i)+" grand");
+    		}
+    	}else {
+    		cpt++;
+    	}
+    	if(boxPetitBloc.isSelected()) {
+    		for (int i=0;i<types.size();i++) {
+    			types.set(i, types.get(i)+" petit");
+    		}
+    	}else {
+    		cpt++;
+    	}
+    	if(boxMoyenBloc.isSelected()) {
+    		for (int i=0;i<types.size();i++) {
+    			types.set(i, types.get(i)+" moyen");
+    		}
+    	}else {
+    		cpt++;
+    	}
+    	if (cpt==3) {
+    		types=(ArrayList<String>) formes.clone();
+    		for (int i=0;i<types.size();i++) {
+    			types.set(i, types.get(i)+" grand");
+    		}
+    		for (int i=0;i<types.size();i++) {
+    			types.set(i, types.get(i)+" petit");
+    		}
+    		for (int i=0;i<types.size();i++) {
+    			types.set(i, types.get(i)+" moyen");
+    		}
+    	}
+    	
+    	//this.listeBloc=this.mod.rechercherElement(couleurs,types);
+    	
+    	
+    	
+    	//Si tu veux pas avoir plus box selectionn�es en m�me temps:
+    	//if(boxRougeBloc.isSelected()){
+    	//	boxBleuBloc.setSelected(false);  ( d�selectionne la checkBox )
+    	//}
+    	
+    }
+    
+    @FXML
+    void rechercheMultiCritConstruc(ActionEvent event) {
+    	System.out.println("recherche dans Modele.constructions");
+    	//par nom: dans modèle: pour chaque String dans constructions.setKey, if ma String est contenue dans la key: rajouter aux résultats recherche
+    	//par couleur de la base
+    	//par couleurs présentes (ou exclure une couleur présente?)
+    	//par formes présentes?
+    	//par tailles présentes?
+    	
+    }
     
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		//Permet d'afficher la recherche
-    	//listeResultatRechercheBloc.getItems().addAll(*une collection de bloc pour la recherche*);
-    	//
-    	//Listener pour obtenir le bloc sur lequel vous avez clicker
-    	//listeResultatRechercheBloc.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-    	
-    		//la m�thode correspondante.
-			//@Override
-			//public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {
-    		//
-			//}
-    		
-    	//});
-		
+    	/*
+    	listeResultatRechercheBloc.getItems().addAll(this.listeBlocs);
+    	listeResultatRechercheBloc.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+
+			@Override
+			public void changed(ObservableValue<? extends String> arg0, String ancienSelect, String selection) {
+				//Gestion3D.mod.changerConstructionaAjouter(selection);
+			}
+    	});
+    	*/
 	}
     
     @FXML
     void SwitchFXMLMenu(ActionEvent event) throws IOException {
-    	window = (Stage)((Node)event.getSource()).getScene().getWindow();
-    	
-    	Parent root = FXMLLoader.load((getClass().getResource("../vue/Menu.fxml")));
-    	scene = new Scene(root);
-	    
-	    window.setTitle("LEGO");
-	    window.setScene(scene);
-	    window.show();
+    	this.retourMenu(event);
     }
     
     @FXML
     void SwitchFXMLVisualisation(ActionEvent event) throws IOException {
+    	//demander si on veux sauvegarder et si oui appeler this.mod.sauvegarder()
     	this.changerFenetre("Visualisation", event);
     }
     
     @FXML
     void SauvegarderConstruction(ActionEvent event) {
+    	//demander le nom et modifier pour que this.mod.sauvegarder(String nom);
     	this.mod.sauvegarder();
-    	this.mod.sauvegarderModele();
-    	// la methode qui va appel� sauvegarder du Mod�le
-    }
-    
-    @FXML
-    void rechercheMultiCritBloc(ActionEvent event) {
-    	//Pour savoir si boxRougeBloc est activ�e:
-    	//if(boxRougeBloc.isSelected()){ ---> renvoie un bool�en
-    	//
-    	//}
-    	//(Pareil pour les autres box bien sur)
-    	//
-    	//Si tu veux pas avoir plus box selectionn�es en m�me temps:
-    	//if(boxRougeBloc.isSelected()){
-    	//	boxBleuBloc.setSelected(false);  ( d�selectionne la checkBox )
-    	//}
-    	//Apres si il vous manque des choses youtube est ton meilleur amis car je vois pas d'autre m�thodes utiles.
-    	
-    	
-    	
-    	
-    	//Et juste pour morti car martin t'as pas le pb, la scroll pane te permet de retrecir le bouzin sans enlever l'interface tu peux ( en scrollant ) acceder aux boutons qui te posaient pb. 
-    	//Bien sur la Subscene bug donc faudra faire avec
     }
 
 }

@@ -53,7 +53,7 @@ public class Cube extends Element{
 		else {
 			this.setPos(pos);
 		}
-		this.setDestructible(false);
+		this.setDestructible(true);
 
 		
 	}
@@ -61,14 +61,15 @@ public class Cube extends Element{
 	public Cube copie(Cube pere) {
 		ArrayList<Element> ar = new ArrayList<Element>();
 		Cube Ccopie = new Cube(this.getTaille()[0], this.getTaille()[1], this.getTaille()[2], pere, this.getCouleur());
-		Ccopie.setFils(ar);
-		Ccopie.setN_fils(ar.size());
+		Ccopie.setDestructible(this.isDestructible());
+
 		for(Element elel : this.getFils()) {
 			Cube c1 = ((Cube)elel).copie(Ccopie);
 			ar.add(c1);
 			
 		}
-		
+		Ccopie.setFils(ar);
+		Ccopie.setN_fils(ar.size());
 		
 		
 		return Ccopie;
@@ -78,13 +79,25 @@ public class Cube extends Element{
 	public Cube copiePos(Cube pere, int[] posi) {
 		ArrayList<Element> ar = new ArrayList<Element>();
 		Cube Ccopie = new Cube(this.getTaille()[0], this.getTaille()[1], this.getTaille()[2], pere, this.getCouleur());
-		Ccopie.setFils(ar);
-		Ccopie.setN_fils(ar.size());
+		Ccopie.setDestructible(this.isDestructible());
+		int[] oui = Ccopie.getPos();
+		for(int i =0; i<oui.length;i++) {
+			oui[i] += posi[i];
+			
+		}
+		Ccopie.setPos(oui);
 		for(Element elel : this.getFils()) {
-			Cube c1 = ((Cube)elel).copie(Ccopie);
+			int [] tab = {0, 0, 0};
+			for(int i =0; i<3; i++) {
+				tab[i] = elel.getPos()[i]-this.getPos()[i];
+			}
+			tab[1] += 50;
+			Cube c1 = ((Cube)elel).copiePos(Ccopie, tab);
 			ar.add(c1);
 			
 		}
+		Ccopie.setN_fils(ar.size());
+		Ccopie.setFils(ar);
 		return Ccopie;
 		
 	}
@@ -108,19 +121,12 @@ public class Cube extends Element{
 			{if (Modele.mode == Modes.CONSTRUCTION) {
 				if (event.getButton() == MouseButton.PRIMARY) {
 					if (this.getFils().isEmpty()) {///à changer si plusieurs enfants
-						System.out.println(Modele.element_a_ajouter);
-						/*/switch(Modele.element_a_ajouter) {///ce sera une construction
-						case CUBE:
-							Cube b1 = new Cube(50, 50, 50,this,Modele.couleurChoisie);
-							b1.afficher(groupe);
-						case CONSTRUCTION:
-												default:
-							break;
-						}
-						*/
+						
 						Construction cst = Modele.constructionaAjouter.copie(this);
+						System.out.println(cst.getBase().size());
 							for(Element eleme : cst.getBase()) {
 								eleme.afficher(groupe);
+								this.getFils().add(eleme);
 							}
 							
 							
@@ -138,6 +144,7 @@ public class Cube extends Element{
 						}
 						for(Element elem : this.getFils()) {
 							elem.setPere(this.getPere());
+							this.getPere().getFils().add(elem);
 						}
 						groupe.getChildren().remove(shape);
 					}

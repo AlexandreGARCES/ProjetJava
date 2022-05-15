@@ -16,9 +16,6 @@ import modele.Modele;
 import vue.Gestion3D;
 
 public class ControleurPleinEcran extends Controleur{
-
-	Stage window;
-	Scene scene;
 	
     @FXML
     private Button boutonMenu;

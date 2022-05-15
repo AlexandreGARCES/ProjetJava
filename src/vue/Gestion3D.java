@@ -38,7 +38,7 @@ public class Gestion3D implements Observer{
 	
 	public static ArrayList<PhongMaterial> createMateriaux() {
 		ArrayList<PhongMaterial> materiaux = new ArrayList<PhongMaterial>();
-		Color[] tab = {Color.RED, Color.GREEN, Color.AQUA, Color.BLUE, Color.WHITE, Color.SILVER, Color.BLACK };
+		Color[] tab = {Color.RED, Color.GREEN, Color.BLUE, Color.WHITE, Color.SILVER, Color.BLACK, Color.CYAN, Color.YELLOW, Color.ORANGE };
 		for (Color couleur : tab) {
 			PhongMaterial materiel = new PhongMaterial();
 			materiel.setDiffuseColor(couleur);
@@ -48,10 +48,10 @@ public class Gestion3D implements Observer{
 	}
 	
 	public Gestion3D() {
-		System.out.println("nouveau gestion3D");
 		Gestion3D.mod.addObserver(this);
 		
-		this.majGroup();
+		this.groupe=new Group();
+		Gestion3D.mod.constructionActuelle.afficher(this.groupe);
 		this.subScene3D = new SubScene(groupe, WIDTH, HEIGHT, true, null);
 		
 		this.camera = new PerspectiveCamera();
@@ -119,7 +119,7 @@ public class Gestion3D implements Observer{
 	}
 	
 	public void majGroup() {
-		this.groupe =  new Group();
+		this.groupe.getChildren().clear();
 		Gestion3D.mod.constructionActuelle.afficher(this.groupe);
 	}
 

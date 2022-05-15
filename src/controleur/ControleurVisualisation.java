@@ -2,6 +2,7 @@ package controleur;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.beans.value.ChangeListener;
@@ -23,16 +24,17 @@ import vue.Gestion3D;
 
 public class ControleurVisualisation extends Controleur implements Initializable {
 
-	String[] construction = {"Construction1", "Construction2"};
+	ArrayList<String> constructions;
 
-	
+	public ControleurVisualisation() {
+		this.constructions=this.mod.getListeConstructions();
+	}
 	
 	//-----------------------------------------------------
 	
-	//lancerAffichage3D
-	//gererInteractions3D
-	//changerScene (revenir au menu ou passer en construction ou en plein ecran)
-	//rechercheMultiCrit (ici changer construction à afficher dans le modele)
+	//sauvegarderModele quand on quitte
+	//rechercheMultiCrit (Pour n'avoir que la liste des constructions qui nous intéressent)
+	//lorsque click sur un élément de la liste: affiche la construction à la place de l'ancienne
 	
 	//-----------------------------------------------------
 	
@@ -54,17 +56,14 @@ public class ControleurVisualisation extends Controleur implements Initializable
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
     	
-    	listeMode.getItems().addAll(construction);
-    	
+    	listeMode.getItems().addAll(constructions);
     	listeMode.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 
 			@Override
-			public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {
-
+			public void changed(ObservableValue<? extends String> arg0, String ancienSelect, String selection) {
+				Gestion3D.mod.changerConstructionActuelle(selection);
 			}
-    		
-    	});
-		
+    	});	
 	}
     
     @FXML
@@ -74,35 +73,12 @@ public class ControleurVisualisation extends Controleur implements Initializable
     
     @FXML
     void SwitchFXMLMenu(ActionEvent event) throws IOException {
-
-    	window = (Stage)((Node)event.getSource()).getScene().getWindow();
-    	
-    	Parent root = FXMLLoader.load((getClass().getResource("../vue/Menu.fxml")));
-	    scene = new Scene(root);
-	    
-	    window.setTitle("LEGO");
-	    window.setScene(scene);
-	    window.show();
+    	this.retourMenu(event);
     }
     
     @FXML
     void SwitchFXMLPleinEcran(ActionEvent event) throws IOException {
-    	Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-    	
-    	AnchorPane pane = new AnchorPane();
-
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("../vue/PleinEcran.fxml"));
-	    pane = loader.load();
-
-	   	Gestion3D gestion3D=new Gestion3D();
-	   	pane.getChildren().add(gestion3D.subScene3D);
-	    scene = new Scene(pane);
-	    gestion3D.addTouches(scene);
-	    
-	    Modele.setMode(false);
-	    
-	    window.setScene(scene);
-	    window.show();
+    	this.changerFenetre("PleinEcran", event);
     }
     
     
