@@ -5,6 +5,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -243,6 +245,17 @@ public class ControleurConstruction extends Controleur implements Initializable 
     		//Gestion3D.mod.changerConstructionActuelle(selection);
     		//penser à trouver quel argument fait quoi
 			//}
+    	
+    	/*
+    		this.listeResultatRechercheBloc.getItems().addAll(constructions);
+    		this.listeResultatRechercheBloc.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+
+			@Override
+			public void changed(ObservableValue<? extends String> arg, String ancienSelect, String selection) {
+				Gestion3D.mod.changerConstructionActuelle(selection);
+			}
+			
+			*/
     		
     	//});
 		
