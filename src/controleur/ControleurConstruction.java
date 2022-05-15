@@ -2,6 +2,7 @@ package controleur;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -90,56 +91,121 @@ public class ControleurConstruction extends Controleur implements Initializable 
     void rechercheMultiCritBloc(ActionEvent event) {
     	//réunir plusieurs checkbox ensemble nous simplifierais la vie
     	
-    	
+    	ArrayList<Integer> couleurs=new ArrayList<Integer>();
+    	int cpt=0;
     	if (boxBlancBloc.isSelected()) {
-    		System.out.println("blanc");
+    		couleurs.add(3);
+    	}else {
+    		cpt++;
     	}
     	if (boxBleuBloc.isSelected()) {
-    		System.out.println("bleu");
+    		couleurs.add(2);
+    	}else {
+    		cpt++;
     	}
     	if(boxCyanBloc.isSelected()) {
-    		System.out.println("cyan");
+    		couleurs.add(6);
+    	}else {
+    		cpt++;
     	}
     	if(boxGrisBloc.isSelected()) {
-    		System.out.println("gris");
+    		couleurs.add(4);
+    	}else {
+    		cpt++;
     	}
     	if(boxOrangeBloc.isSelected()) {
-    		System.out.println("Orange");
+    		couleurs.add(8);
+    	}else {
+    		cpt++;
     	}
     	if(boxNoirBloc.isSelected()) {
-    		System.out.println("noir");
+    		couleurs.add(5);
+    	}else {
+    		cpt++;
     	}
     	if(boxRougeBloc.isSelected()) {
-    		System.out.println("rouge");
+    		couleurs.add(0);
+    	}else {
+    		cpt++;
     	}
     	if(boxVertBloc.isSelected()) {
-    		System.out.println("vert");
+    		couleurs.add(1);
+    	}else {
+    		cpt++;
     	}
     	if(boxJauneBloc.isSelected()){
-    		System.out.println("jaune");
+    		couleurs.add(7);
+    	}else {
+    		cpt++;
+    	}
+    	if (cpt==9) {//si aucun n'est sélectionné, tout mettre
+    		couleurs.clear();
+    		for (int i=0;i<9;i++) {
+    			couleurs.add(i);
+    		}
     	}
     	
-    	
+    	ArrayList<String> formes=new ArrayList<String>();//on rajoute les triangles les gars?
+    	cpt=0;
     	if(boxCarreBloc.isSelected()) {
-    		System.out.println("carré");
+    		formes.add("carre");
+    	}else {
+    		cpt++;
     	}
     	if(boxRectBloc.isSelected()) {
-    		System.out.println("rectangle");
+    		formes.add("rect");
+    	}else {
+    		cpt++;
     	}
     	if(boxRondBloc.isSelected()) {
-    		System.out.println("rond");
+    		formes.add("rond");
+    	}else {
+    		cpt++;
+    	}
+    	if(cpt==3) {
+    		formes.clear();
+    		formes.add("carre");
+    		formes.add("rect");
+    		formes.add("rond");
     	}
     	
-    	
+    	ArrayList<String> types=(ArrayList<String>) formes.clone();
+    	cpt=0;
     	if(boxGrandBloc.isSelected()) {
-    		System.out.println("grand");
+    		for (int i=0;i<types.size();i++) {
+    			types.set(i, types.get(i)+" grand");
+    		}
+    	}else {
+    		cpt++;
     	}
     	if(boxPetitBloc.isSelected()) {
-    		System.out.println("petit");
+    		for (int i=0;i<types.size();i++) {
+    			types.set(i, types.get(i)+" petit");
+    		}
+    	}else {
+    		cpt++;
     	}
     	if(boxMoyenBloc.isSelected()) {
-    		System.out.println("moyen");
+    		for (int i=0;i<types.size();i++) {
+    			types.set(i, types.get(i)+" moyen");
+    		}
+    	}else {
+    		cpt++;
     	}
+    	if (cpt==3) {
+    		types=(ArrayList<String>) formes.clone();
+    		for (int i=0;i<types.size();i++) {
+    			types.set(i, types.get(i)+" grand");
+    		}
+    		for (int i=0;i<types.size();i++) {
+    			types.set(i, types.get(i)+" petit");
+    		}
+    		for (int i=0;i<types.size();i++) {
+    			types.set(i, types.get(i)+" moyen");
+    		}
+    	}
+    	
+    	//this.mod.rechercherElement(couleurs,types);
     	
     	
     	
