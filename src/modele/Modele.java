@@ -57,22 +57,7 @@ public class Modele extends Observable{
 		Construction constr = new Construction(ar);
 		constr.setNom("construction1");
 	
-		Modele.constructionaAjouter = constr;
-		Modele.getConstructions().remove("construction1");
-		Modele.getConstructions().put("construction1", constr);
-		Modele.sauvegarderModele();
-		ArrayList<Element> arr = new ArrayList<Element>();
 		
-		Cube c00 = new Cube(50, 50, 50, null, 0);
-		Cube c11 = new Cube(50, 50, 50, c00, 0);
-		ar.add(c00);
-		Construction constrr = new Construction(arr);
-		constr.setNom("construction1");
-	
-		Modele.constructionaAjouter = constr;
-		Modele.getConstructions().remove("construction2");
-		constrr.setNom("construction2");
-		Modele.getConstructions().put("construction2", constrr);
 
 		System.out.println(mode);
 	}
