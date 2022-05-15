@@ -28,7 +28,7 @@ public class Modele extends Observable{
 	}
 	public static Element_a_ajouter element_a_ajouter;////construction plus tard
 	
-	private HashMap<String,Construction> constructions;
+	private static HashMap<String,Construction> constructions;
 	public Construction constructionActuelle;
 	public static Construction constructionaAjouter;
 	
@@ -47,16 +47,17 @@ public class Modele extends Observable{
 			 System.out.println("le fichier n'est pas créé");
 		}
 		this.charger();
-		if (this.constructions == null) {
-			this.constructions = new HashMap<String,Construction>();
+		if (Modele.constructions == null) {
+			Modele.constructions = new HashMap<String,Construction>();
 		}
 		Cube c0 = new Cube(50, 50, 50, null, 0);
 		Cube c1 = new Cube(50, 50, 50, c0, 0);
 		ArrayList<Element> ar = new ArrayList<Element>();
 		ar.add(c0);
 		Construction constr = new Construction(ar);
-	
+		
 		Modele.constructionaAjouter = constr;
+
 
 		System.out.println(mode);
 	}
@@ -102,13 +103,13 @@ public class Modele extends Observable{
 	}
 
 	@SuppressWarnings("resource")
-	public void sauvegarderModele() {
+	public static void sauvegarderModele() {
 		XMLEncoder encoder = null;
 		try {
 			FileOutputStream fos = new FileOutputStream("constructions.xml");
 			BufferedOutputStream bos = new BufferedOutputStream(fos);
 			encoder = new XMLEncoder(bos);
-			encoder.writeObject(this.constructions);
+			encoder.writeObject(Modele.constructions);
 			encoder.flush();
 				}
 		catch (Exception e){
@@ -152,12 +153,12 @@ public class Modele extends Observable{
 	
 	//pour la sérialisation on as pas besoin de sérialiser les variables static non?
 
-	public HashMap<String,Construction> getConstructions() {
-		return constructions;
+	public static HashMap<String,Construction> getConstructions() {
+		return Modele.constructions;
 	}
 	
-	public void setConstructions(HashMap<String,Construction> constructions) {
-		this.constructions = constructions;
+	public static void setConstructions(HashMap<String,Construction> constructions) {
+		Modele.constructions = constructions;
 	}
 
 }
