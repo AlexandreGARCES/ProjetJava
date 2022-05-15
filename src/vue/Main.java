@@ -13,6 +13,10 @@ public class Main extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) throws IOException{
+		primaryStage.setOnCloseRequest(event -> {
+		    //Modele.sauvegarderModele();
+			//penser à l'enlever de ControleurConstruction
+		});
 		Parent root = FXMLLoader.load((getClass().getResource("Menu.fxml")));
 	    Scene scene = new Scene(root);
 	    

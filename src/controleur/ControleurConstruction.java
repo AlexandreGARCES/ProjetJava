@@ -25,13 +25,10 @@ public class ControleurConstruction extends Controleur implements Initializable 
 	
 	//-----------------------------------------------------
 	
-	//lancerAffichage3D
-	//gererInteractions3D (+ annuler et redo)
-	//sauvegarderModele
-	//changerScene (revenir au menu ou passer en visualisation ou en plein ecran)
-	//rechercheMultiCrit (ici changer brique ou construction à rajouter à la construction actuelle)
-	//prevenirQueBlocSelectionneEstModifié (le bloc a placer)
-	//demanderSauvegardeAuModele
+	//sauvegarderModele quand on quitte
+	//rechercheMultiCrit (pour avoir la liste des briques ou constructions qui nous intéressent pour construire)
+	//lorsque click sur un élément de la liste: change Modele.constructionAAjouter
+
 	//-----------------------------------------------------
 	
 	@FXML

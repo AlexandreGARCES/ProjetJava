@@ -15,17 +15,13 @@ import modele.Modele;
 import vue.Gestion3D;
 
 public class ControleurMenu extends Controleur{
-
-	//-----------------------------------------------------
-	
-	//PasserAUneAutreScene
-	
-	
-	public ControleurMenu() {
-		System.out.println("nouveau Controleur menu");
-	}
 	
 	//-----------------------------------------------------
+	
+	//sauvegarderModele quand on quitte
+	
+	//-----------------------------------------------------
+	
 
     @FXML
     private Button boutonConstruction;
