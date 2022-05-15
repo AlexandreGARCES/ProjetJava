@@ -14,6 +14,7 @@
         <void property="fils">
          <object class="java.util.ArrayList"/>
         </void>
+        <void id="Integer0" property="n_fils"/>
         <void property="pos">
          <void index="0">
           <int>-1250</int>
@@ -72486,10 +72487,72 @@
         </void>
        </object>
       </void>
+      <void method="add">
+       <object class="modele.Cube" id="Cube2508">
+        <void property="destructible">
+         <boolean>true</boolean>
+        </void>
+        <void property="fils">
+         <object class="java.util.ArrayList">
+          <void method="add">
+           <object class="modele.Cube" id="Cube2509">
+            <void property="destructible">
+             <boolean>true</boolean>
+            </void>
+            <void property="fils">
+             <object class="java.util.ArrayList"/>
+            </void>
+            <void property="pere">
+             <object idref="Cube2508"/>
+            </void>
+            <void property="taille">
+             <void index="0">
+              <int>50</int>
+             </void>
+             <void index="1">
+              <int>50</int>
+             </void>
+             <void index="2">
+              <int>50</int>
+             </void>
+            </void>
+           </object>
+          </void>
+         </object>
+        </void>
+        <void property="pos">
+         <void index="1">
+          <int>50</int>
+         </void>
+        </void>
+        <void property="taille">
+         <void index="0">
+          <int>50</int>
+         </void>
+         <void index="1">
+          <int>50</int>
+         </void>
+         <void index="2">
+          <int>50</int>
+         </void>
+        </void>
+       </object>
+      </void>
      </object>
     </void>
     <void property="nom">
      <string>construction1</string>
+    </void>
+   </object>
+  </void>
+  <void method="put">
+   <string>construction2</string>
+   <object class="modele.Construction">
+    <void property="base">
+     <object class="java.util.ArrayList"/>
+    </void>
+    <void property="nom">
+     <string>construction2</string>
     </void>
    </object>
   </void>

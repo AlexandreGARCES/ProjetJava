@@ -136,8 +136,6 @@ public class ControleurConstruction extends Controleur implements Initializable 
     @FXML
     void SauvegarderConstruction(ActionEvent event) {
     	this.mod.sauvegarder();
-    	this.mod.sauvegarderModele();
-    	// la methode qui va appel� sauvegarder du Mod�le
     }
     
     @FXML
