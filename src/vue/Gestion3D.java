@@ -38,7 +38,7 @@ public class Gestion3D implements Observer{
 	
 	public static ArrayList<PhongMaterial> createMateriaux() {
 		ArrayList<PhongMaterial> materiaux = new ArrayList<PhongMaterial>();
-		Color[] tab = {Color.RED, Color.GREEN, Color.AQUA, Color.BLUE, Color.WHITE, Color.SILVER, Color.BLACK };
+		Color[] tab = {Color.RED, Color.GREEN, Color.BLUE, Color.WHITE, Color.SILVER, Color.BLACK, Color.CYAN, Color.YELLOW, Color.ORANGE };
 		for (Color couleur : tab) {
 			PhongMaterial materiel = new PhongMaterial();
 			materiel.setDiffuseColor(couleur);

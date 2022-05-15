@@ -98,32 +98,32 @@
                                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                         </rowConstraints>
                                                          <children>
-                                                            <CheckBox alignment="TOP_LEFT" mnemonicParsing="false" text="Grand">
+                                                            <CheckBox fx:id="boxGrandBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Grand">
                                                                <padding>
                                                                   <Insets left="40.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox alignment="TOP_LEFT" mnemonicParsing="false" text="Moyen" GridPane.rowIndex="1">
+                                                            <CheckBox fx:id="boxMoyenBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Moyen" GridPane.rowIndex="1">
                                                                <padding>
                                                                   <Insets left="40.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox alignment="TOP_LEFT" mnemonicParsing="false" text="Petit" GridPane.rowIndex="2">
+                                                            <CheckBox fx:id="boxPetitBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Petit" GridPane.rowIndex="2">
                                                                <padding>
                                                                   <Insets left="40.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox alignment="TOP_LEFT" mnemonicParsing="false" text="Rond" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                            <CheckBox fx:id="boxRondBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Rond" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                                <padding>
                                                                   <Insets left="40.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox alignment="TOP_LEFT" mnemonicParsing="false" text="Rectangle" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                            <CheckBox fx:id="boxRectBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Rectangle" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                                <padding>
                                                                   <Insets left="40.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox alignment="TOP_LEFT" mnemonicParsing="false" text="Carré" GridPane.columnIndex="1">
+                                                            <CheckBox fx:id="boxCarreBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Carré" GridPane.columnIndex="1">
                                                                <padding>
                                                                   <Insets left="40.0" />
                                                                </padding>
@@ -178,47 +178,47 @@
                                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                         </rowConstraints>
                                                          <children>
-                                                            <CheckBox alignment="TOP_LEFT" mnemonicParsing="false" text="Jaune" GridPane.columnIndex="2">
+                                                            <CheckBox fx:id="boxJauneBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Jaune" GridPane.columnIndex="2">
                                                                <padding>
                                                                   <Insets left="15.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox alignment="TOP_LEFT" mnemonicParsing="false" text="Magenta" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                            <CheckBox fx:id="boxOrangeBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Orange" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                                                <padding>
                                                                   <Insets left="15.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox alignment="TOP_LEFT" mnemonicParsing="false" text="Cyan" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                                            <CheckBox fx:id="boxCyanBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Cyan" GridPane.columnIndex="2" GridPane.rowIndex="2">
                                                                <padding>
                                                                   <Insets left="15.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox alignment="TOP_LEFT" mnemonicParsing="false" text="Vert" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                            <CheckBox fx:id="boxVertBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Vert" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                                <padding>
                                                                   <Insets left="15.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox alignment="TOP_LEFT" mnemonicParsing="false" text="Bleu" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                            <CheckBox fx:id="boxBleuBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Bleu" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                                <padding>
                                                                   <Insets left="15.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox alignment="TOP_LEFT" mnemonicParsing="false" text="Rouge" GridPane.columnIndex="1">
+                                                            <CheckBox fx:id="boxRougeBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Rouge" GridPane.columnIndex="1">
                                                                <padding>
                                                                   <Insets left="15.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox alignment="TOP_LEFT" mnemonicParsing="false" text="Blanc">
+                                                            <CheckBox fx:id="boxBlancBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Blanc">
                                                                <padding>
                                                                   <Insets left="15.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox alignment="TOP_LEFT" mnemonicParsing="false" text="Noir" GridPane.rowIndex="1">
+                                                            <CheckBox fx:id="boxNoirBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Noir" GridPane.rowIndex="1">
                                                                <padding>
                                                                   <Insets left="15.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox alignment="TOP_LEFT" mnemonicParsing="false" text="Gris" GridPane.rowIndex="2">
+                                                            <CheckBox fx:id="boxGrisBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Gris" GridPane.rowIndex="2">
                                                                <padding>
                                                                   <Insets left="15.0" />
                                                                </padding>
@@ -228,7 +228,7 @@
                                                       <Separator layoutX="7.0" layoutY="101.0" prefHeight="0.0" prefWidth="275.0" />
                                                       <ListView layoutX="14.0" layoutY="141.0" prefHeight="403.0" prefWidth="263.0" />
                                                       <Separator layoutX="143.0" layoutY="103.0" orientation="VERTICAL" prefHeight="38.0" prefWidth="5.0" />
-                                                      <Button fx:id="boutonRechercherBloc" alignment="CENTER" layoutX="150.0" layoutY="110.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" text="Rechercher" />
+                                                      <Button fx:id="boutonRechercherBloc" alignment="CENTER" layoutX="150.0" layoutY="110.0" mnemonicParsing="false" onAction="#rechercheMultiCritBloc" prefHeight="25.0" prefWidth="130.0" text="Rechercher" />
                                                    </children>
                                                 </AnchorPane>
                                             </items>
@@ -341,7 +341,7 @@
                                                                   <Insets left="15.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox alignment="TOP_LEFT" mnemonicParsing="false" text="Magenta" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                            <CheckBox alignment="TOP_LEFT" mnemonicParsing="false" text="Orange" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                                                <padding>
                                                                   <Insets left="15.0" />
                                                                </padding>
@@ -386,7 +386,7 @@
                                                       <Separator layoutX="7.0" layoutY="101.0" prefHeight="0.0" prefWidth="275.0" />
                                                       <ListView layoutX="14.0" layoutY="141.0" prefHeight="403.0" prefWidth="263.0" />
                                                       <Separator layoutX="143.0" layoutY="103.0" orientation="VERTICAL" prefHeight="38.0" prefWidth="5.0" />
-                                                      <Button fx:id="boutonRechercherConstruction" alignment="CENTER" layoutX="150.0" layoutY="110.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" text="Rechercher" />
+                                                      <Button fx:id="boutonRechercherConstruction" alignment="CENTER" layoutX="150.0" layoutY="110.0" mnemonicParsing="false" onAction="#rechercheMultiCritConstruc" prefHeight="25.0" prefWidth="130.0" text="Rechercher" />
                                                    </children>
                                                 </AnchorPane>
                                              </items>
