@@ -48,7 +48,6 @@ public class Gestion3D implements Observer{
 	}
 	
 	public Gestion3D() {
-		System.out.println("nouveau gestion3D");
 		Gestion3D.mod.addObserver(this);
 		
 		this.groupe=new Group();
@@ -126,7 +125,6 @@ public class Gestion3D implements Observer{
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		System.out.println("oui oui ça changed");
 		this.majGroup();
 		}
 
