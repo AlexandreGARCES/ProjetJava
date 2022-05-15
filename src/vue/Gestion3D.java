@@ -125,6 +125,7 @@ public class Gestion3D implements Observer{
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
+		System.out.println("oui oui ça changed");
 		this.majGroup();
 		}
 

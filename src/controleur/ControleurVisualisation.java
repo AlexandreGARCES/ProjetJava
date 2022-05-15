@@ -27,6 +27,8 @@ public class ControleurVisualisation extends Controleur implements Initializable
 	ArrayList<String> constructions;
 
 	public ControleurVisualisation() {
+		//this.constructions=new ArrayList<String>();
+		//this.constructions.add("Haha 235");
 		this.constructions=this.mod.getListeConstructions();
 	}
 	
@@ -64,9 +66,6 @@ public class ControleurVisualisation extends Controleur implements Initializable
 			@Override
 			public void changed(ObservableValue<? extends String> arg0, String ancienSelect, String selection) {
 				Gestion3D.mod.changerConstructionActuelle(selection);
-				System.out.println(selection);
-				System.out.println(ancienSelect);
-				System.out.println();
 			}
     		
     	});
@@ -80,20 +79,14 @@ public class ControleurVisualisation extends Controleur implements Initializable
     
     @FXML
     void SwitchFXMLMenu(ActionEvent event) throws IOException {
-
-    	window = (Stage)((Node)event.getSource()).getScene().getWindow();
-    	
-    	Parent root = FXMLLoader.load((getClass().getResource("../vue/Menu.fxml")));
-	    scene = new Scene(root);
-	    
-	    window.setTitle("LEGO");
-	    window.setScene(scene);
-	    window.show();
+    	this.retourMenu(event);
     }
     
     @FXML
     void SwitchFXMLPleinEcran(ActionEvent event) throws IOException {
-    	Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    	this.changerFenetre("PleinEcran", event);
+    	/*
+    	 * Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     	
     	AnchorPane pane = new AnchorPane();
 
@@ -109,6 +102,7 @@ public class ControleurVisualisation extends Controleur implements Initializable
 	    
 	    window.setScene(scene);
 	    window.show();
+	    */
     }
     
     
