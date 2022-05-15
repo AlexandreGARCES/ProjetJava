@@ -88,6 +88,7 @@ public class ControleurConstruction extends Controleur implements Initializable 
 
     @FXML //oubliez pas de lui mettre truc que vous voulez ( a la place du string )
     private ListView<String> listeResultatRechercheBloc;
+    private ArrayList<String> listeBlocs;
     
     @FXML
     void rechercheMultiCritBloc(ActionEvent event) {
@@ -207,7 +208,7 @@ public class ControleurConstruction extends Controleur implements Initializable 
     		}
     	}
     	
-    	//this.mod.rechercherElement(couleurs,types);
+    	//this.listeBloc=this.mod.rechercherElement(couleurs,types);
     	
     	
     	
@@ -231,34 +232,16 @@ public class ControleurConstruction extends Controleur implements Initializable 
     
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-    	//this.mod.listeResultatRecherche (à transformer en listView)
-    	
-		//Permet d'afficher la recherche
-    	//listeResultatRechercheBloc.getItems().addAll(*une collection de bloc pour la recherche*);
-    	//
-    	//Listener pour obtenir le bloc sur lequel vous avez clicker
-    	//listeResultatRechercheBloc.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-    	
-    		//la m�thode correspondante.
-			//@Override
-			//public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {
-    		//Gestion3D.mod.changerConstructionActuelle(selection);
-    		//penser à trouver quel argument fait quoi
-			//}
-    	
     	/*
-    		this.listeResultatRechercheBloc.getItems().addAll(constructions);
-    		this.listeResultatRechercheBloc.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+    	listeResultatRechercheBloc.getItems().addAll(this.listeBlocs);
+    	listeResultatRechercheBloc.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 
 			@Override
-			public void changed(ObservableValue<? extends String> arg, String ancienSelect, String selection) {
-				Gestion3D.mod.changerConstructionActuelle(selection);
+			public void changed(ObservableValue<? extends String> arg0, String ancienSelect, String selection) {
+				//Gestion3D.mod.changerConstructionaAjouter(selection);
 			}
-			
-			*/
-    		
-    	//});
-		
+    	});
+    	*/
 	}
     
     @FXML
