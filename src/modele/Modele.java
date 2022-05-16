@@ -12,6 +12,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Observable;
 import java.util.Set;
 
@@ -185,6 +186,27 @@ public class Modele extends Observable{
 	
 	public static void setConstructions(HashMap<String,Construction> constructions) {
 		Modele.constructions = constructions;
+	}
+
+	public ArrayList<String> rechercherElement(ArrayList<Integer> couleurs, ArrayList<String> types) {
+		//à revoir!!
+		ArrayList<String> resultat=new ArrayList<String>();
+		for (String type : types) {
+			if (couleurs.contains(Modele.constructions.get(type).ConstructionSansBase().getCouleurBase())) {
+				resultat.add(type);
+			}
+		}
+		return resultat;
+	}
+
+	public ArrayList<String> rechercherConstruction(ArrayList<Integer> couleurs, List<String> noms) {
+		ArrayList<String> resultat=new ArrayList<String>();
+		for (String nom : noms) {
+			if (couleurs.contains(Modele.constructions.get(nom).getCouleurBase())) {
+				resultat.add(nom);
+			}
+		}
+		return resultat;
 	}
 
 }

@@ -3,7 +3,10 @@ package controleur;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -150,21 +153,18 @@ public class ControleurConstruction extends Controleur implements Initializable 
     		for (int i=0;i<types.size();i++) { types.set(i, types.get(i)+" petit"); }
     		for (int i=0;i<types.size();i++) { types.set(i, types.get(i)+" moyen"); }
     	}
-    	
-    	//rajouter un all si rien n'est sélectionné?
-    	//this.listeBlocs=this.mod.rechercherElement(couleurs,types);
-    	
-    	/*
-    	Si tu veux pas avoir plus box selectionn�es en m�me temps:
-    	if(boxRougeBloc.isSelected()){
-    		boxBleuBloc.setSelected(false);  ( d�selectionne la checkBox )
-    	}
-    	 */
+    	this.listeBlocs=this.mod.rechercherElement(couleurs,types);
     }
     
     @FXML
     void rechercheMultiCritConstruc(ActionEvent event) {
-    	String nom=barreRecherche.getText();
+    	List<String> recherche=Arrays.asList(barreRecherche.getText().trim().split(" "));
+    	ArrayList<String> constructions=this.mod.getListeConstructions();
+    	
+    	List<String> noms= constructions.stream().filter(input -> {
+    		return recherche.stream().allMatch(mot -> 
+    		input.toLowerCase().contains(mot.toLowerCase()));
+    	}).collect(Collectors.toList());
     	
     	ArrayList<Integer> couleurs=new ArrayList<Integer>();
     	int cpt=0;
@@ -182,7 +182,7 @@ public class ControleurConstruction extends Controleur implements Initializable 
     		for (int i=0;i<9;i++) { couleurs.add(i); }
     	}
     	
-    	//this.mod.rechercherConstruction(couleurs,nom);
+    	this.listeConstructions=this.mod.rechercherConstruction(couleurs,noms);
     }
     
     @Override
