@@ -135,6 +135,19 @@ public class Modele extends Observable{
 		return ar;
 	}
 	
+	public ArrayList<String> getListeElements() {
+		Set<String> nomElements = Modele.getElements().keySet();
+		ArrayList<String> ar =new ArrayList<String>();
+		for(String nom : nomElements) {
+			ar.add(nom);
+		}
+		return ar;
+	}
+	
+	private static HashMap<String, Construction> getElements() {
+		return Modele.elements;
+	}
+
 	public void raz() {
 		//demander couleur
 		this.constructionActuelle= new Construction("terrain",4);
