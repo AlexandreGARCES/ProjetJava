@@ -171,7 +171,7 @@ public class ControleurConstruction extends Controleur implements Initializable 
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
     	//à supprimer après
-    	this.listeBlocs=this.mod.getListeConstructions();
+    	this.listeConstructions=this.mod.getListeConstructions();
     	//à supprimer après
 
     	this.url=arg0;
