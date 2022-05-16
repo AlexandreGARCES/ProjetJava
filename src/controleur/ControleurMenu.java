@@ -34,16 +34,24 @@ public class ControleurMenu extends Controleur{
 
     @FXML
     void switchFXMLConstruction(ActionEvent event) throws IOException {
+    	String[] couleur = {"rouge","bleu","vert","cyan","jaune","orange","gris","blanc","noir"}; 
     	String couleurPlateau = null;
     	TextInputDialog text = new TextInputDialog();
-    	text.getDialogPane().setContentText("Quelle couleur de terrain voulez-vous choisir ?");
+    	text.getDialogPane().setContentText("Quelle couleur de terrain voulez-vous choisir ?\nRouge,Bleu,Vert,Cyan,Jaune,Orange,Gris,Blanc,Noir");
     	Optional<String> resultat = text.showAndWait();
     	TextField input = text.getEditor();
     	if (input.getText() != null && input.getText().toString().length() != 0) {
     		couleurPlateau = input.getText().toString();
-    		System.out.println(couleurPlateau);
-    		this.mod.raz();
-        	this.changerFenetre("Construction", event);
+    		for(int i=0; i<9; i++) {
+    			if (couleurPlateau.toLowerCase().equals(couleur[i].toLowerCase())) {
+    				System.out.println(couleurPlateau);
+    				//utilise couleurPlateau
+    				
+    				this.mod.raz();
+    	        	this.changerFenetre("Construction", event);
+    				break;
+    			}
+    		}
     	} else { System.out.println("entrez une couleur !"); }
     }
     

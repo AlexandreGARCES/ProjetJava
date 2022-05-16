@@ -71,6 +71,7 @@ public class Modele extends Observable{
 		Modele.constructions.put("petit moyen",  constr);
 		Modele.constructionaAjouter = constr.copie(null);
 		//Modele.constructionaAjouter = Modele.getConstructions().get("construction16").copie(null);
+		
 
 		
 	}

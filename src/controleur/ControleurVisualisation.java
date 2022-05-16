@@ -42,7 +42,8 @@ public class ControleurVisualisation extends Controleur implements Initializable
     @FXML
     private Button boutonPleinEcran;
     
-    
+    @FXML
+    private Button boutonSupprimer;
     
 
     
@@ -60,6 +61,11 @@ public class ControleurVisualisation extends Controleur implements Initializable
     @FXML
     void SwitchFXMLPleinEcran(ActionEvent event) throws IOException {
     	this.changerFenetre("PleinEcran", event);
+    }
+    
+    @FXML
+    void supprimerConstruction(ActionEvent event) {
+    	
     }
     
 }
