@@ -86,7 +86,6 @@ public class Modele extends Observable{
 		try {
 			FileInputStream fis = new FileInputStream(fichier);
 			ObjectInputStream ois = new ObjectInputStream(fis);
-
 			Modele.elements = (HashMap<String,Construction>)ois.readObject();
 			ois.close();
 			fis.close();
@@ -219,7 +218,6 @@ public class Modele extends Observable{
 		//penser à enlever la ligne au dessus
 		ArrayList<String> resultat=new ArrayList<String>();
 		ArrayList<String> elems=this.getListeElements();
-		System.out.println(elems);
 		
 		for (int i=0;i<nomsBloc.size();i++) {
 			List<String> recherche=Arrays.asList(nomsBloc.get(i).trim().split(" "));
