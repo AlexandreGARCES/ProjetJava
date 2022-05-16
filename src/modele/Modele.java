@@ -153,6 +153,8 @@ public class Modele extends Observable{
 	}
 	
 	public void sauvegarderSous(String nom) {
+		//commentaire nul
+		this.sauvegarder();
 		int j=0;
 		while (Modele.constructions.containsKey(nom)) {
 			nom=nom+" "+j;
