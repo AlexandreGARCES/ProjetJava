@@ -128,6 +128,11 @@ public class Modele extends Observable{
 	}
 
 	public static void sauvegarderModele() {
+		/*
+		if (this.sauvegarde!=null) {
+			this.sauvegarderSous("sans nom");
+		}
+		*/
 		try {
 			File fichier = new File("constructions.dat");
 			FileOutputStream fos = new FileOutputStream(fichier);
@@ -148,9 +153,6 @@ public class Modele extends Observable{
 	}
 	
 	public void sauvegarderSous(String nom) {
-		if (this.sauvegarde!=null) {
-			this.sauvegarderSous("sans nom");
-		}
 		if (sauvegarde!=null) {
 			int j=0;
 			while (Modele.constructions.containsKey(nom)) {
