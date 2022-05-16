@@ -57,14 +57,13 @@ public class Modele extends Observable{
 		if (Modele.elements == null) {
 			Modele.elements = new HashMap<String,Construction>();
 		}
-		//this.razConstructionActuelle();
 		Cube c0 = new Cube(50, 50, 50, null, 0);
 		Cube c1 = new Cube(50, 50, 50, c0, 0);
 		ArrayList<Element> ar = new ArrayList<Element>();
 		ar.add(c0);
 		Construction constr = new Construction(ar);
 		Modele.constructionaAjouter = constr;
-		Modele.constructionaAjouter = Modele.getConstructions().get("construction16").copie(null);
+		//Modele.constructionaAjouter = Modele.getConstructions().get("construction16").copie(null);
 
 		
 	}
@@ -114,7 +113,7 @@ public class Modele extends Observable{
 	public void razConstructionActuelle() {
 		//demander couleur
 		this.constructionActuelle= new Construction("terrain",4);
-		Modele.constructionaAjouter = Modele.getConstructions().get("construction16").copie(null);
+		//Modele.constructionaAjouter = Modele.getConstructions().get("construction16").copie(null);
 		this.setChanged();
         this.notifyObservers();
 		
@@ -141,10 +140,12 @@ public class Modele extends Observable{
 	}
 	
 	public void sauvegarderSous() {
-		int i = Modele.constructions.size();
-		this.sauvegarde.setNom("construction" + i);
-		Modele.constructions.put(this.sauvegarde.getNom(), this.sauvegarde.copie(null));
-		
+		if (sauvegarde!=null) {
+			int i = Modele.constructions.size();
+			this.sauvegarde.setNom("construction" + i);
+			Modele.constructions.put(this.sauvegarde.getNom(), this.sauvegarde.copie(null));
+			sauvegarde=null;
+		}	
 	}
 
 	@SuppressWarnings("unchecked")
