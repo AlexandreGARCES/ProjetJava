@@ -163,29 +163,56 @@ public class Controleur {
 	
     @FXML
     void rechercheMultiCritBloc(ActionEvent event) {
-    	ArrayList<String> recherche=new ArrayList<String>();
+    	ArrayList<String> recherche = new ArrayList<String>();
+    	ArrayList<String> taille=new ArrayList<String>();
+    	ArrayList<String> couleur=new ArrayList<String>();
+    	ArrayList<String> direction=new ArrayList<String>();
+    	taille.add("moyen");
+    	taille.add("petit"); 
+    	taille.add("grand");
     	
-    	if(boxGrandBloc.isSelected()) { recherche.add("grand"); }
-    	if(boxPetitBloc.isSelected()) { recherche.add("petit"); }
-    	if(boxMoyenBloc.isSelected()) { recherche.add("moyen"); }
+    	if(boxGrandBloc.isSelected()) {if(taille.size() == 3) {taille = new ArrayList<String>();} taille.add("grand"); }
+    	if(boxPetitBloc.isSelected()) {if(taille.size() == 3) {taille = new ArrayList<String>();} taille.add("petit"); }
+    	if(boxMoyenBloc.isSelected()) {if(taille.size() == 3) {taille = new ArrayList<String>();} taille.add("moyen"); }
+    	
+    	couleur.add("blanc");
+    	couleur.add("bleu");
+    	couleur.add("cyan");
+    	couleur.add("gris");
+    	couleur.add("orange");
+    	couleur.add("noir");
+    	couleur.add("rouge");
+    	couleur.add("vert");
+    	couleur.add("jaune");
+    	
+    	if (boxBlanc.isSelected()) {if(couleur.size() == 9) {couleur = new ArrayList<String>();} couleur.add("blanc");}
+    	if (boxBleu.isSelected())  {if(couleur.size() == 9) {couleur = new ArrayList<String>();} couleur.add("bleu");}
+    	if (boxCyan.isSelected())  {if(couleur.size() == 9) {couleur = new ArrayList<String>();} couleur.add("cyan");}
+    	if (boxGris.isSelected())  {if(couleur.size() == 9) {couleur = new ArrayList<String>();} couleur.add("gris"); }
+    	if (boxOrange.isSelected()){if(couleur.size() == 9) {couleur = new ArrayList<String>();} couleur.add("orange");}
+    	if (boxNoir.isSelected())  {if(couleur.size() == 9) {couleur = new ArrayList<String>();} couleur.add("noir");}
+    	if (boxRouge.isSelected()) {if(couleur.size() == 9) {couleur = new ArrayList<String>();} couleur.add("rouge");}
+    	if (boxVert.isSelected())  {if(couleur.size() == 9) {couleur = new ArrayList<String>();} couleur.add("vert");}
+    	if (boxJaune.isSelected()) {if(couleur.size() == 9) {couleur = new ArrayList<String>();} couleur.add("jaune");}
+    	
+    	direction.add("horizontalX");
+    	direction.add("horizontalY");
+    	direction.add("vertical");
+    	if(boxCarreBloc.isSelected()) {if(direction.size() == 3) {direction = new ArrayList<String>();}  direction.add("horizontalX");}
+    	if(boxRectBloc.isSelected()) {if(direction.size() == 3) {direction = new ArrayList<String>();}  direction.add("vertical"); }
+    	if(boxRondBloc.isSelected()) {if(direction.size() == 3) {direction = new ArrayList<String>();} direction.add("horizontalY");}
+    	for(String taiille: taille) {
+    		for(String couuleur: couleur) {
+    			for(String diirection:direction) {
+    				System.out.println("marche");
+    				recherche.add(String.format("%s %s %s", taiille, couuleur, diirection));
+    				
+    			}
+    		}
+    	}
     	
 
-    	if (boxBlanc.isSelected()) { recherche.add("blanc");}
-    	if (boxBleu.isSelected())  { recherche.add("bleu");}
-    	if (boxCyan.isSelected())  { recherche.add("cyan");}
-    	if (boxGris.isSelected())  { recherche.add("gris");}
-    	if (boxOrange.isSelected()){ recherche.add("orange");}
-    	if (boxNoir.isSelected())  { recherche.add("noir");}
-    	if (boxRouge.isSelected()) { recherche.add("rouge");}
-    	if (boxVert.isSelected())  { recherche.add("vert");}
-    	if (boxJaune.isSelected()) { recherche.add("jaune");}
-
-
-    	if(boxCarreBloc.isSelected()) {  recherche.add("horizontalX");}
-    	if(boxRectBloc.isSelected()) {  recherche.add("vertical"); }
-    	if(boxRondBloc.isSelected()) { recherche.add("horizontalY");}
-
-    	
+    	System.out.println(recherche);
 
     	this.listeBlocs=this.mod.rechercherElement(recherche);
     	this.initialize(this.url, this.rbundle);
