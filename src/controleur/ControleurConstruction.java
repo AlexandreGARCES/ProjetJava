@@ -203,6 +203,7 @@ public class ControleurConstruction extends Controleur implements Initializable 
     @FXML
     void SwitchFXMLMenu(ActionEvent event) throws IOException {
     	this.mod.sauvegarderSous();
+    	this.mod.raz();
     	this.retourMenu(event);
     }
     

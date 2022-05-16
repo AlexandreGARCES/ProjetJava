@@ -118,7 +118,7 @@ public class Modele extends Observable{
 	}
 	
 	public void changerBlocaAjouter(String selection) {
-		Modele.constructionaAjouter=Modele.elements.get(selection);
+		Modele.constructionaAjouter=Modele.elements.get(selection).copie(null);
 		
 	}
 

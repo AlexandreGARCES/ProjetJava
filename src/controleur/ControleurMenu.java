@@ -38,12 +38,14 @@ public class ControleurMenu extends Controleur{
 
     @FXML
     void switchFXMLConstruction(ActionEvent event) throws IOException {
+    	this.mod.raz();
     	this.changerFenetre("Construction", event);
     }
     
     
     @FXML
     void switchFXMLVisualisation(ActionEvent event) throws IOException {
+    	this.mod.raz();
     	this.changerFenetre("Visualisation", event);
     }
 }
