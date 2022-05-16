@@ -34,6 +34,7 @@ public class ControleurMenu extends Controleur{
 
     @FXML
     void switchFXMLConstruction(ActionEvent event) throws IOException {
+    	String[] couleur = {"rouge","bleu","vert","cyan","jaune","orange","gris","blanc","noir"}; 
     	String couleurPlateau = null;
     	TextInputDialog text = new TextInputDialog();
     	text.getDialogPane().setContentText("Quelle couleur de terrain voulez-vous choisir ?");
