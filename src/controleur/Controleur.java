@@ -44,7 +44,7 @@ public class Controleur {
 	    Controleur.vue3D.addTouches(this.scene);
 	    
 	    Modele.setMode(fenetre=="Construction");
-	    this.mod.raz();
+	    
 	    
 	    //A SUPPRIMER APRES devrait être dans raz!!!!
 	    Cube c0 = new Cube(50, 50, 50, null, 0);
