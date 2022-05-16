@@ -47,6 +47,24 @@ public class Controleur {
     protected Button boutonRechercherConstruction;
 
     @FXML
+    protected CheckBox boxBlanc;
+    @FXML
+    protected CheckBox boxBleu;
+    @FXML
+    protected CheckBox boxCyan;
+    @FXML
+    protected CheckBox boxGris;
+    @FXML
+    protected CheckBox boxJaune;
+    @FXML
+    protected CheckBox boxOrange;
+    @FXML
+    protected CheckBox boxNoir;
+    @FXML
+    protected CheckBox boxRouge;
+    @FXML
+    protected CheckBox boxVert;
+    @FXML
     protected CheckBox boxBlancBloc;
     @FXML
     protected CheckBox boxBleuBloc;
@@ -143,6 +161,7 @@ public class Controleur {
 	
     @FXML
     void rechercheMultiCritBloc(ActionEvent event) {
+    	System.out.println(boxJauneBloc.isSelected());
     	ArrayList<String> taille=new ArrayList<String>();
     	int cpt=0;
     	if(boxGrandBloc.isSelected()) { taille.add("grand"); }else { cpt++; }
