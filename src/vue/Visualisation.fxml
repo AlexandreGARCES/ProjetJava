@@ -52,10 +52,14 @@
                                              <children>
                                                 <Button fx:id="boutonModifier" alignment="CENTER" mnemonicParsing="false" onAction="#SwitchFXMLConstruction" prefHeight="50.0" prefWidth="120.0" text="Modifier">
                                                    <HBox.margin>
-                                                      <Insets right="700.0" />
+                                                      <Insets right="350.0" />
                                                    </HBox.margin>
                                                 </Button>
-                                                <Button fx:id="boutonPleinEcran" alignment="CENTER" mnemonicParsing="false" onAction="#SwitchFXMLPleinEcran" prefHeight="50.0" prefWidth="120.0" text="Plein écran" />
+                                                <Button fx:id="boutonSupprimer" alignment="CENTER" mnemonicParsing="false" onAction="#supprimerConstruction" prefHeight="50.0" prefWidth="120.0" text="Supprimer" />
+                                                <Button fx:id="boutonPleinEcran" alignment="CENTER" mnemonicParsing="false" onAction="#SwitchFXMLPleinEcran" prefHeight="50.0" prefWidth="120.0" text="Plein écran">
+                                                   <HBox.margin>
+                                                      <Insets left="350.0" />
+                                                   </HBox.margin></Button>
                                              </children>
                                           </HBox>
                                        </children>
