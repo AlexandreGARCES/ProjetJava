@@ -3,6 +3,7 @@ package controleur;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javafx.beans.value.ChangeListener;
@@ -16,11 +17,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.SubScene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import modele.Modele;
 import vue.Gestion3D;
@@ -213,9 +218,24 @@ public class ControleurConstruction extends Controleur implements Initializable 
     
     @FXML
     void SwitchFXMLVisualisation(ActionEvent event) throws IOException {
-    	this.mod.sauvegarderSous();
+    	FXMLLoader loader = new FXMLLoader();
+    	loader.setLocation(getClass().getResource("../vue/DialogBoxConstructionQuitter.fxml"));
+    	Pane PopUpConstructionQuitter = loader.load();
+    	
+    	Dialog<ButtonType> dialog = new Dialog<>();
+    	dialog.setDialogPane((DialogPane) PopUpConstructionQuitter);
+    	
+    	Optional<ButtonType> boutonClicker = dialog.showAndWait();
+    	if (boutonClicker.get() == ButtonType.YES) {
+    		this.mod.sauvegarderSous();
+    		this.changerFenetre("Visualisation", event);
+    	} else if (boutonClicker.get() == ButtonType.NO) {
+    		this.changerFenetre("Visualisation", event);
+    	}
+    	
+    	
     	//demander si on veux sauvegarder et si oui appeler this.mod.sauvegarder()
-    	this.changerFenetre("Visualisation", event);
+    
     }
     
     @FXML
