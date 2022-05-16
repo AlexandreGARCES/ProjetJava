@@ -154,39 +154,39 @@ public class Controleur {
     	
     	ArrayList<String> couleurs=new ArrayList<String>();
     	cpt=0;
-    	if (boxBlancBloc.isSelected()) { 
+    	if (boxBlanc.isSelected()) { 
     		for (int i=0;i<taille.size();i++) {
     			couleurs.add(taille.get(i)+" blanc");
     		} }else { cpt++; }
-    	if (boxBleuBloc.isSelected())  {
+    	if (boxBleu.isSelected())  {
     		for (int i=0;i<taille.size();i++) {
     			couleurs.add(taille.get(i)+" bleu");
     		} }else { cpt++; }
-    	if (boxCyanBloc.isSelected())  { 
+    	if (boxCyan.isSelected())  { 
     		for (int i=0;i<taille.size();i++) {
     			couleurs.add(taille.get(i)+" cyan");
     		} }else { cpt++; }
-    	if (boxGrisBloc.isSelected())  { 
+    	if (boxGris.isSelected())  { 
     		for (int i=0;i<taille.size();i++) {
     			couleurs.add(taille.get(i)+" gris");
     		} }else { cpt++; }
-    	if (boxOrangeBloc.isSelected()){ 
+    	if (boxOrange.isSelected()){ 
     		for (int i=0;i<taille.size();i++) {
     			couleurs.add(taille.get(i)+" orange");
     		} }else { cpt++; }
-    	if (boxNoirBloc.isSelected())  { 
+    	if (boxNoir.isSelected())  { 
     		for (int i=0;i<taille.size();i++) {
     			couleurs.add(taille.get(i)+" noir");
     		} }else { cpt++; }
-    	if (boxRougeBloc.isSelected()) { 
+    	if (boxRouge.isSelected()) { 
     		for (int i=0;i<taille.size();i++) {
     			couleurs.add(taille.get(i)+" rouge");
     		} }else { cpt++; }
-    	if (boxVertBloc.isSelected())  { 
+    	if (boxVert.isSelected())  { 
     		for (int i=0;i<taille.size();i++) {
     			couleurs.add(taille.get(i)+" vert");
     		} }else { cpt++; }
-    	if (boxJauneBloc.isSelected()) { 
+    	if (boxJaune.isSelected()) { 
     		for (int i=0;i<taille.size();i++) {
     			couleurs.add(taille.get(i)+" jaune");
     		} }else { cpt++; }
@@ -200,7 +200,7 @@ public class Controleur {
     	}
     	
     	String[] tabOrientation= {" horizontalX"," horizontalX"," vertical"};
-    	ArrayList<String> orientations=new ArrayList<String>();//on rajoute les triangles les gars?
+    	ArrayList<String> orientations=new ArrayList<String>();
     	cpt=0;
     	if(boxCarreBloc.isSelected()) { 
     		for (int i=0;i<taille.size();i++) {
