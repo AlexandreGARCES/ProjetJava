@@ -19,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import modele.Modele;
@@ -33,6 +34,9 @@ public class ControleurConstruction extends Controleur implements Initializable 
 	//lorsque click sur un élément de la liste: change Modele.constructionAAjouter
 
 	//-----------------------------------------------------
+	
+	@FXML
+    private TextField barreRecherche;
 	
 	@FXML
     private SubScene subScene3D;
