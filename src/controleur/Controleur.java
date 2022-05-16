@@ -278,7 +278,7 @@ public class Controleur {
     			public void changed(ObservableValue<? extends String> arg0, String ancienSelect, String selection) {
     				if (selection!=null) {
     					if (Controleur.type) {
-        					Gestion3D.mod.changerBlocaAjouter(selection);
+        					Gestion3D.mod.changerConstructionaAjouter(selection);
         				}else {
         					Gestion3D.mod.changerConstructionActuelle(selection);
         				}

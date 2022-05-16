@@ -216,13 +216,13 @@ public class Modele extends Observable{
 	}
 
 	public ArrayList<String> rechercherElement(ArrayList<String> nomsBloc) {
-		System.out.println(nomsBloc);
 		//penser à enlever la ligne au dessus
 		ArrayList<String> resultat=new ArrayList<String>();
+		ArrayList<String> elems=this.getListeElements();
+		System.out.println(elems);
+		
 		for (int i=0;i<nomsBloc.size();i++) {
 			List<String> recherche=Arrays.asList(nomsBloc.get(i).trim().split(" "));
-			ArrayList<String> elems=this.getListeElements();
-			
 	    	List<String> noms= elems.stream().filter(input -> {
 	    		return recherche.stream().allMatch(mot -> 
 	    		input.toLowerCase().contains(mot.toLowerCase()));
