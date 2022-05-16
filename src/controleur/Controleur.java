@@ -39,45 +39,45 @@ public class Controleur {
 	public ResourceBundle rbundle;
 	
 	@FXML
-    private TextField barreRecherche;
+	protected TextField barreRecherche;
 	
     @FXML
-    private Button boutonRechercherBloc;
+    protected Button boutonRechercherBloc;
     @FXML
-    private Button boutonRechercherConstruction;
+    protected Button boutonRechercherConstruction;
 
     @FXML
-    private CheckBox boxBlancBloc;
+    protected CheckBox boxBlancBloc;
     @FXML
-    private CheckBox boxBleuBloc;
+    protected CheckBox boxBleuBloc;
     @FXML
-    private CheckBox boxCyanBloc;
+    protected CheckBox boxCyanBloc;
     @FXML
-    private CheckBox boxGrisBloc;
+    protected CheckBox boxGrisBloc;
     @FXML
-    private CheckBox boxJauneBloc;
+    protected CheckBox boxJauneBloc;
     @FXML
-    private CheckBox boxOrangeBloc;
+    protected CheckBox boxOrangeBloc;
     @FXML
-    private CheckBox boxNoirBloc;
+    protected CheckBox boxNoirBloc;
     @FXML
-    private CheckBox boxRougeBloc;
+    protected CheckBox boxRougeBloc;
     @FXML
-    private CheckBox boxVertBloc;
+    protected CheckBox boxVertBloc;
     
     @FXML
     private CheckBox boxCarreBloc;
     @FXML
-    private CheckBox boxRectBloc;
+    protected CheckBox boxRectBloc;
     @FXML
-    private CheckBox boxRondBloc;
+    protected CheckBox boxRondBloc;
     
     @FXML
-    private CheckBox boxGrandBloc;
+    protected CheckBox boxGrandBloc;
     @FXML
-    private CheckBox boxMoyenBloc;
+    protected CheckBox boxMoyenBloc;
     @FXML
-    private CheckBox boxPetitBloc;
+    protected CheckBox boxPetitBloc;
 
     @FXML
 	protected ListView<String> listeResultatRecherche;

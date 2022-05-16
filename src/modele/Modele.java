@@ -153,16 +153,14 @@ public class Modele extends Observable{
 	}
 	
 	public void sauvegarderSous(String nom) {
-		if (sauvegarde!=null) {
-			int j=0;
-			while (Modele.constructions.containsKey(nom)) {
-				nom=nom+" "+j;
-				j++;
-			}
-			this.sauvegarde.setNom(nom);
-			Modele.constructions.put(this.sauvegarde.getNom(), this.sauvegarde.copie(null));
-			sauvegarde=null;
-		}	
+		int j=0;
+		while (Modele.constructions.containsKey(nom)) {
+			nom=nom+" "+j;
+			j++;
+		}
+		this.sauvegarde.setNom(nom);
+		Modele.constructions.put(this.sauvegarde.getNom(), this.sauvegarde.copie(null));
+		sauvegarde=null;
 	}
 
 	@SuppressWarnings("unchecked")
