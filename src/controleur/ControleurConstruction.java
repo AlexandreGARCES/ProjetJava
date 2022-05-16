@@ -246,11 +246,13 @@ public class ControleurConstruction extends Controleur implements Initializable 
     
     @FXML
     void SwitchFXMLMenu(ActionEvent event) throws IOException {
+    	this.mod.sauvegarderSous();
     	this.retourMenu(event);
     }
     
     @FXML
     void SwitchFXMLVisualisation(ActionEvent event) throws IOException {
+    	this.mod.sauvegarderSous();
     	//demander si on veux sauvegarder et si oui appeler this.mod.sauvegarder()
     	this.changerFenetre("Visualisation", event);
     }

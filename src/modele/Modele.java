@@ -31,8 +31,12 @@ public class Modele extends Observable{
 	public static Element_a_ajouter element_a_ajouter;////construction plus tard
 	
 	private static HashMap<String,Construction> constructions;
-	public Construction constructionActuelle;
+	private static HashMap<String,Construction> elements;
 	public static Construction constructionaAjouter;
+	
+	public Construction constructionActuelle;
+	public Construction sauvegarde;
+	
 	
 	public Modele(){
 
@@ -49,6 +53,9 @@ public class Modele extends Observable{
 		this.charger();
 		if (Modele.constructions == null) {
 			Modele.constructions = new HashMap<String,Construction>();
+		}
+		if (Modele.elements == null) {
+			Modele.elements = new HashMap<String,Construction>();
 		}
 		//this.razConstructionActuelle();
 		Cube c0 = new Cube(50, 50, 50, null, 0);
@@ -105,6 +112,7 @@ public class Modele extends Observable{
 	}
 	
 	public void razConstructionActuelle() {
+		//demander couleur
 		this.constructionActuelle= new Construction("terrain",4);
 		Modele.constructionaAjouter = Modele.getConstructions().get("construction16").copie(null);
 		this.setChanged();
@@ -127,9 +135,16 @@ public class Modele extends Observable{
 	}
 	
 	public void sauvegarder() {
+		//dois enregistrer la construction actuelle dans une variable
+		//quand on quitte on fait appel à une autre fonction qui va faire ce qu'on fait là mais avec la variable
+		this.sauvegarde=this.constructionActuelle;
+	}
+	
+	public void sauvegarderSous() {
 		int i = Modele.constructions.size();
-		this.constructionActuelle.setNom("construction" + i);
-		Modele.constructions.put(this.constructionActuelle.getNom(), this.constructionActuelle.copie(null));
+		this.sauvegarde.setNom("construction" + i);
+		Modele.constructions.put(this.sauvegarde.getNom(), this.sauvegarde.copie(null));
+		
 	}
 
 	@SuppressWarnings("unchecked")
