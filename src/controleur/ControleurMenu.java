@@ -45,6 +45,8 @@ public class ControleurMenu extends Controleur{
     		for(int i=0; i<9; i++) {
     			if (couleurPlateau.toLowerCase().equals(couleur[i].toLowerCase())) {
     				System.out.println(couleurPlateau);
+    				//utilise couleurPlateau
+    				
     				this.mod.raz();
     	        	this.changerFenetre("Construction", event);
     				break;
