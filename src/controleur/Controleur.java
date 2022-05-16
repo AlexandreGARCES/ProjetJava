@@ -244,20 +244,21 @@ public class Controleur {
     		}	
     	}*/
     	
-
     	this.listeBlocs=this.mod.rechercherElement(orientations);
+    	//this.listeBlocs=this.mod.rechercherElement(recherche);
     	this.initialize(this.url, this.rbundle);
     }
     
 	public void initialize(URL arg0, ResourceBundle arg1) {
     	this.url=arg0;
     	this.rbundle=arg1;
-    	this.listeResultatRecherche.getItems().clear();
+    	
     	
     	if (this.listeBlocs!=null) {
-    	listeResultatRecherche.getItems().addAll(this.listeBlocs);
+    		this.listeResultatRechercheBloc.getItems().clear();
+    	listeResultatRechercheBloc.getItems().addAll(this.listeBlocs);
 		this.listeBlocs=null;
-    	listeResultatRecherche.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+    	listeResultatRechercheBloc.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 			@Override
 			public void changed(ObservableValue<? extends String> arg0, String ancienSelect, String selection) {
 				if (selection!=null) {
@@ -270,6 +271,7 @@ public class Controleur {
 			}
     	});
 	}else if (this.listeConstructions!=null) {
+		this.listeResultatRecherche.getItems().clear();
     		listeResultatRecherche.getItems().addAll(this.listeConstructions);
     		this.listeConstructions=null;
         	listeResultatRecherche.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
