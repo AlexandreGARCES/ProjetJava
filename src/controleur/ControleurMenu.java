@@ -5,17 +5,10 @@ import java.util.Optional;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.Node;
-import javafx.stage.Stage;
-import modele.Modele;
-import vue.Gestion3D;
 
 public class ControleurMenu extends Controleur{
 	
