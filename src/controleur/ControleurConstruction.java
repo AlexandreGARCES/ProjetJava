@@ -108,13 +108,13 @@ public class ControleurConstruction extends Controleur implements Initializable 
     	int cpt=0;
     	if (boxBlancBloc.isSelected()) { couleurs.add(3); }else { cpt++; }
     	if (boxBleuBloc.isSelected())  { couleurs.add(2); }else { cpt++; }
-    	if(boxCyanBloc.isSelected())   { couleurs.add(6); }else { cpt++; }
-    	if(boxGrisBloc.isSelected())   { couleurs.add(4); }else { cpt++; }
-    	if(boxOrangeBloc.isSelected()) { couleurs.add(8); }else { cpt++; }
-    	if(boxNoirBloc.isSelected())   { couleurs.add(5); }else { cpt++; }
-    	if(boxRougeBloc.isSelected())  { couleurs.add(0); }else { cpt++; }
-    	if(boxVertBloc.isSelected())   { couleurs.add(1); }else { cpt++; }
-    	if(boxJauneBloc.isSelected())  { couleurs.add(7); }else { cpt++; }
+    	if (boxCyanBloc.isSelected())  { couleurs.add(6); }else { cpt++; }
+    	if (boxGrisBloc.isSelected())  { couleurs.add(4); }else { cpt++; }
+    	if (boxOrangeBloc.isSelected()){ couleurs.add(8); }else { cpt++; }
+    	if (boxNoirBloc.isSelected())  { couleurs.add(5); }else { cpt++; }
+    	if (boxRougeBloc.isSelected()) { couleurs.add(0); }else { cpt++; }
+    	if (boxVertBloc.isSelected())  { couleurs.add(1); }else { cpt++; }
+    	if (boxJauneBloc.isSelected()) { couleurs.add(7); }else { cpt++; }
     	if (cpt==9) {//si aucun n'est sélectionné, tout mettre
     		couleurs.clear();
     		for (int i=0;i<9;i++) { couleurs.add(i); }
@@ -169,18 +169,31 @@ public class ControleurConstruction extends Controleur implements Initializable 
     
     @FXML
     void rechercheMultiCritConstruc(ActionEvent event) {
-    	System.out.println("recherche dans Modele.constructions");
-    	//par nom: dans modèle: pour chaque String dans constructions.setKey, if ma String est contenue dans la key: rajouter aux résultats recherche
-    	//par couleur de la base
-    	//par couleurs présentes (ou exclure une couleur présente?)
-    	//par formes présentes?
-    	//par tailles présentes?
+    	String nom=barreRecherche.getText();
+    	
+    	ArrayList<Integer> couleurs=new ArrayList<Integer>();
+    	int cpt=0;
+    	if (boxBlancBloc.isSelected()) { couleurs.add(3); }else { cpt++; }
+    	if (boxBleuBloc.isSelected())  { couleurs.add(2); }else { cpt++; }
+    	if (boxCyanBloc.isSelected())  { couleurs.add(6); }else { cpt++; }
+    	if (boxGrisBloc.isSelected())  { couleurs.add(4); }else { cpt++; }
+    	if (boxOrangeBloc.isSelected()){ couleurs.add(8); }else { cpt++; }
+    	if (boxNoirBloc.isSelected())  { couleurs.add(5); }else { cpt++; }
+    	if (boxRougeBloc.isSelected()) { couleurs.add(0); }else { cpt++; }
+    	if (boxVertBloc.isSelected())  { couleurs.add(1); }else { cpt++; }
+    	if (boxJauneBloc.isSelected()) { couleurs.add(7); }else { cpt++; }
+    	if (cpt==9) {//si aucun n'est sélectionné, tout mettre
+    		couleurs.clear();
+    		for (int i=0;i<9;i++) { couleurs.add(i); }
+    	}
+    	
+    	//this.mod.rechercherConstruction(couleurs,nom);
     }
     
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
     	//à supprimer après
-    	this.listeBlocs=this.mod.getListeConstructions();
+    	this.listeConstructions=this.mod.getListeConstructions();
     	//à supprimer après
 
     	this.url=arg0;

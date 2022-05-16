@@ -62,7 +62,7 @@ public class Modele extends Observable{
 		ArrayList<Element> ar = new ArrayList<Element>();
 		ar.add(c0);
 		Construction constr = new Construction(ar);
-		Modele.constructionaAjouter = constr;
+		Modele.constructionaAjouter = constr.copie(null);
 		//Modele.constructionaAjouter = Modele.getConstructions().get("construction16").copie(null);
 
 		
@@ -118,12 +118,12 @@ public class Modele extends Observable{
 	}
 	
 	public void changerBlocaAjouter(String selection) {
-		Modele.constructionaAjouter=Modele.elements.get(selection);
+		Modele.constructionaAjouter=Modele.elements.get(selection).copie(null);
 		
 	}
 
 	public void changerConstructionaAjouter(String selection) {
-		Modele.constructionaAjouter=Modele.elements.get(selection);		
+		Modele.constructionaAjouter=Modele.constructions.get(selection).copie(null);		
 	}
 
 	public static void sauvegarderModele() {
