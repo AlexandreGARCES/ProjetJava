@@ -125,7 +125,7 @@ public class Controleur {
     	Parent root = FXMLLoader.load((getClass().getResource("../vue/Menu.fxml")));
 	    scene = new Scene(root);
 	    
-	    this.mod.raz();
+	    this.mod.raz(4);
 	    
 	    //A SUPPRIMER APRES devrait être dans raz!!!!
 	    Cube c0 = new Cube(50, 50, 50, null, 0);

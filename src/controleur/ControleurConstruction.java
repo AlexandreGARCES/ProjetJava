@@ -59,12 +59,12 @@ public class ControleurConstruction extends Controleur implements Initializable 
         	if (input.getText() != null && input.getText().toString().length() != 0) {
         		nomSauv = input.getText().toString();
         		this.mod.sauvegarderSous(nomSauv);
-        		this.mod.raz();
+        		this.mod.raz(4);
         		this.mod.sauvegarde=null;
         		this.retourMenu(event);
         	} else { System.out.println("entrez un nom !"); }
     	} else if (boutonClicker.get() == ButtonType.NO) {
-    		this.mod.raz();
+    		this.mod.raz(4);
     		this.mod.sauvegarde=null;
     		this.retourMenu(event);
     	}

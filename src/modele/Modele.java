@@ -110,11 +110,10 @@ public class Modele extends Observable{
 		return ar;
 	}
 	
-	public void raz() {
+	public void raz(int couleur) {
 		//demander couleur
-		this.constructionActuelle= new Construction("terrain",4);
+		this.constructionActuelle= new Construction("terrain",couleur);
 		//Modele.constructionaAjouter = Modele.getConstructions().get("cube 1x1").copie(null);
-		//doit aussi raz la construction à ajouter!!
 		this.setChanged();
         this.notifyObservers();
 	}
@@ -129,11 +128,6 @@ public class Modele extends Observable{
 	}
 
 	public static void sauvegarderModele() {
-		/*
-		if (this.sauvegarde!=null) {
-			this.sauvegarderSous("sans nom");
-		}
-		*/
 		try {
 			File fichier = new File("constructions.dat");
 			FileOutputStream fos = new FileOutputStream(fichier);
@@ -148,8 +142,6 @@ public class Modele extends Observable{
 	}
 	
 	public void sauvegarder() {
-		//dois enregistrer la construction actuelle dans une variable
-		//quand on quitte on fait appel à une autre fonction qui va faire ce qu'on fait là mais avec la variable
 		this.sauvegarde=this.constructionActuelle;
 	}
 	

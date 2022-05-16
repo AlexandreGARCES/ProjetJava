@@ -34,7 +34,7 @@ public class ControleurMenu extends Controleur{
 
     @FXML
     void switchFXMLConstruction(ActionEvent event) throws IOException {
-    	String[] couleur = {"rouge","bleu","vert","cyan","jaune","orange","gris","blanc","noir"}; 
+    	String[] tabCouleur = {"rouge","bleu","vert","cyan","jaune","orange","gris","blanc","noir"}; 
     	String couleurPlateau = null;
     	TextInputDialog text = new TextInputDialog();
     	text.getDialogPane().setContentText("Quelle couleur de terrain voulez-vous choisir ?\nRouge,Bleu,Vert,Cyan,Jaune,Orange,Gris,Blanc,Noir");
@@ -43,11 +43,19 @@ public class ControleurMenu extends Controleur{
     	if (input.getText() != null && input.getText().toString().length() != 0) {
     		couleurPlateau = input.getText().toString();
     		for(int i=0; i<9; i++) {
-    			if (couleurPlateau.toLowerCase().equals(couleur[i].toLowerCase())) {
-    				System.out.println(couleurPlateau);
-    				//utilise couleurPlateau
-    				
-    				this.mod.raz();
+    			if (couleurPlateau.toLowerCase().equals(tabCouleur[i].toLowerCase())) {
+    				couleurPlateau=couleurPlateau.toLowerCase();
+    				int couleur=4;
+    				if (couleurPlateau.equals("rouge")) { couleur=0; }
+    				if (couleurPlateau.equals("vert")) { couleur=1; }
+    				if (couleurPlateau.equals("bleu")) { couleur=2; }
+    				if (couleurPlateau.equals("blanc")) { couleur=3; }
+    				if (couleurPlateau.equals("gris")) { couleur=4; }
+    				if (couleurPlateau.equals("noir")) { couleur=5; }
+    				if (couleurPlateau.equals("cyan")) { couleur=6; }
+    				if (couleurPlateau.equals("jaune")) { couleur=7; }
+    				if (couleurPlateau.equals("orange")) { couleur=8; }
+    				this.mod.raz(couleur);
     	        	this.changerFenetre("Construction", event);
     				break;
     			}
@@ -58,7 +66,7 @@ public class ControleurMenu extends Controleur{
     
     @FXML
     void switchFXMLVisualisation(ActionEvent event) throws IOException {
-    	this.mod.raz();
+    	this.mod.raz(4);
     	this.changerFenetre("Visualisation", event);
     }
 }

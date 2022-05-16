@@ -53,7 +53,7 @@ public class ControleurVisualisation extends Controleur implements Initializable
     
     @FXML
     void SwitchFXMLMenu(ActionEvent event) throws IOException {
-    	this.mod.raz();
+    	this.mod.raz(4);
     	this.retourMenu(event);
     }
     
