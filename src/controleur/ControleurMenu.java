@@ -37,7 +37,7 @@ public class ControleurMenu extends Controleur{
     	String[] couleur = {"rouge","bleu","vert","cyan","jaune","orange","gris","blanc","noir"}; 
     	String couleurPlateau = null;
     	TextInputDialog text = new TextInputDialog();
-    	text.getDialogPane().setContentText("Quelle couleur de terrain voulez-vous choisir ?");
+    	text.getDialogPane().setContentText("Quelle couleur de terrain voulez-vous choisir ?\nRouge,Bleu,Vert,Cyan,Jaune,Orange,Gris,Blanc,Noir");
     	Optional<String> resultat = text.showAndWait();
     	TextField input = text.getEditor();
     	if (input.getText() != null && input.getText().toString().length() != 0) {
