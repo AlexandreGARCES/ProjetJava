@@ -161,7 +161,7 @@ public class Controleur {
 	
     @FXML
     void rechercheMultiCritBloc(ActionEvent event) {
-    	System.out.println(boxJauneBloc.isSelected());
+    	System.out.println(boxJaune.isSelected());
     	ArrayList<String> taille=new ArrayList<String>();
     	int cpt=0;
     	if(boxGrandBloc.isSelected()) { taille.add("grand"); }else { cpt++; }
