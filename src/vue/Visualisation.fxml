@@ -169,47 +169,47 @@
                                                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                          </rowConstraints>
                                                          <children>
-                                                            <CheckBox fx:id="boxJauneBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Jaune" GridPane.columnIndex="2">
+                                                            <CheckBox fx:id="boxJaune" alignment="TOP_LEFT" mnemonicParsing="false" text="Jaune" GridPane.columnIndex="2">
                                                                <padding>
                                                                   <Insets left="15.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox fx:id="boxOrangeBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Orange" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                            <CheckBox fx:id="boxOrange" alignment="TOP_LEFT" mnemonicParsing="false" text="Orange" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                                                <padding>
                                                                   <Insets left="15.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox fx:id="boxCyanBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Cyan" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                                            <CheckBox fx:id="boxCyan" alignment="TOP_LEFT" mnemonicParsing="false" text="Cyan" GridPane.columnIndex="2" GridPane.rowIndex="2">
                                                                <padding>
                                                                   <Insets left="15.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox fx:id="boxVertBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Vert" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                            <CheckBox fx:id="boxVert" alignment="TOP_LEFT" mnemonicParsing="false" text="Vert" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                                <padding>
                                                                   <Insets left="15.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox fx:id="boxBleuBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Bleu" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                            <CheckBox fx:id="boxBleu" alignment="TOP_LEFT" mnemonicParsing="false" text="Bleu" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                                <padding>
                                                                   <Insets left="15.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox fx:id="boxRougeBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Rouge" GridPane.columnIndex="1">
+                                                            <CheckBox fx:id="boxRouge" alignment="TOP_LEFT" mnemonicParsing="false" text="Rouge" GridPane.columnIndex="1">
                                                                <padding>
                                                                   <Insets left="15.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox fx:id="boxBlancBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Blanc">
+                                                            <CheckBox fx:id="boxBlanc" alignment="TOP_LEFT" mnemonicParsing="false" text="Blanc">
                                                                <padding>
                                                                   <Insets left="15.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox fx:id="boxNoirBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Noir" GridPane.rowIndex="1">
+                                                            <CheckBox fx:id="boxNoir" alignment="TOP_LEFT" mnemonicParsing="false" text="Noir" GridPane.rowIndex="1">
                                                                <padding>
                                                                   <Insets left="15.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox fx:id="boxGrisBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Gris" GridPane.rowIndex="2">
+                                                            <CheckBox fx:id="boxGris" alignment="TOP_LEFT" mnemonicParsing="false" text="Gris" GridPane.rowIndex="2">
                                                                <padding>
                                                                   <Insets left="15.0" />
                                                                </padding>
