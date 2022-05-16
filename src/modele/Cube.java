@@ -60,7 +60,8 @@ public class Cube extends Element{
 	
 	public Cube copie(Cube pere) {
 		ArrayList<Element> ar = new ArrayList<Element>();
-		Cube Ccopie = new Cube(this.getTaille()[0], this.getTaille()[1], this.getTaille()[2], pere, this.getCouleur());
+		int [] pos = {0, 0, 0};
+		Cube Ccopie = new Cube(this.getTaille()[0], this.getTaille()[1], this.getTaille()[2], pere, pos, this.getCouleur());
 		Ccopie.setDestructible(this.isDestructible());
 
 		for(Element elel : this.getFils()) {
@@ -78,7 +79,8 @@ public class Cube extends Element{
 	
 	public Cube copiePos(Cube pere, int[] posi) {
 		ArrayList<Element> ar = new ArrayList<Element>();
-		Cube Ccopie = new Cube(this.getTaille()[0], this.getTaille()[1], this.getTaille()[2], pere, this.getCouleur());
+		int [] pos = {0, 0, 0};
+		Cube Ccopie = new Cube(this.getTaille()[0], this.getTaille()[1], this.getTaille()[2], pere, pos, this.getCouleur());
 		Ccopie.setDestructible(this.isDestructible());
 		int[] oui = Ccopie.getPos();
 		for(int i =0; i<oui.length;i++) {
