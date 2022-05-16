@@ -236,7 +236,6 @@ public class ControleurConstruction extends Controleur implements Initializable 
     	
     	Optional<ButtonType> boutonClicker = dialogBox1.showAndWait();
     	if (boutonClicker.get() == ButtonType.YES) {
-    		String nomSauv = null;
     		FXMLLoader loaderBox2 = new FXMLLoader();
         	loaderBox2.setLocation(getClass().getResource("../vue/DialogBoxConstructionQuitterNomSauv.fxml"));
         	Pane PopUpConstructionQuitterNomSauv = loaderBox2.load();
@@ -246,10 +245,10 @@ public class ControleurConstruction extends Controleur implements Initializable 
         	
         	Optional<ButtonType> boutonAppliquer = dialogBox2.showAndWait();
         	if (boutonAppliquer.get() == ButtonType.APPLY) {
-        		System.out.println(nomSauv);
+        		
+        		this.mod.sauvegarderSous();
+        		this.changerFenetre("Visualisation", event);
         	}
-    		this.mod.sauvegarderSous();
-    		this.changerFenetre("Visualisation", event);
     	} else if (boutonClicker.get() == ButtonType.NO) {
     		this.changerFenetre("Visualisation", event);
     	}

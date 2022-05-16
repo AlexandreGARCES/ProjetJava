@@ -192,7 +192,8 @@ public class Modele extends Observable{
 		//à revoir!!
 		ArrayList<String> resultat=new ArrayList<String>();
 		for (String type : types) {
-			if (couleurs.contains(Modele.constructions.get(type).ConstructionSansBase().getCouleurBase())) {
+			Construction cstr=Modele.constructions.get(type);
+			if (cstr!=null && couleurs.contains(cstr.ConstructionSansBase().getCouleurBase())) {
 				resultat.add(type);
 			}
 		}
@@ -202,7 +203,8 @@ public class Modele extends Observable{
 	public ArrayList<String> rechercherConstruction(ArrayList<Integer> couleurs, List<String> noms) {
 		ArrayList<String> resultat=new ArrayList<String>();
 		for (String nom : noms) {
-			if (couleurs.contains(Modele.constructions.get(nom).getCouleurBase())) {
+			Construction cstr=Modele.constructions.get(nom);
+			if (cstr!=null && couleurs.contains(cstr.getCouleurBase())) {
 				resultat.add(nom);
 			}
 		}
