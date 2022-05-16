@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
@@ -19,11 +20,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.SubScene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import modele.Modele;
 import vue.Gestion3D;
@@ -154,6 +159,7 @@ public class ControleurConstruction extends Controleur implements Initializable 
     		for (int i=0;i<types.size();i++) { types.set(i, types.get(i)+" moyen"); }
     	}
     	this.listeBlocs=this.mod.rechercherElement(couleurs,types);
+    	this.initialize(this.url, this.rbundle);
     }
     
     @FXML
@@ -181,18 +187,15 @@ public class ControleurConstruction extends Controleur implements Initializable 
     		couleurs.clear();
     		for (int i=0;i<9;i++) { couleurs.add(i); }
     	}
-    	
     	this.listeConstructions=this.mod.rechercherConstruction(couleurs,noms);
+    	this.initialize(this.url, this.rbundle);
     }
     
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-    	//à supprimer après
-    	this.listeConstructions=this.mod.getListeConstructions();
-    	//à supprimer après
-
     	this.url=arg0;
     	this.rbundle=arg1;
+    	this.listeResultatRecherche.getItems().clear();
     	if (this.listeBlocs!=null) {
         	listeResultatRecherche.getItems().addAll(this.listeBlocs);
     		this.listeBlocs=null;
@@ -213,8 +216,6 @@ public class ControleurConstruction extends Controleur implements Initializable 
     			}
         	});
     	}
-    	
-
 	}
     
     @FXML
@@ -226,9 +227,24 @@ public class ControleurConstruction extends Controleur implements Initializable 
     
     @FXML
     void SwitchFXMLVisualisation(ActionEvent event) throws IOException {
-    	this.mod.sauvegarderSous();
+    	FXMLLoader loader = new FXMLLoader();
+    	loader.setLocation(getClass().getResource("../vue/DialogBoxConstructionQuitter.fxml"));
+    	Pane PopUpConstructionQuitter = loader.load();
+    	
+    	Dialog<ButtonType> dialog = new Dialog<>();
+    	dialog.setDialogPane((DialogPane) PopUpConstructionQuitter);
+    	
+    	Optional<ButtonType> boutonClicker = dialog.showAndWait();
+    	if (boutonClicker.get() == ButtonType.YES) {
+    		this.mod.sauvegarderSous();
+    		this.changerFenetre("Visualisation", event);
+    	} else if (boutonClicker.get() == ButtonType.NO) {
+    		this.changerFenetre("Visualisation", event);
+    	}
+    	
+    	
     	//demander si on veux sauvegarder et si oui appeler this.mod.sauvegarder()
-    	this.changerFenetre("Visualisation", event);
+    
     }
     
     @FXML
