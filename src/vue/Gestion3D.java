@@ -16,7 +16,6 @@ import javafx.scene.input.ScrollEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.transform.Rotate;
-import javafx.stage.Stage;
 import modele.Modele;
 
 public class Gestion3D implements Observer{

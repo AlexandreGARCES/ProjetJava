@@ -35,11 +35,9 @@ public class Modele extends Observable{
 	public static Construction constructionaAjouter;
 	
 	public Modele(){
-		this.constructionActuelle= new Construction("terrain",1);//ça marche vraiment ça???
-		this.setElement_a_ajouter(Element_a_ajouter.CUBE);////construction plus tard
-		
-		
-		
+
+		this.constructionActuelle= new Construction("terrain",4);//ça marche vraiment ça???
+
 		File fichier = new File("constructions.dat");
 		try {
 			fichier.createNewFile();
@@ -52,6 +50,7 @@ public class Modele extends Observable{
 		if (Modele.constructions == null) {
 			Modele.constructions = new HashMap<String,Construction>();
 		}
+		//this.razConstructionActuelle();
 		Cube c0 = new Cube(50, 50, 50, null, 0);
 		Cube c1 = new Cube(50, 50, 50, c0, 0);
 		ArrayList<Element> ar = new ArrayList<Element>();
@@ -103,6 +102,14 @@ public class Modele extends Observable{
 			
 		}
 		return ar;
+	}
+	
+	public void razConstructionActuelle() {
+		this.constructionActuelle= new Construction("terrain",4);
+		Modele.constructionaAjouter = Modele.getConstructions().get("construction16").copie(null);
+		this.setChanged();
+        this.notifyObservers();
+		
 	}
 
 	public static void sauvegarderModele() {
