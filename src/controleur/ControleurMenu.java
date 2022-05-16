@@ -42,9 +42,14 @@ public class ControleurMenu extends Controleur{
     	TextField input = text.getEditor();
     	if (input.getText() != null && input.getText().toString().length() != 0) {
     		couleurPlateau = input.getText().toString();
-    		System.out.println(couleurPlateau);
-    		this.mod.raz();
-        	this.changerFenetre("Construction", event);
+    		for(int i=0; i<9; i++) {
+    			if (couleurPlateau.toLowerCase().equals(couleur[i].toLowerCase())) {
+    				System.out.println(couleurPlateau);
+    				this.mod.raz();
+    	        	this.changerFenetre("Construction", event);
+    				break;
+    			}
+    		}
     	} else { System.out.println("entrez une couleur !"); }
     }
     
