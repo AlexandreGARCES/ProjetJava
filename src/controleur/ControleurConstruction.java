@@ -227,15 +227,27 @@ public class ControleurConstruction extends Controleur implements Initializable 
     
     @FXML
     void SwitchFXMLVisualisation(ActionEvent event) throws IOException {
-    	FXMLLoader loader = new FXMLLoader();
-    	loader.setLocation(getClass().getResource("../vue/DialogBoxConstructionQuitter.fxml"));
-    	Pane PopUpConstructionQuitter = loader.load();
+    	FXMLLoader loaderBox1 = new FXMLLoader();
+    	loaderBox1.setLocation(getClass().getResource("../vue/DialogBoxConstructionQuitter.fxml"));
+    	Pane PopUpConstructionQuitter = loaderBox1.load();
     	
-    	Dialog<ButtonType> dialog = new Dialog<>();
-    	dialog.setDialogPane((DialogPane) PopUpConstructionQuitter);
+    	Dialog<ButtonType> dialogBox1 = new Dialog<>();
+    	dialogBox1.setDialogPane((DialogPane) PopUpConstructionQuitter);
     	
-    	Optional<ButtonType> boutonClicker = dialog.showAndWait();
+    	Optional<ButtonType> boutonClicker = dialogBox1.showAndWait();
     	if (boutonClicker.get() == ButtonType.YES) {
+    		String nomSauv = null;
+    		FXMLLoader loaderBox2 = new FXMLLoader();
+        	loaderBox2.setLocation(getClass().getResource("../vue/DialogBoxConstructionQuitterNomSauv.fxml"));
+        	Pane PopUpConstructionQuitterNomSauv = loaderBox2.load();
+        	
+        	Dialog<ButtonType> dialogBox2 = new Dialog<>();
+        	dialogBox2.setDialogPane((DialogPane) PopUpConstructionQuitterNomSauv);
+        	
+        	Optional<ButtonType> boutonAppliquer = dialogBox2.showAndWait();
+        	if (boutonAppliquer.get() == ButtonType.APPLY) {
+        		System.out.println(nomSauv);
+        	}
     		this.mod.sauvegarderSous();
     		this.changerFenetre("Visualisation", event);
     	} else if (boutonClicker.get() == ButtonType.NO) {
