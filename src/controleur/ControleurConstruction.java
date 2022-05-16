@@ -221,9 +221,32 @@ public class ControleurConstruction extends Controleur implements Initializable 
     
     @FXML
     void SwitchFXMLMenu(ActionEvent event) throws IOException {
-    	this.mod.sauvegarderSous();
-    	this.mod.raz();
-    	this.retourMenu(event);
+    	FXMLLoader loaderBox1 = new FXMLLoader();
+    	loaderBox1.setLocation(getClass().getResource("../vue/DialogBoxConstructionQuitter.fxml"));
+    	Pane PopUpConstructionQuitter = loaderBox1.load();
+    	
+    	Dialog<ButtonType> dialogBox1 = new Dialog<>();
+    	dialogBox1.setDialogPane((DialogPane) PopUpConstructionQuitter);
+    	
+    	Optional<ButtonType> boutonClicker = dialogBox1.showAndWait();
+    	if (boutonClicker.get() == ButtonType.YES) {
+    		String nomSauv = null;
+        	TextInputDialog text = new TextInputDialog();
+        	text.getDialogPane().setContentText("Quel nom voulez-vous utiliser ?");
+        	Optional<String> resultat = text.showAndWait();
+        	TextField input = text.getEditor();
+        	if (input.getText() != null && input.getText().toString().length() != 0) {
+        		nomSauv = input.getText().toString();
+        		this.mod.sauvegarderSous(nomSauv);
+        		this.mod.raz();
+        		this.mod.sauvegarde=null;
+        		this.retourMenu(event);
+        	} else { System.out.println("entrez un nom !"); }
+    	} else if (boutonClicker.get() == ButtonType.NO) {
+    		this.mod.raz();
+    		this.mod.sauvegarde=null;
+    		this.retourMenu(event);
+    	}
     }
     
     @FXML
@@ -244,11 +267,12 @@ public class ControleurConstruction extends Controleur implements Initializable 
         	TextField input = text.getEditor();
         	if (input.getText() != null && input.getText().toString().length() != 0) {
         		nomSauv = input.getText().toString();
-        		System.out.println(nomSauv);
-        		this.mod.sauvegarderSous();
+        		this.mod.sauvegarderSous(nomSauv);
+        		this.mod.sauvegarde=null;
         		this.changerFenetre("Visualisation", event);
         	} else { System.out.println("entrez un nom !"); }
     	} else if (boutonClicker.get() == ButtonType.NO) {
+    		this.mod.sauvegarde=null;
     		this.changerFenetre("Visualisation", event);
     	}
     	
