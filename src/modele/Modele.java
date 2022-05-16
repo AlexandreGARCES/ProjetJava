@@ -50,7 +50,7 @@ public class Modele extends Observable{
 		catch (Exception e) {
 			 System.out.println("le fichier n'est pas créé");
 		}
-		//this.charger();
+		this.charger();
 		if (Modele.constructions == null) {
 			Modele.constructions = new HashMap<String,Construction>();
 		}
@@ -123,7 +123,7 @@ public class Modele extends Observable{
 	}
 
 	public void changerConstructionaAjouter(String selection) {
-		Modele.constructionaAjouter=Modele.elements.get(selection);		
+		Modele.constructionaAjouter=Modele.constructions.get(selection).copie(null);		
 	}
 
 	public static void sauvegarderModele() {
