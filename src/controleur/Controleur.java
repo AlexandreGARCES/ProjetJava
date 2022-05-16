@@ -143,60 +143,91 @@ public class Controleur {
 	
     @FXML
     void rechercheMultiCritBloc(ActionEvent event) {
-    	//réunir plusieurs checkbox ensemble nous simplifierais la vie
     	
-    	ArrayList<Integer> couleurs=new ArrayList<Integer>();
+    	ArrayList<String> taille=new ArrayList<String>();
     	int cpt=0;
-    	if (boxBlancBloc.isSelected()) { couleurs.add(3); }else { cpt++; }
-    	if (boxBleuBloc.isSelected())  { couleurs.add(2); }else { cpt++; }
-    	if (boxCyanBloc.isSelected())  { couleurs.add(6); }else { cpt++; }
-    	if (boxGrisBloc.isSelected())  { couleurs.add(4); }else { cpt++; }
-    	if (boxOrangeBloc.isSelected()){ couleurs.add(8); }else { cpt++; }
-    	if (boxNoirBloc.isSelected())  { couleurs.add(5); }else { cpt++; }
-    	if (boxRougeBloc.isSelected()) { couleurs.add(0); }else { cpt++; }
-    	if (boxVertBloc.isSelected())  { couleurs.add(1); }else { cpt++; }
-    	if (boxJauneBloc.isSelected()) { couleurs.add(7); }else { cpt++; }
-    	if (cpt==9) {//si aucun n'est sélectionné, tout mettre
+    	if(boxGrandBloc.isSelected()) { taille.add("grand"); }else { cpt++; }
+    	if(boxPetitBloc.isSelected()) { taille.add("petit"); }else { cpt++; }
+    	if(boxMoyenBloc.isSelected()) { taille.add("moyen"); }else { cpt++; }
+    	if (cpt==3) { taille.add("grand"); taille.add("moyen"); taille.add("petit");}
+    	
+    	String[] tabCouleurs= {" blanc"," bleu"," cyan"," gris"," orange"," noir"," rouge"," vert"," jaune"};
+    	
+    	ArrayList<String> couleurs=new ArrayList<String>();
+    	cpt=0;
+    	if (boxBlancBloc.isSelected()) { 
+    		for (int i=0;i<taille.size();i++) {
+    			couleurs.add(taille.get(i)+" blanc");
+    		} }else { cpt++; }
+    	if (boxBleuBloc.isSelected())  { 
+    		for (int i=0;i<taille.size();i++) {
+    			couleurs.add(taille.get(i)+" bleu");
+    		} }else { cpt++; }
+    	if (boxCyanBloc.isSelected())  { 
+    		for (int i=0;i<taille.size();i++) {
+    			couleurs.add(taille.get(i)+" cyan");
+    		} }else { cpt++; }
+    	if (boxGrisBloc.isSelected())  { 
+    		for (int i=0;i<taille.size();i++) {
+    			couleurs.add(taille.get(i)+" gris");
+    		} }else { cpt++; }
+    	if (boxOrangeBloc.isSelected()){ 
+    		for (int i=0;i<taille.size();i++) {
+    			couleurs.add(taille.get(i)+" orange");
+    		} }else { cpt++; }
+    	if (boxNoirBloc.isSelected())  { 
+    		for (int i=0;i<taille.size();i++) {
+    			couleurs.add(taille.get(i)+" noir");
+    		} }else { cpt++; }
+    	if (boxRougeBloc.isSelected()) { 
+    		for (int i=0;i<taille.size();i++) {
+    			couleurs.add(taille.get(i)+" rouge");
+    		} }else { cpt++; }
+    	if (boxVertBloc.isSelected())  { 
+    		for (int i=0;i<taille.size();i++) {
+    			couleurs.add(taille.get(i)+" vert");
+    		} }else { cpt++; }
+    	if (boxJauneBloc.isSelected()) { 
+    		for (int i=0;i<taille.size();i++) {
+    			couleurs.add(taille.get(i)+" jaune");
+    		} }else { cpt++; }
+    	if (cpt==9) {
     		couleurs.clear();
-    		for (int i=0;i<9;i++) { couleurs.add(i); }
+    		for (int i=0;i<tabCouleurs.length;i++) {
+    			for (int j=0;j<taille.size();j++) {
+    				couleurs.add(taille.get(j)+tabCouleurs[i]);
+    			}
+    		}
     	}
     	
-    	ArrayList<String> formes=new ArrayList<String>();//on rajoute les triangles les gars?
+    	String[] tabOrientation= {" horizontalX"," horizontalX"," vertical"};
+    	ArrayList<String> orientations=new ArrayList<String>();//on rajoute les triangles les gars?
     	cpt=0;
-    	if(boxCarreBloc.isSelected()) { formes.add("carre"); }else { cpt++; }
-    	if(boxRectBloc.isSelected()) { formes.add("rect"); }else { cpt++; }
-    	if(boxRondBloc.isSelected()) { formes.add("rond"); }else { cpt++; }
+    	if(boxCarreBloc.isSelected()) { 
+    		for (int i=0;i<taille.size();i++) {
+    			orientations.add(taille.get(i)+" horizontalX");
+    		} }else { cpt++; }
+    	if(boxRectBloc.isSelected()) { 
+    		for (int i=0;i<taille.size();i++) {
+    			orientations.add(taille.get(i)+" vertical");
+    		} }else { cpt++; }
+    	if(boxRondBloc.isSelected()) { 
+    		for (int i=0;i<taille.size();i++) {
+    			orientations.add(taille.get(i)+" horizontalY");
+    		} }else { cpt++; }
     	if(cpt==3) {
-    		formes.clear();
-    		formes.add("carre");
-    		formes.add("rect");
-    		formes.add("rond");
+    		orientations.clear();
+    		for (int i=0;i<tabOrientation.length;i++) {
+    			for (int j=0;j<couleurs.size();j++) {
+    				orientations.add(couleurs.get(j)+tabOrientation[i]);
+    			}
+    		}	
     	}
     	
-    	ArrayList<String> types=(ArrayList<String>) formes.clone();
-    	cpt=0;
-    	if(boxGrandBloc.isSelected()) {
-    		for (int i=0;i<types.size();i++) {
-    			types.set(i, types.get(i)+" grand");
-    		} }else { cpt++; }
     	
-    	if(boxPetitBloc.isSelected()) {
-    		for (int i=0;i<types.size();i++) {
-    			types.set(i, types.get(i)+" petit");
-    		} }else { cpt++; }
     	
-    	if(boxMoyenBloc.isSelected()) {
-    		for (int i=0;i<types.size();i++) {
-    			types.set(i, types.get(i)+" moyen");
-    		} }else { cpt++; }
     	
-    	if (cpt==3) {
-    		types=(ArrayList<String>) formes.clone();
-    		for (int i=0;i<types.size();i++) { types.set(i, types.get(i)+" grand"); }
-    		for (int i=0;i<types.size();i++) { types.set(i, types.get(i)+" petit"); }
-    		for (int i=0;i<types.size();i++) { types.set(i, types.get(i)+" moyen"); }
-    	}
-    	this.listeBlocs=this.mod.rechercherElement(couleurs,types);
+    	this.listeBlocs=this.mod.rechercherElement(orientations);
     	this.initialize(this.url, this.rbundle);
     }
     

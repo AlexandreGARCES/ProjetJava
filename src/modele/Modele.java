@@ -11,10 +11,12 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Observable;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 
 public class Modele extends Observable{
@@ -41,7 +43,7 @@ public class Modele extends Observable{
 	
 	public Modele(){
 
-		this.constructionActuelle= new Construction("terrain",4);//ça marche vraiment ça???
+		this.raz(4);
 
 		File fichier = new File("constructions.dat");
 		try {
@@ -70,22 +72,6 @@ public class Modele extends Observable{
 		
 	}
 	
-	//-----------------------------------------------------
-	
-	//changeConstructionAAfficher
-	//rendreConstructionModifiable
-	//rendreConstructionNonModifiable
-	//enregisterEnXML(ou FXML)
-	//chargerXML(ou FXML)
-	//changerLaCouleurBriqueAPlacer (ou texture)
-	//gererLaRechercheMultiCritere
-	//doit contenir la liste de toutes les constructions existantes
-	//-----------------------------------------------------
-	
-	// Methode renvoyant la contruction à afficher(visualisation)
-	// modifier (bouton): passer en mode construction (conserver la même construcction)
-	//construction -> visualisation : demander la sauvegarde
-	
 	public static void setMode(boolean mode) {
 		if (mode) {
 			Modele.mode=Modes.CONSTRUCTION;///mettre sur bonton (controleurs)
@@ -95,7 +81,9 @@ public class Modele extends Observable{
 	}
 	
 	public void changerConstructionActuelle(String selection) {
-		this.constructionActuelle=constructions.get(selection).copie(null);
+		Construction copie=constructions.get(selection).copie(null);
+		copie.setNom(constructions.get(selection).getNom());
+		this.constructionActuelle=copie;
 		this.setChanged();
         this.notifyObservers();
 		
@@ -152,8 +140,9 @@ public class Modele extends Observable{
 			nom=nom+" "+j;
 			j++;
 		}
-		this.sauvegarde.setNom(nom);
-		Modele.constructions.put(this.sauvegarde.getNom(), this.sauvegarde.copie(null));
+		Construction copie=this.sauvegarde.copie(null);
+		copie.setNom(nom);
+		Modele.constructions.put(copie.getNom(), copie);
 		sauvegarde=null;
 	}
 
@@ -189,14 +178,20 @@ public class Modele extends Observable{
 		Modele.constructions = constructions;
 	}
 
-	public ArrayList<String> rechercherElement(ArrayList<Integer> couleurs, ArrayList<String> types) {
-		//à revoir!!
+	public ArrayList<String> rechercherElement(ArrayList<String> nomsBloc) {
 		ArrayList<String> resultat=new ArrayList<String>();
-		for (String type : types) {
-			Construction cstr=Modele.constructions.get(type);
-			if (cstr!=null && couleurs.contains(cstr.ConstructionSansBase().getCouleurBase())) {
-				resultat.add(type);
-			}
+		for (int i=0;i<nomsBloc.size();i++) {
+			List<String> recherche=Arrays.asList(nomsBloc.get(i).trim().split(" "));
+			ArrayList<String> elems=this.getListeElements();
+			
+	    	List<String> noms= elems.stream().filter(input -> {
+	    		return recherche.stream().allMatch(mot -> 
+	    		input.toLowerCase().contains(mot.toLowerCase()));
+	    	}).collect(Collectors.toList());
+			
+	    	for (int k=0;k<noms.size();k++) {
+	    		resultat.add(noms.get(i));
+	    	}
 		}
 		return resultat;
 	}

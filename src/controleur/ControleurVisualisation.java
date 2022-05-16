@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.SubScene;
 import javafx.scene.control.Button;
+import modele.Modele;
 
 public class ControleurVisualisation extends Controleur implements Initializable {
 
@@ -42,7 +43,8 @@ public class ControleurVisualisation extends Controleur implements Initializable
     @FXML
     private Button boutonPleinEcran;
     
-    
+    @FXML
+    private Button boutonSupprimer;
     
 
     
@@ -60,6 +62,13 @@ public class ControleurVisualisation extends Controleur implements Initializable
     @FXML
     void SwitchFXMLPleinEcran(ActionEvent event) throws IOException {
     	this.changerFenetre("PleinEcran", event);
+    }
+    
+    @FXML
+    void supprimerConstruction(ActionEvent event) {
+    	System.out.println(Modele.getConstructions());
+    	Modele.getConstructions().remove(this.mod.constructionActuelle.getNom());
+    	this.initialize(this.url, this.rbundle);
     }
     
 }
