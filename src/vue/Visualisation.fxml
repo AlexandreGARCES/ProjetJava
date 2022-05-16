@@ -3,13 +3,21 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.SubScene?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="715.0" prefWidth="1715.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.ControleurVisualisation">
@@ -56,19 +64,276 @@
                               </SplitPane>
                            </children>
                         </AnchorPane>
-                      <AnchorPane maxHeight="700.0" maxWidth="300.0" minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="300.0">
-                           <children>
-                              <TitledPane animated="false" prefHeight="330.0" prefWidth="300.0" text="untitled">
-                                <content>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <TabPane maxHeight="702.0" maxWidth="290.0" prefHeight="702.0" prefWidth="290.0" tabClosingPolicy="UNAVAILABLE">
+                           <tabs>
+                              <Tab text="Blocs">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <ListView fx:id="listeMode" prefHeight="305.0" prefWidth="300.0" />
+                                          <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="673.0" prefWidth="290.0">
+                                             <items>
+                                                <AnchorPane maxHeight="110.0" minHeight="0.0" minWidth="0.0" prefHeight="139.0" prefWidth="288.0">
+                                                   <children>
+                                                      <GridPane layoutX="-1.0" layoutY="37.0" prefHeight="64.0" prefWidth="290.0">
+                                                         <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="149.0" minWidth="10.0" prefWidth="145.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="162.0" minWidth="10.0" prefWidth="145.0" />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                         </rowConstraints>
+                                                         <children>
+                                                            <CheckBox fx:id="boxGrandBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Grand">
+                                                               <padding>
+                                                                  <Insets left="40.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox fx:id="boxMoyenBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Moyen" GridPane.rowIndex="1">
+                                                               <padding>
+                                                                  <Insets left="40.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox fx:id="boxPetitBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Petit" GridPane.rowIndex="2">
+                                                               <padding>
+                                                                  <Insets left="40.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox fx:id="boxRondBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Rond" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                               <padding>
+                                                                  <Insets left="40.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox fx:id="boxRectBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Rectangle" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                               <padding>
+                                                                  <Insets left="40.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox fx:id="boxCarreBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Carré" GridPane.columnIndex="1">
+                                                               <padding>
+                                                                  <Insets left="40.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                         </children>
+                                                      </GridPane>
+                                                      <HBox prefHeight="24.0" prefWidth="290.0">
+                                                         <children>
+                                                            <Label text="Taille">
+                                                               <padding>
+                                                                  <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                                                               </padding>
+                                                               <HBox.margin>
+                                                                  <Insets left="30.0" right="42.0" />
+                                                               </HBox.margin>
+                                                            </Label>
+                                                            <Label text="Forme">
+                                                               <padding>
+                                                                  <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                                                               </padding>
+                                                               <HBox.margin>
+                                                                  <Insets left="30.0" right="42.0" />
+                                                               </HBox.margin>
+                                                            </Label>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </AnchorPane>
+                                                <AnchorPane maxHeight="562.0" maxWidth="288.0" minHeight="0.0" minWidth="0.0" prefHeight="562.0" prefWidth="288.0">
+                                                   <children>
+                                                      <HBox prefHeight="0.0" prefWidth="288.0">
+                                                         <children>
+                                                            <Label text="Couleur">
+                                                               <HBox.margin>
+                                                                  <Insets left="100.0" />
+                                                               </HBox.margin>
+                                                               <padding>
+                                                                  <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                                                               </padding>
+                                                            </Label>
+                                                         </children>
+                                                      </HBox>
+                                                      <GridPane layoutX="-1.0" layoutY="37.0" prefHeight="64.0" prefWidth="290.0">
+                                                         <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                         </rowConstraints>
+                                                         <children>
+                                                            <CheckBox fx:id="boxJauneBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Jaune" GridPane.columnIndex="2">
+                                                               <padding>
+                                                                  <Insets left="15.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox fx:id="boxOrangeBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Orange" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                               <padding>
+                                                                  <Insets left="15.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox fx:id="boxCyanBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Cyan" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                                               <padding>
+                                                                  <Insets left="15.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox fx:id="boxVertBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Vert" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                               <padding>
+                                                                  <Insets left="15.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox fx:id="boxBleuBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Bleu" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                               <padding>
+                                                                  <Insets left="15.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox fx:id="boxRougeBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Rouge" GridPane.columnIndex="1">
+                                                               <padding>
+                                                                  <Insets left="15.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox fx:id="boxBlancBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Blanc">
+                                                               <padding>
+                                                                  <Insets left="15.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox fx:id="boxNoirBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Noir" GridPane.rowIndex="1">
+                                                               <padding>
+                                                                  <Insets left="15.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox fx:id="boxGrisBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Gris" GridPane.rowIndex="2">
+                                                               <padding>
+                                                                  <Insets left="15.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                         </children>
+                                                      </GridPane>
+                                                      <Separator layoutX="7.0" layoutY="101.0" prefHeight="0.0" prefWidth="275.0" />
+                                                      <ListView fx:id="listeResultatRecherche" layoutX="14.0" layoutY="141.0" prefHeight="403.0" prefWidth="263.0" />
+                                                      <Separator layoutX="143.0" layoutY="103.0" orientation="VERTICAL" prefHeight="38.0" prefWidth="5.0" />
+                                                      <Button fx:id="boutonRechercherBloc" alignment="CENTER" layoutX="150.0" layoutY="110.0" mnemonicParsing="false" onAction="#rechercheMultiCritBloc" prefHeight="25.0" prefWidth="130.0" text="Rechercher" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </items>
+                                          </SplitPane>
                                        </children>
                                     </AnchorPane>
-                                </content>
-                              </TitledPane>
-                           </children>
-                        </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab text="Construction">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="673.0" prefWidth="290.0">
+                                             <items>
+                                                <AnchorPane maxHeight="75.0" minHeight="0.0" minWidth="0.0" prefHeight="25.0" prefWidth="288.0">
+                                                   <children>
+                                                      <HBox prefHeight="24.0" prefWidth="290.0">
+                                                         <children>
+                                                            <Label text="Rechercher :">
+                                                               <HBox.margin>
+                                                                  <Insets top="5.0" />
+                                                               </HBox.margin>
+                                                               <padding>
+                                                                  <Insets left="15.0" />
+                                                               </padding>
+                                                            </Label>
+                                                         </children>
+                                                      </HBox>
+                                                      <TextField fx:id="barreRecherche" layoutX="14.0" layoutY="30.0" prefHeight="25.0" prefWidth="254.0" />
+                                                   </children>
+                                                </AnchorPane>
+                                                <AnchorPane maxHeight="598.0" maxWidth="288.0" minHeight="0.0" minWidth="0.0" prefHeight="598.0" prefWidth="288.0">
+                                                   <children>
+                                                      <HBox prefHeight="0.0" prefWidth="288.0">
+                                                         <children>
+                                                            <Label text="Couleur du terrain">
+                                                               <HBox.margin>
+                                                                  <Insets left="72.0" />
+                                                               </HBox.margin>
+                                                               <padding>
+                                                                  <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                                                               </padding>
+                                                            </Label>
+                                                         </children>
+                                                      </HBox>
+                                                      <GridPane layoutX="-1.0" layoutY="37.0" prefHeight="64.0" prefWidth="290.0">
+                                                         <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                         </rowConstraints>
+                                                         <children>
+                                                            <CheckBox fx:id="boxJauneBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Jaune" GridPane.columnIndex="2">
+                                                               <padding>
+                                                                  <Insets left="15.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox fx:id="boxOrangeBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Orange" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                               <padding>
+                                                                  <Insets left="15.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox fx:id="boxCyanBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Cyan" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                                               <padding>
+                                                                  <Insets left="15.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox fx:id="boxVertBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Vert" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                               <padding>
+                                                                  <Insets left="15.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox fx:id="boxBleuBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Bleu" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                               <padding>
+                                                                  <Insets left="15.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox fx:id="boxRougeBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Rouge" GridPane.columnIndex="1">
+                                                               <padding>
+                                                                  <Insets left="15.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox fx:id="boxBlancBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Blanc">
+                                                               <padding>
+                                                                  <Insets left="15.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox fx:id="boxNoirBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Noir" GridPane.rowIndex="1">
+                                                               <padding>
+                                                                  <Insets left="15.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox fx:id="boxGrisBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Gris" GridPane.rowIndex="2">
+                                                               <padding>
+                                                                  <Insets left="15.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                         </children>
+                                                      </GridPane>
+                                                      <Separator layoutX="7.0" layoutY="101.0" prefHeight="0.0" prefWidth="275.0" />
+                                                      <ListView fx:id="listeResultatRecherche" layoutX="14.0" layoutY="141.0" prefHeight="438.0" prefWidth="263.0" />
+                                                      <Separator layoutX="143.0" layoutY="103.0" orientation="VERTICAL" prefHeight="38.0" prefWidth="5.0" />
+                                                      <Button fx:id="boutonRechercherConstruction" alignment="CENTER" layoutX="150.0" layoutY="110.0" mnemonicParsing="false" onAction="#rechercheMultiCritConstruc" prefHeight="25.0" prefWidth="130.0" text="Rechercher" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </items>
+                                          </SplitPane>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                           </tabs>
+                        </TabPane>
                     </items>
                   </SplitPane>
                </children>
