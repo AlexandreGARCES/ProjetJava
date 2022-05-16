@@ -52,8 +52,9 @@ public class Modele extends Observable{
 			 System.out.println("le fichier n'est pas créé");
 		}
 		this.charger();
-		//this.creer_blocs();
+		this.creer_blocs();
 		this.chargerBlocs();
+		System.out.println(Modele.getElements().keySet());
 		if (Modele.constructions == null) {
 			Modele.constructions = new HashMap<String,Construction>();
 		}
@@ -80,16 +81,16 @@ public class Modele extends Observable{
 
 	@SuppressWarnings("unchecked")
 	private void chargerBlocs() {
-		File fichier = new File("blocs.dat");
+		File fiichier = new File("blocs.dat");
 
 
 		try {
-			FileInputStream fis = new FileInputStream(fichier);
-			ObjectInputStream ois = new ObjectInputStream(fis);
+			FileInputStream fiis = new FileInputStream(fiichier);
+			ObjectInputStream oiis = new ObjectInputStream(fiis);
 
-			Modele.elements = (HashMap<String,Construction>)ois.readObject();
-			ois.close();
-			fis.close();
+			Modele.elements = (HashMap<String,Construction>)oiis.readObject();
+			oiis.close();
+			fiis.close();
 			}
 		catch (Exception e){
 			throw new RuntimeException("Chargement des données impossible"+e);
@@ -369,9 +370,9 @@ public void bloc_simple(int couleur, HashMap<String, Construction> elements) {
 		
 	
 	
-	File fichier = new File("blocs.dat");
+	File fiiichier = new File("blocs.dat");
 	try {
-		fichier.createNewFile();
+		fiiichier.createNewFile();
 		System.out.println("création du fichier");
 	}
 	catch (Exception e) {
@@ -390,9 +391,9 @@ public void bloc_simple(int couleur, HashMap<String, Construction> elements) {
 		
 	}
 	try {
-		FileOutputStream fos = new FileOutputStream(fichier);
+		FileOutputStream fos = new FileOutputStream(fiiichier);
 		ObjectOutputStream oos = new ObjectOutputStream(fos);
-		oos.writeObject(Modele.getConstructions());
+		oos.writeObject(dico);
 		oos.close();
 		fos.close();
 			}
