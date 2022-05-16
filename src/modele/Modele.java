@@ -147,10 +147,17 @@ public class Modele extends Observable{
 		this.sauvegarde=this.constructionActuelle;
 	}
 	
-	public void sauvegarderSous() {
+	public void sauvegarderSous(String nom) {
+		if (this.sauvegarde!=null) {
+			this.sauvegarderSous("sans nom");
+		}
 		if (sauvegarde!=null) {
-			int i = Modele.constructions.size();
-			this.sauvegarde.setNom("construction" + i);
+			int j=0;
+			while (Modele.constructions.containsKey(nom)) {
+				nom=nom+" "+j;
+				j++;
+			}
+			this.sauvegarde.setNom(nom);
 			Modele.constructions.put(this.sauvegarde.getNom(), this.sauvegarde.copie(null));
 			sauvegarde=null;
 		}	
