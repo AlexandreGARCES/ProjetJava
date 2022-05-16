@@ -52,8 +52,9 @@ public class Modele extends Observable{
 			 System.out.println("le fichier n'est pas créé");
 		}
 		this.charger();
-		//this.creer_blocs();
+		this.creer_blocs();
 		this.chargerBlocs();
+		System.out.println(Modele.getElements().keySet());
 		if (Modele.constructions == null) {
 			Modele.constructions = new HashMap<String,Construction>();
 		}
@@ -80,15 +81,16 @@ public class Modele extends Observable{
 
 	@SuppressWarnings("unchecked")
 	private void chargerBlocs() {
-		File fichier = new File("blocs.dat");
+		File fiichier = new File("blocs.dat");
 
 
 		try {
-			FileInputStream fis = new FileInputStream(fichier);
-			ObjectInputStream ois = new ObjectInputStream(fis);
-			Modele.elements = (HashMap<String,Construction>)ois.readObject();
-			ois.close();
-			fis.close();
+			FileInputStream fiis = new FileInputStream(fiichier);
+			ObjectInputStream oiis = new ObjectInputStream(fiis);
+
+			Modele.elements = (HashMap<String,Construction>)oiis.readObject();
+			oiis.close();
+			fiis.close();
 			}
 		catch (Exception e){
 			throw new RuntimeException("Chargement des données impossible"+e);
@@ -104,12 +106,18 @@ public class Modele extends Observable{
 	}
 	
 	public void changerConstructionActuelle(String selection) {
-		Construction copie=constructions.get(selection).copie(null);
-		copie.setNom(constructions.get(selection).getNom());
+		Construction copie;
+		if (constructions.get(selection)==null) {
+			copie=elements.get(selection).copie(null);
+			copie.setNom(elements.get(selection).getNom());
+		}else {
+			copie=constructions.get(selection).copie(null);
+			copie.setNom(constructions.get(selection).getNom());
+		}
+
 		this.constructionActuelle=copie;
 		this.setChanged();
         this.notifyObservers();
-		
 	}
 	
 	public ArrayList<String> getListeConstructions() {
@@ -215,6 +223,7 @@ public class Modele extends Observable{
 	}
 
 	public ArrayList<String> rechercherElement(ArrayList<String> nomsBloc) {
+		nomsBloc.clear();
 		//penser à enlever la ligne au dessus
 		ArrayList<String> resultat=new ArrayList<String>();
 		ArrayList<String> elems=this.getListeElements();
@@ -227,9 +236,11 @@ public class Modele extends Observable{
 	    	}).collect(Collectors.toList());
 			
 	    	for (int k=0;k<noms.size();k++) {
-	    		resultat.add(noms.get(i));
+	    		resultat.add(noms.get(k));
 	    	}
-
+		}
+		if (resultat.size()==0) {
+			resultat=this.getListeElements();
 		}
 		return resultat;
 	}
@@ -367,9 +378,9 @@ public void bloc_simple(int couleur, HashMap<String, Construction> elements) {
 		
 	
 	
-	File fichier = new File("blocs.dat");
+	File fiiichier = new File("blocs.dat");
 	try {
-		fichier.createNewFile();
+		fiiichier.createNewFile();
 		System.out.println("création du fichier");
 	}
 	catch (Exception e) {
@@ -388,9 +399,9 @@ public void bloc_simple(int couleur, HashMap<String, Construction> elements) {
 		
 	}
 	try {
-		FileOutputStream fos = new FileOutputStream(fichier);
+		FileOutputStream fos = new FileOutputStream(fiiichier);
 		ObjectOutputStream oos = new ObjectOutputStream(fos);
-		oos.writeObject(Modele.getConstructions());
+		oos.writeObject(dico);
 		oos.close();
 		fos.close();
 			}

@@ -161,13 +161,12 @@ public class Controleur {
 	
     @FXML
     void rechercheMultiCritBloc(ActionEvent event) {
-    	System.out.println(boxJaune.isSelected());
     	ArrayList<String> taille=new ArrayList<String>();
     	int cpt=0;
     	if(boxGrandBloc.isSelected()) { taille.add("grand"); }else { cpt++; }
     	if(boxPetitBloc.isSelected()) { taille.add("petit"); }else { cpt++; }
     	if(boxMoyenBloc.isSelected()) { taille.add("moyen"); }else { cpt++; }
-    	if (cpt==3) { taille.add("grand"); taille.add("moyen"); taille.add("petit");}
+    	//if (cpt==3) { taille.add("grand"); taille.add("moyen"); taille.add("petit");}
     	
     	String[] tabCouleurs= {" blanc"," bleu"," cyan"," gris"," orange"," noir"," rouge"," vert"," jaune"};
     	
@@ -197,7 +196,7 @@ public class Controleur {
     		for (int i=0;i<taille.size();i++) {
     			couleurs.add(taille.get(i)+" noir");
     		} }else { cpt++; }
-    	if (boxRouge.isSelected()) { 
+    	if (boxRouge.isSelected()) {
     		for (int i=0;i<taille.size();i++) {
     			couleurs.add(taille.get(i)+" rouge");
     		} }else { cpt++; }
@@ -209,7 +208,7 @@ public class Controleur {
     		for (int i=0;i<taille.size();i++) {
     			couleurs.add(taille.get(i)+" jaune");
     		} }else { cpt++; }
-    	if (cpt==9) {
+    	/*if (cpt==9) {
     		couleurs.clear();
     		for (int i=0;i<tabCouleurs.length;i++) {
     			for (int j=0;j<taille.size();j++) {
@@ -217,6 +216,7 @@ public class Controleur {
     			}
     		}
     	}
+    	*/
     	
     	String[] tabOrientation= {" horizontalX"," horizontalX"," vertical"};
     	ArrayList<String> orientations=new ArrayList<String>();
@@ -233,18 +233,16 @@ public class Controleur {
     		for (int i=0;i<taille.size();i++) {
     			orientations.add(taille.get(i)+" horizontalY");
     		} }else { cpt++; }
-    	if(cpt==3) {
+    	/*if(cpt==3) {
     		orientations.clear();
     		for (int i=0;i<tabOrientation.length;i++) {
     			for (int j=0;j<couleurs.size();j++) {
     				orientations.add(couleurs.get(j)+tabOrientation[i]);
     			}
     		}	
-    	}
+    	}*/
     	
-    	
-    	
-    	
+
     	this.listeBlocs=this.mod.rechercherElement(orientations);
     	this.initialize(this.url, this.rbundle);
     }
@@ -255,22 +253,21 @@ public class Controleur {
     	this.listeResultatRecherche.getItems().clear();
     	
     	if (this.listeBlocs!=null) {
-        	listeResultatRecherche.getItems().addAll(this.listeBlocs);
-    		this.listeBlocs=null;
-        	listeResultatRecherche.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-    			@Override
-    			public void changed(ObservableValue<? extends String> arg0, String ancienSelect, String selection) {
-    				if (selection!=null) {
-    					if (Controleur.type) {
-        					Gestion3D.mod.changerBlocaAjouter(selection);
-        				}else {
-        					Gestion3D.mod.changerConstructionActuelle(selection);
-        				}
+    	listeResultatRecherche.getItems().addAll(this.listeBlocs);
+		this.listeBlocs=null;
+    	listeResultatRecherche.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> arg0, String ancienSelect, String selection) {
+				if (selection!=null) {
+					if (Controleur.type) {
+    					Gestion3D.mod.changerBlocaAjouter(selection);
+    				}else {
+    					Gestion3D.mod.changerConstructionActuelle(selection);
     				}
-    			}
-        	});
-        	
-    	}else if (this.listeConstructions!=null) {
+				}
+			}
+    	});
+	}else if (this.listeConstructions!=null) {
     		listeResultatRecherche.getItems().addAll(this.listeConstructions);
     		this.listeConstructions=null;
         	listeResultatRecherche.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
