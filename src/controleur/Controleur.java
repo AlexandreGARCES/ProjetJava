@@ -163,89 +163,31 @@ public class Controleur {
 	
     @FXML
     void rechercheMultiCritBloc(ActionEvent event) {
-    	ArrayList<String> taille=new ArrayList<String>();
-    	int cpt=0;
-    	if(boxGrandBloc.isSelected()) { taille.add("grand"); }else { cpt++; }
-    	if(boxPetitBloc.isSelected()) { taille.add("petit"); }else { cpt++; }
-    	if(boxMoyenBloc.isSelected()) { taille.add("moyen"); }else { cpt++; }
-    	//if (cpt==3) { taille.add("grand"); taille.add("moyen"); taille.add("petit");}
+    	ArrayList<String> recherche=new ArrayList<String>();
     	
-    	String[] tabCouleurs= {" blanc"," bleu"," cyan"," gris"," orange"," noir"," rouge"," vert"," jaune"};
+    	if(boxGrandBloc.isSelected()) { recherche.add("grand"); }
+    	if(boxPetitBloc.isSelected()) { recherche.add("petit"); }
+    	if(boxMoyenBloc.isSelected()) { recherche.add("moyen"); }
     	
-    	ArrayList<String> couleurs=new ArrayList<String>();
-    	cpt=0;
-    	if (boxBlanc.isSelected()) { 
-    		for (int i=0;i<taille.size();i++) {
-    			couleurs.add(taille.get(i)+" blanc");
-    		} }else { cpt++; }
-    	if (boxBleu.isSelected())  {
-    		for (int i=0;i<taille.size();i++) {
-    			couleurs.add(taille.get(i)+" bleu");
-    		} }else { cpt++; }
-    	if (boxCyan.isSelected())  { 
-    		for (int i=0;i<taille.size();i++) {
-    			couleurs.add(taille.get(i)+" cyan");
-    		} }else { cpt++; }
-    	if (boxGris.isSelected())  { 
-    		for (int i=0;i<taille.size();i++) {
-    			couleurs.add(taille.get(i)+" gris");
-    		} }else { cpt++; }
-    	if (boxOrange.isSelected()){ 
-    		for (int i=0;i<taille.size();i++) {
-    			couleurs.add(taille.get(i)+" orange");
-    		} }else { cpt++; }
-    	if (boxNoir.isSelected())  { 
-    		for (int i=0;i<taille.size();i++) {
-    			couleurs.add(taille.get(i)+" noir");
-    		} }else { cpt++; }
-    	if (boxRouge.isSelected()) {
-    		for (int i=0;i<taille.size();i++) {
-    			couleurs.add(taille.get(i)+" rouge");
-    		} }else { cpt++; }
-    	if (boxVert.isSelected())  { 
-    		for (int i=0;i<taille.size();i++) {
-    			couleurs.add(taille.get(i)+" vert");
-    		} }else { cpt++; }
-    	if (boxJaune.isSelected()) { 
-    		for (int i=0;i<taille.size();i++) {
-    			couleurs.add(taille.get(i)+" jaune");
-    		} }else { cpt++; }
-    	/*if (cpt==9) {
-    		couleurs.clear();
-    		for (int i=0;i<tabCouleurs.length;i++) {
-    			for (int j=0;j<taille.size();j++) {
-    				couleurs.add(taille.get(j)+tabCouleurs[i]);
-    			}
-    		}
-    	}
-    	*/
+
+    	if (boxBlanc.isSelected()) { recherche.add("blanc");}
+    	if (boxBleu.isSelected())  { recherche.add("bleu");}
+    	if (boxCyan.isSelected())  { recherche.add("cyan");}
+    	if (boxGris.isSelected())  { recherche.add("gris");}
+    	if (boxOrange.isSelected()){ recherche.add("orange");}
+    	if (boxNoir.isSelected())  { recherche.add("noir");}
+    	if (boxRouge.isSelected()) { recherche.add("rouge");}
+    	if (boxVert.isSelected())  { recherche.add("vert");}
+    	if (boxJaune.isSelected()) { recherche.add("jaune");}
+
+
+    	if(boxCarreBloc.isSelected()) {  recherche.add("horizontalX");}
+    	if(boxRectBloc.isSelected()) {  recherche.add("vertical"); }
+    	if(boxRondBloc.isSelected()) { recherche.add("horizontalY");}
+
     	
-    	String[] tabOrientation= {" horizontalX"," horizontalX"," vertical"};
-    	ArrayList<String> orientations=new ArrayList<String>();
-    	cpt=0;
-    	if(boxCarreBloc.isSelected()) { 
-    		for (int i=0;i<taille.size();i++) {
-    			orientations.add(taille.get(i)+" horizontalX");
-    		} }else { cpt++; }
-    	if(boxRectBloc.isSelected()) { 
-    		for (int i=0;i<taille.size();i++) {
-    			orientations.add(taille.get(i)+" vertical");
-    		} }else { cpt++; }
-    	if(boxRondBloc.isSelected()) { 
-    		for (int i=0;i<taille.size();i++) {
-    			orientations.add(taille.get(i)+" horizontalY");
-    		} }else { cpt++; }
-    	/*if(cpt==3) {
-    		orientations.clear();
-    		for (int i=0;i<tabOrientation.length;i++) {
-    			for (int j=0;j<couleurs.size();j++) {
-    				orientations.add(couleurs.get(j)+tabOrientation[i]);
-    			}
-    		}	
-    	}*/
-    	
-    	this.listeBlocs=this.mod.rechercherElement(orientations);
-    	//this.listeBlocs=this.mod.rechercherElement(recherche);
+
+    	this.listeBlocs=this.mod.rechercherElement(recherche);
     	this.initialize(this.url, this.rbundle);
     }
     

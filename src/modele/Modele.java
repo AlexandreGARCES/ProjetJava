@@ -223,7 +223,6 @@ public class Modele extends Observable{
 	}
 
 	public ArrayList<String> rechercherElement(ArrayList<String> nomsBloc) {
-		nomsBloc.clear();
 		//penser à enlever la ligne au dessus
 		ArrayList<String> resultat=new ArrayList<String>();
 		ArrayList<String> elems=this.getListeElements();
