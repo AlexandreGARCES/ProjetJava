@@ -1,10 +1,7 @@
 package modele;
 
 
-import java.beans.XMLDecoder;
-import java.beans.XMLEncoder;
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -35,6 +32,7 @@ public class Modele extends Observable{
 	private static HashMap<String,Construction> elements;
 	public static Construction constructionaAjouter;
 	
+	
 	public Construction constructionActuelle;
 	public Construction sauvegarde;
 	
@@ -52,18 +50,25 @@ public class Modele extends Observable{
 			 System.out.println("le fichier n'est pas créé");
 		}
 		this.charger();
+		//this.creer_blocs();
+		this.chargerBlocs();
 		if (Modele.constructions == null) {
 			Modele.constructions = new HashMap<String,Construction>();
 		}
 		if (Modele.elements == null) {
 			Modele.elements = new HashMap<String,Construction>();
 		}
-		Cube c0 = new Cube(50, 50, 50, null, 0);
+		Cube c0 = new Cube(50, 50, 50, null, 6);
 		Cube c1 = new Cube(50, 50, 50, c0, 0);
+		int [] tab = {0, -50, 0};
+		Cube c3 = new Cube(50, 50, 50, c0, tab, 0);
+		tab[0] = 0;
+		tab[1] -= 50;
+		Cube c4 = new Cube(50, 50, 50, null, tab, 0);
 		ArrayList<Element> ar = new ArrayList<Element>();
 		ar.add(c0);
 		Construction constr = new Construction(ar);
-		Modele.constructions.put("petit",  constr);
+		Modele.constructions.put("petit moyen",  constr);
 		Modele.constructionaAjouter = constr.copie(null);
 		//Modele.constructionaAjouter = Modele.getConstructions().get("construction16").copie(null);
 
@@ -86,6 +91,25 @@ public class Modele extends Observable{
 	// modifier (bouton): passer en mode construction (conserver la même construcction)
 	//construction -> visualisation : demander la sauvegarde
 	
+	@SuppressWarnings("unchecked")
+	private void chargerBlocs() {
+		File fichier = new File("blocs.dat");
+
+
+		try {
+			FileInputStream fis = new FileInputStream(fichier);
+			ObjectInputStream ois = new ObjectInputStream(fis);
+
+			Modele.elements = (HashMap<String,Construction>)ois.readObject();
+			ois.close();
+			fis.close();
+			}
+		catch (Exception e){
+			throw new RuntimeException("Chargement des données impossible"+e);
+		}	
+		
+	}
+
 	public static void setMode(boolean mode) {
 		if (mode) {
 			Modele.mode=Modes.CONSTRUCTION;///mettre sur bonton (controleurs)
@@ -120,7 +144,7 @@ public class Modele extends Observable{
 	}
 	
 	public void changerBlocaAjouter(String selection) {
-		Modele.constructionaAjouter=Modele.constructions.get(selection).copie(null);
+		Modele.constructionaAjouter=Modele.elements.get(selection).copie(null);
 		
 	}
 
@@ -201,7 +225,7 @@ public class Modele extends Observable{
 		//à revoir!!
 		ArrayList<String> resultat=new ArrayList<String>();
 		for (String type : types) {
-			Construction cstr=Modele.constructions.get(type);
+			Construction cstr=Modele.elements.get(type);
 			if (cstr!=null && couleurs.contains(cstr.ConstructionSansBase().getCouleurBase())) {
 				resultat.add(type);
 			}
@@ -219,5 +243,161 @@ public class Modele extends Observable{
 		}
 		return resultat;
 	}
+	
+public void bloc_simple(int couleur, HashMap<String, Construction> elements) {
+	String[] Couleurs = {"rouge", "vert", "bleu", "blanc", "gris", "noir", "cyan", "jaune", "orange"};
+		
+		
+		Cube c0 = new Cube(50, 50, 50, null, 3);
+		Cube c1 = new Cube(50, 50, 50, c0, couleur);
+		/*
+		int [] tab = {50, 0, 0};
+		Cube c3 = new Cube(50, 50, 50, c0, tab, couleur);
+		tab[0] = -50;
+		Cube c4 = new Cube(50, 50, 50, c0, tab, couleur);
+		 */
+		ArrayList<Element> ar = new ArrayList<Element>();
+
+		ar.add(c0);
+		Construction constr = new Construction(ar);
+		elements.put(String.format("petit %s",  Couleurs[couleur]), constr);
+		
+	}
+	public void bloc_double_horizontalX(int couleur, HashMap<String, Construction> elements) {
+		String[] Couleurs = {"rouge", "vert", "bleu", "blanc", "gris", "noir", "cyan", "jaune", "orange"};
+		Cube c0 = new Cube(50, 50, 50, null, 3);
+		Cube c1 = new Cube(50, 50, 50, c0, couleur);
+		int [] tab = {50, 0, 0};
+		Cube c3 = new Cube(50, 50, 50, c0, tab, couleur);
+		/*
+		tab[0] = -50;
+		Cube c4 = new Cube(50, 50, 50, c0, tab, couleur);
+		 */
+		ArrayList<Element> ar = new ArrayList<Element>();
+
+		ar.add(c0);
+		Construction constr = new Construction(ar);
+		elements.put(String.format("moyen %s horizontalX",  Couleurs[couleur]), constr);
+		
+	}
+	public void bloc_double_vertical(int couleur, HashMap<String, Construction> elements) {
+		String[] Couleurs = {"rouge", "vert", "bleu", "blanc", "gris", "noir", "cyan", "jaune", "orange"};
+		Cube c0 = new Cube(50, 50, 50, null, 3);
+		Cube c1 = new Cube(50, 50, 50, c0, couleur);
+		int [] tab = {0, -50, 0};
+		Cube c3 = new Cube(50, 50, 50, c0, tab, couleur);
+		/*
+		tab[0] = -50;
+		Cube c4 = new Cube(50, 50, 50, c0, tab, couleur);
+		 */
+		ArrayList<Element> ar = new ArrayList<Element>();
+
+		ar.add(c0);
+		Construction constr = new Construction(ar);
+		elements.put(String.format("moyen %s vertical",  Couleurs[couleur]), constr);
+		
+	}
+	public void bloc_double_horiziontalY(int couleur, HashMap<String, Construction> elements) {
+		String[] Couleurs = {"rouge", "vert", "bleu", "blanc", "gris", "noir", "cyan", "jaune", "orange"};
+		Cube c0 = new Cube(50, 50, 50, null, 3);
+		Cube c1 = new Cube(50, 50, 50, c0, couleur);
+		int [] tab = {0, 0, 50};
+		Cube c3 = new Cube(50, 50, 50, c0, tab, couleur);
+		/*
+		tab[0] = -50;
+		Cube c4 = new Cube(50, 50, 50, c0, tab, couleur);
+		 */
+		ArrayList<Element> ar = new ArrayList<Element>();
+
+		ar.add(c0);
+		Construction constr = new Construction(ar);
+		elements.put(String.format("moyen %s horiziontalY",  Couleurs[couleur]), constr);
+		
+	}
+	
+	public void bloc_triple_vertial(int couleur, HashMap<String, Construction> elements) {
+		String[] Couleurs = {"rouge", "vert", "bleu", "blanc", "gris", "noir", "cyan", "jaune", "orange"};
+		Cube c0 = new Cube(50, 50, 50, null, 3);
+		Cube c1 = new Cube(50, 50, 50, c0, couleur);
+		int [] tab = {0, -50, -0};
+		Cube c3 = new Cube(50, 50, 50, c0, tab, couleur);
+		tab[0] -=50;
+		Cube c4 = new Cube(50, 50, 50, c0, tab, couleur);
+		ArrayList<Element> ar = new ArrayList<Element>();
+
+		ar.add(c0);
+		Construction constr = new Construction(ar);
+		elements.put(String.format("grand %s horiziontalY",  Couleurs[couleur]), constr);
+		
+	}
+	public void bloc_triple_horiziontalY(int couleur, HashMap<String, Construction> elements) {
+		String[] Couleurs = {"rouge", "vert", "bleu", "blanc", "gris", "noir", "cyan", "jaune", "orange"};
+		Cube c0 = new Cube(50, 50, 50, null, 3);
+		Cube c1 = new Cube(50, 50, 50, c0, couleur);
+		int [] tab = {0, 0, 50};
+		Cube c3 = new Cube(50, 50, 50, c0, tab, couleur);
+
+		tab[2] +=50;
+		Cube c4 = new Cube(50, 50, 50, c0, tab, couleur);
+		ArrayList<Element> ar = new ArrayList<Element>();
+
+		ar.add(c0);
+		Construction constr = new Construction(ar);
+		elements.put(String.format("grand %s horiziontalY",  Couleurs[couleur]), constr);
+	}
+	public void bloc_triple_horizontalX(int couleur, HashMap<String, Construction> elements) {
+		String[] Couleurs = {"rouge", "vert", "bleu", "blanc", "gris", "noir", "cyan", "jaune", "orange"};
+		Cube c0 = new Cube(50, 50, 50, null, 3);
+		Cube c1 = new Cube(50, 50, 50, c0, couleur);
+		int [] tab = {50, 0, 0};
+		Cube c3 = new Cube(50, 50, 50, c0, tab, couleur);
+		tab[0] +=50;
+		Cube c4 = new Cube(50, 50, 50, c0, tab, couleur);
+		ArrayList<Element> ar = new ArrayList<Element>();
+
+		ar.add(c0);
+		Construction constr = new Construction(ar);
+		elements.put(String.format("moyen %s horizontalX",  Couleurs[couleur]), constr);
+		
+	}
+	public void creer_blocs() {
+		
+	String[] Couleurs = {"rouge", "vert", "bleu", "blanc", "gris", "noir", "cyan", "jaune", "orange"};
+		
+	
+	
+	File fichier = new File("blocs.dat");
+	try {
+		fichier.createNewFile();
+		System.out.println("création du fichier");
+	}
+	catch (Exception e) {
+		 System.out.println("le fichier n'est pas créé");
+	}
+	
+	HashMap<String, Construction> dico = new HashMap<String, Construction>();
+	for(int i = 0; i < Couleurs.length; i++) {
+		this.bloc_simple(i, dico);
+		this.bloc_double_horiziontalY(i,  dico);
+		this.bloc_double_horizontalX(i,  dico);
+		this.bloc_double_vertical(i,  dico);
+		this.bloc_triple_horiziontalY(i,  dico);
+		this.bloc_triple_horizontalX(i,  dico);
+		this.bloc_triple_vertial(i,  dico);
+		
+	}
+	try {
+		FileOutputStream fos = new FileOutputStream(fichier);
+		ObjectOutputStream oos = new ObjectOutputStream(fos);
+		oos.writeObject(Modele.getConstructions());
+		oos.close();
+		fos.close();
+			}
+	catch (Exception e){
+		throw new RuntimeException("Ecriture des données impossible");
+	
+	}
+	
+}
 
 }
