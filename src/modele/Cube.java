@@ -143,16 +143,23 @@ public class Cube extends Element{
 					if (this.isDestructible()) {
 						if(this.getPere() != null) {
 							this.getPere().getFils().remove(this);
-						}
+						
 						for(Element elem : this.getFils()) {
 							elem.setPere(this.getPere());
 							this.getPere().getFils().add(elem);
 						}
+					}
+						else {
+							for(Element elem : this.getFils()) {
+								elem.setPere(null);
+							}
+							
+						}
 						groupe.getChildren().remove(shape);
 					}
 				}
-			}
-			}
+			
+			}}
 		});
 	}
 

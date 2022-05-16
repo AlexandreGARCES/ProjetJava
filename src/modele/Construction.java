@@ -8,8 +8,8 @@ import javafx.scene.Group;
 public class Construction implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-	public static int largeur = 50;
-	public static int longueur  = 50;
+	public static int largeur = 20;
+	public static int longueur  = 20;
 	
 	private ArrayList<Element> base;
 	private int couleurBase;

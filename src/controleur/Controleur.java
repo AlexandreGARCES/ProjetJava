@@ -143,7 +143,6 @@ public class Controleur {
 	
     @FXML
     void rechercheMultiCritBloc(ActionEvent event) {
-    	
     	ArrayList<String> taille=new ArrayList<String>();
     	int cpt=0;
     	if(boxGrandBloc.isSelected()) { taille.add("grand"); }else { cpt++; }
@@ -159,7 +158,7 @@ public class Controleur {
     		for (int i=0;i<taille.size();i++) {
     			couleurs.add(taille.get(i)+" blanc");
     		} }else { cpt++; }
-    	if (boxBleuBloc.isSelected())  { 
+    	if (boxBleuBloc.isSelected())  {
     		for (int i=0;i<taille.size();i++) {
     			couleurs.add(taille.get(i)+" bleu");
     		} }else { cpt++; }

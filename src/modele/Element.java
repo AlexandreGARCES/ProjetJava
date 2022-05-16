@@ -48,21 +48,6 @@ public class Element implements Serializable{
 	public void setDestructible(boolean destructible) {
 		this.destructible = destructible;
 	}
-		/*
-		public void setRemplissage() {
-		PhongMaterial material = new PhongMaterial();
-		switch(this.modele.getRemplissage()) {
-
-		case COULEUR:
-			material.setDiffuseColor(this.modele.getCouleur());
-		
-		case TEXTURE:
-			material.setDiffuseMap(this.modele.getTexture());
-			
-		}
-		this.shape.setMaterial(material);
-	}
-	*/
 	public int[] getPos() {
 		return pos;
 	}

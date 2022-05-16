@@ -99,6 +99,11 @@
                                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                         </rowConstraints>
                                                          <children>
+                                                            <CheckBox fx:id="boxRondBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Horizontal Y" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                               <padding>
+                                                                  <Insets left="40.0" />
+                                                               </padding>
+                                                            </CheckBox>
                                                             <CheckBox fx:id="boxGrandBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Grand">
                                                                <padding>
                                                                   <Insets left="40.0" />
@@ -114,17 +119,12 @@
                                                                   <Insets left="40.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox fx:id="boxRondBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Rond" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                            <CheckBox fx:id="boxRectBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Vertical" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                                <padding>
                                                                   <Insets left="40.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox fx:id="boxRectBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Rectangle" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                                               <padding>
-                                                                  <Insets left="40.0" />
-                                                               </padding>
-                                                            </CheckBox>
-                                                            <CheckBox fx:id="boxCarreBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Carré" GridPane.columnIndex="1">
+                                                            <CheckBox fx:id="boxCarreBloc" alignment="TOP_LEFT" mnemonicParsing="false" text="Horizontal X" GridPane.columnIndex="1">
                                                                <padding>
                                                                   <Insets left="40.0" />
                                                                </padding>
@@ -138,15 +138,15 @@
                                                                   <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                                                                </padding>
                                                                <HBox.margin>
-                                                                  <Insets left="30.0" right="42.0" />
+                                                                  <Insets left="30.0" right="10.0" />
                                                                </HBox.margin>
                                                             </Label>
-                                                            <Label text="Forme">
+                                                            <Label text="Orientation">
                                                                <padding>
                                                                   <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                                                                </padding>
                                                                <HBox.margin>
-                                                                  <Insets left="30.0" right="42.0" />
+                                                                  <Insets left="40.0" right="42.0" />
                                                                </HBox.margin>
                                                             </Label>
                                                          </children>
