@@ -99,6 +99,8 @@ public class Controleur {
 
     @FXML
 	protected ListView<String> listeResultatRecherche;
+    @FXML
+	protected ListView<String> listeResultatRechercheBloc;
     protected ArrayList<String> listeBlocs;
     protected ArrayList<String> listeConstructions;
     
