@@ -32,9 +32,14 @@ public class ControleurVisualisation extends Controleur implements Initializable
 	
 	//-----------------------------------------------------
 	
-	//sauvegarderModele quand on quitte
 	//rechercheMultiCrit (Pour n'avoir que la liste des constructions qui nous intéressent)
-	//lorsque click sur un élément de la liste: affiche la construction à la place de l'ancienne
+
+	/*
+	this.constructions.clear();
+	this.constructions.add("OUIIIIIIII");
+	this.constructions.add("NOOOOOOOOOOOOOOOOON");
+	this.initialize(this.url, this.rbundle);
+	*/
 	
 	//-----------------------------------------------------
 	
@@ -55,6 +60,8 @@ public class ControleurVisualisation extends Controleur implements Initializable
     
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+    	this.url=arg0;
+    	this.rbundle=arg1;
     	
     	listeMode.getItems().addAll(constructions);
     	listeMode.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {

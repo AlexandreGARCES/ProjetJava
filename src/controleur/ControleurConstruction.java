@@ -86,9 +86,10 @@ public class ControleurConstruction extends Controleur implements Initializable 
     @FXML
     private CheckBox boxPetitBloc;
 
-    @FXML //oubliez pas de lui mettre truc que vous voulez ( a la place du string )
-    private ListView<String> listeResultatRechercheBloc;
+    @FXML
+    private ListView<String> listeResultatRecherche;
     private ArrayList<String> listeBlocs;
+    private ArrayList<String> listeConstructions;
     
     @FXML
     void rechercheMultiCritBloc(ActionEvent event) {
@@ -96,75 +97,25 @@ public class ControleurConstruction extends Controleur implements Initializable 
     	
     	ArrayList<Integer> couleurs=new ArrayList<Integer>();
     	int cpt=0;
-    	if (boxBlancBloc.isSelected()) {
-    		couleurs.add(3);
-    	}else {
-    		cpt++;
-    	}
-    	if (boxBleuBloc.isSelected()) {
-    		couleurs.add(2);
-    	}else {
-    		cpt++;
-    	}
-    	if(boxCyanBloc.isSelected()) {
-    		couleurs.add(6);
-    	}else {
-    		cpt++;
-    	}
-    	if(boxGrisBloc.isSelected()) {
-    		couleurs.add(4);
-    	}else {
-    		cpt++;
-    	}
-    	if(boxOrangeBloc.isSelected()) {
-    		couleurs.add(8);
-    	}else {
-    		cpt++;
-    	}
-    	if(boxNoirBloc.isSelected()) {
-    		couleurs.add(5);
-    	}else {
-    		cpt++;
-    	}
-    	if(boxRougeBloc.isSelected()) {
-    		couleurs.add(0);
-    	}else {
-    		cpt++;
-    	}
-    	if(boxVertBloc.isSelected()) {
-    		couleurs.add(1);
-    	}else {
-    		cpt++;
-    	}
-    	if(boxJauneBloc.isSelected()){
-    		couleurs.add(7);
-    	}else {
-    		cpt++;
-    	}
+    	if (boxBlancBloc.isSelected()) { couleurs.add(3); }else { cpt++; }
+    	if (boxBleuBloc.isSelected())  { couleurs.add(2); }else { cpt++; }
+    	if(boxCyanBloc.isSelected())   { couleurs.add(6); }else { cpt++; }
+    	if(boxGrisBloc.isSelected())   { couleurs.add(4); }else { cpt++; }
+    	if(boxOrangeBloc.isSelected()) { couleurs.add(8); }else { cpt++; }
+    	if(boxNoirBloc.isSelected())   { couleurs.add(5); }else { cpt++; }
+    	if(boxRougeBloc.isSelected())  { couleurs.add(0); }else { cpt++; }
+    	if(boxVertBloc.isSelected())   { couleurs.add(1); }else { cpt++; }
+    	if(boxJauneBloc.isSelected())  { couleurs.add(7); }else { cpt++; }
     	if (cpt==9) {//si aucun n'est sélectionné, tout mettre
     		couleurs.clear();
-    		for (int i=0;i<9;i++) {
-    			couleurs.add(i);
-    		}
+    		for (int i=0;i<9;i++) { couleurs.add(i); }
     	}
     	
     	ArrayList<String> formes=new ArrayList<String>();//on rajoute les triangles les gars?
     	cpt=0;
-    	if(boxCarreBloc.isSelected()) {
-    		formes.add("carre");
-    	}else {
-    		cpt++;
-    	}
-    	if(boxRectBloc.isSelected()) {
-    		formes.add("rect");
-    	}else {
-    		cpt++;
-    	}
-    	if(boxRondBloc.isSelected()) {
-    		formes.add("rond");
-    	}else {
-    		cpt++;
-    	}
+    	if(boxCarreBloc.isSelected()) { formes.add("carre"); }else { cpt++; }
+    	if(boxRectBloc.isSelected()) { formes.add("rect"); }else { cpt++; }
+    	if(boxRondBloc.isSelected()) { formes.add("rond"); }else { cpt++; }
     	if(cpt==3) {
     		formes.clear();
     		formes.add("carre");
@@ -177,46 +128,34 @@ public class ControleurConstruction extends Controleur implements Initializable 
     	if(boxGrandBloc.isSelected()) {
     		for (int i=0;i<types.size();i++) {
     			types.set(i, types.get(i)+" grand");
-    		}
-    	}else {
-    		cpt++;
-    	}
+    		} }else { cpt++; }
+    	
     	if(boxPetitBloc.isSelected()) {
     		for (int i=0;i<types.size();i++) {
     			types.set(i, types.get(i)+" petit");
-    		}
-    	}else {
-    		cpt++;
-    	}
+    		} }else { cpt++; }
+    	
     	if(boxMoyenBloc.isSelected()) {
     		for (int i=0;i<types.size();i++) {
     			types.set(i, types.get(i)+" moyen");
-    		}
-    	}else {
-    		cpt++;
-    	}
+    		} }else { cpt++; }
+    	
     	if (cpt==3) {
     		types=(ArrayList<String>) formes.clone();
-    		for (int i=0;i<types.size();i++) {
-    			types.set(i, types.get(i)+" grand");
-    		}
-    		for (int i=0;i<types.size();i++) {
-    			types.set(i, types.get(i)+" petit");
-    		}
-    		for (int i=0;i<types.size();i++) {
-    			types.set(i, types.get(i)+" moyen");
-    		}
+    		for (int i=0;i<types.size();i++) { types.set(i, types.get(i)+" grand"); }
+    		for (int i=0;i<types.size();i++) { types.set(i, types.get(i)+" petit"); }
+    		for (int i=0;i<types.size();i++) { types.set(i, types.get(i)+" moyen"); }
     	}
     	
-    	//this.listeBloc=this.mod.rechercherElement(couleurs,types);
+    	//rajouter un all si rien n'est sélectionné?
+    	//this.listeBlocs=this.mod.rechercherElement(couleurs,types);
     	
-    	
-    	
-    	//Si tu veux pas avoir plus box selectionn�es en m�me temps:
-    	//if(boxRougeBloc.isSelected()){
-    	//	boxBleuBloc.setSelected(false);  ( d�selectionne la checkBox )
-    	//}
-    	
+    	/*
+    	Si tu veux pas avoir plus box selectionn�es en m�me temps:
+    	if(boxRougeBloc.isSelected()){
+    		boxBleuBloc.setSelected(false);  ( d�selectionne la checkBox )
+    	}
+    	 */
     }
     
     @FXML
@@ -227,21 +166,38 @@ public class ControleurConstruction extends Controleur implements Initializable 
     	//par couleurs présentes (ou exclure une couleur présente?)
     	//par formes présentes?
     	//par tailles présentes?
-    	
     }
     
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-    	/*
-    	listeResultatRechercheBloc.getItems().addAll(this.listeBlocs);
-    	listeResultatRechercheBloc.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+    	//à supprimer après
+    	this.listeBlocs=this.mod.getListeConstructions();
+    	//à supprimer après
 
-			@Override
-			public void changed(ObservableValue<? extends String> arg0, String ancienSelect, String selection) {
-				//Gestion3D.mod.changerConstructionaAjouter(selection);
-			}
-    	});
-    	*/
+    	this.url=arg0;
+    	this.rbundle=arg1;
+    	if (this.listeBlocs!=null) {
+        	listeResultatRecherche.getItems().addAll(this.listeBlocs);
+    		this.listeBlocs=null;
+        	listeResultatRecherche.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+    			@Override
+    			public void changed(ObservableValue<? extends String> arg0, String ancienSelect, String selection) {
+    				Gestion3D.mod.changerBlocaAjouter(selection);
+    			}
+        	});
+        	
+    	}else if (this.listeConstructions!=null) {
+    		listeResultatRecherche.getItems().addAll(this.listeConstructions);
+    		this.listeConstructions=null;
+        	listeResultatRecherche.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+    			@Override
+    			public void changed(ObservableValue<? extends String> arg0, String ancienSelect, String selection) {
+    				Gestion3D.mod.changerConstructionaAjouter(selection);
+    			}
+        	});
+    	}
+    	
+
 	}
     
     @FXML

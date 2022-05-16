@@ -104,19 +104,26 @@ public class Modele extends Observable{
 		ArrayList<String> ar =new ArrayList<String>();
 		for(String nom : nomconstructions) {
 			ar.add(nom);
-			
-			
 		}
 		return ar;
 	}
 	
-	public void razConstructionActuelle() {
+	public void raz() {
 		//demander couleur
 		this.constructionActuelle= new Construction("terrain",4);
-		//Modele.constructionaAjouter = Modele.getConstructions().get("construction16").copie(null);
+		//Modele.constructionaAjouter = Modele.getConstructions().get("cube 1x1").copie(null);
+		//doit aussi raz la construction à ajouter!!
 		this.setChanged();
         this.notifyObservers();
+	}
+	
+	public void changerBlocaAjouter(String selection) {
+		Modele.constructionaAjouter=Modele.elements.get(selection);
 		
+	}
+
+	public void changerConstructionaAjouter(String selection) {
+		Modele.constructionaAjouter=Modele.elements.get(selection);		
 	}
 
 	public static void sauvegarderModele() {

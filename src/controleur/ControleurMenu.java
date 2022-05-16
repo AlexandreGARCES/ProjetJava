@@ -38,7 +38,6 @@ public class ControleurMenu extends Controleur{
 
     @FXML
     void switchFXMLConstruction(ActionEvent event) throws IOException {
-    	this.mod.razConstructionActuelle();
     	this.changerFenetre("Construction", event);
     }
     
