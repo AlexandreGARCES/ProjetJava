@@ -50,7 +50,7 @@ public class Gestion3D implements Observer{
 		Gestion3D.mod.addObserver(this);
 		
 		this.groupe=new Group();
-		Gestion3D.mod.constructionActuelle.afficher(this.groupe);
+		Modele.constructionActuelle.afficher(this.groupe);
 		this.subScene3D = new SubScene(groupe, WIDTH, HEIGHT, true, null);
 		
 		this.camera = new PerspectiveCamera();
@@ -119,7 +119,7 @@ public class Gestion3D implements Observer{
 	
 	public void majGroup() {
 		this.groupe.getChildren().clear();
-		Gestion3D.mod.constructionActuelle.afficher(this.groupe);
+		Modele.constructionActuelle.afficher(this.groupe);
 	}
 
 	@Override

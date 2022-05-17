@@ -124,14 +124,16 @@ public class Cube extends Element{
 				Modele.majPile();
 				if (event.getButton() == MouseButton.PRIMARY) {
 					if (this.getFils().isEmpty()) {///à changer si plusieurs enfants
+						if (Modele.constructionaAjouter != null) {
+							Construction cst = Modele.constructionaAjouter.copie(this);
+							System.out.println(cst.getBase().size());
+								for(Element eleme : cst.getBase()) {
+									eleme.afficher(groupe);
+									this.getFils().add(eleme);
+								}
+								
+						}
 						
-						Construction cst = Modele.constructionaAjouter.copie(this);
-						System.out.println(cst.getBase().size());
-							for(Element eleme : cst.getBase()) {
-								eleme.afficher(groupe);
-								this.getFils().add(eleme);
-							}
-							
 							
 							
 							

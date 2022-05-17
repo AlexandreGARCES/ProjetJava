@@ -8,13 +8,11 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Observable;
 import java.util.Set;
 import java.util.Stack;
-import java.util.stream.Collectors;
 
 
 public class Modele extends Observable{
@@ -51,7 +49,7 @@ public class Modele extends Observable{
 		catch (Exception e) {
 		}
 		this.charger();
-		this.creer_blocs();
+		//this.creer_blocs();
 		this.chargerBlocs();
 		if (Modele.constructions == null) {
 			Modele.constructions = new HashMap<String,Construction>();
@@ -60,16 +58,9 @@ public class Modele extends Observable{
 			Modele.elements = new HashMap<String,Construction>();
 		}
 		Cube c0 = new Cube(50, 50, 50, null, 6);
-		Cube c1 = new Cube(50, 50, 50, c0, 0);
-		int [] tab = {0, -50, 0};
-		Cube c3 = new Cube(50, 50, 50, c0, tab, 0);
-		tab[0] = 0;
-		tab[1] -= 50;
-		Cube c4 = new Cube(50, 50, 50, null, tab, 0);
 		ArrayList<Element> ar = new ArrayList<Element>();
 		ar.add(c0);
 		Construction constr = new Construction(ar);
-		Modele.constructions.put("petit moyen",  constr);
 		Modele.constructionaAjouter = constr.copie(null);
 		//Modele.constructionaAjouter = Modele.getConstructions().get("construction16").copie(null);
 		
@@ -250,12 +241,6 @@ public void bloc_simple(int couleur, HashMap<String, Construction> elements) {
 		
 		Cube c0 = new Cube(50, 50, 50, null, 3);
 		Cube c1 = new Cube(50, 50, 50, c0, couleur);
-		/*
-		int [] tab = {50, 0, 0};
-		Cube c3 = new Cube(50, 50, 50, c0, tab, couleur);
-		tab[0] = -50;
-		Cube c4 = new Cube(50, 50, 50, c0, tab, couleur);
-		 */
 		ArrayList<Element> ar = new ArrayList<Element>();
 
 		ar.add(c0);
@@ -269,10 +254,6 @@ public void bloc_simple(int couleur, HashMap<String, Construction> elements) {
 		Cube c1 = new Cube(50, 50, 50, c0, couleur);
 		int [] tab = {50, 0, 0};
 		Cube c3 = new Cube(50, 50, 50, c0, tab, couleur);
-		/*
-		tab[0] = -50;
-		Cube c4 = new Cube(50, 50, 50, c0, tab, couleur);
-		 */
 		ArrayList<Element> ar = new ArrayList<Element>();
 
 		ar.add(c0);
@@ -286,10 +267,7 @@ public void bloc_simple(int couleur, HashMap<String, Construction> elements) {
 		Cube c1 = new Cube(50, 50, 50, c0, couleur);
 		int [] tab = {0, -50, 0};
 		Cube c3 = new Cube(50, 50, 50, c0, tab, couleur);
-		/*
-		tab[0] = -50;
-		Cube c4 = new Cube(50, 50, 50, c0, tab, couleur);
-		 */
+
 		ArrayList<Element> ar = new ArrayList<Element>();
 
 		ar.add(c0);
@@ -303,10 +281,7 @@ public void bloc_simple(int couleur, HashMap<String, Construction> elements) {
 		Cube c1 = new Cube(50, 50, 50, c0, couleur);
 		int [] tab = {0, 0, 50};
 		Cube c3 = new Cube(50, 50, 50, c0, tab, couleur);
-		/*
-		tab[0] = -50;
-		Cube c4 = new Cube(50, 50, 50, c0, tab, couleur);
-		 */
+
 		ArrayList<Element> ar = new ArrayList<Element>();
 
 		ar.add(c0);
@@ -399,24 +374,39 @@ public void bloc_simple(int couleur, HashMap<String, Construction> elements) {
 	
 }
 	public void undo() {
+		System.out.println("undo");
+
 		if (!(Modele.pileundo.isEmpty())){
+			System.out.println("undo marche");
+			System.out.println(Modele.constructionActuelle);
 			Construction cstr = Modele.pileundo.pop();
-			Modele.pileredo.add(cstr);
+			Modele.pileredo.add(Modele.constructionActuelle.copie(null));
 			Modele.constructionActuelle =cstr;
+			System.out.println(Modele.constructionActuelle);
+			this.setChanged();
+	        this.notifyObservers();
 		}
 	}
 	
 	public void redo() {
+		System.out.println("redo");
 		if (!(Modele.pileredo.isEmpty())){
+			System.out.println("redo non vide");
 			Construction cstr = Modele.pileredo.pop();
-			Modele.pileundo.add(cstr);
+			Modele.pileundo.add(Modele.constructionActuelle.copie(null));
 			Modele.constructionActuelle =cstr;
+			this.setChanged();
+	        this.notifyObservers();
 		}
 		
 	}
 	
 	public static void majPile() {
+		System.out.println("maj");
 		Modele.pileundo.add(Modele.constructionActuelle.copie(null));
+		System.out.println(Modele.pileundo.size());
+		Modele.pileredo.clear();
+
 	}
 
 }
