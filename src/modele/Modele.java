@@ -57,13 +57,6 @@ public class Modele extends Observable{
 		if (Modele.elements == null) {
 			Modele.elements = new HashMap<String,Construction>();
 		}
-		Cube c0 = new Cube(50, 50, 50, null, 6);
-		ArrayList<Element> ar = new ArrayList<Element>();
-		ar.add(c0);
-		Construction constr = new Construction(ar);
-		Modele.constructionaAjouter = constr.copie(null);
-		//Modele.constructionaAjouter = Modele.getConstructions().get("construction16").copie(null);
-		
 
 		
 	}
