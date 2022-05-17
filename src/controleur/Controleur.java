@@ -203,11 +203,19 @@ public class Controleur {
     	if(boxRondBloc.isSelected()) {if(direction.size() == 3) {direction = new ArrayList<String>();} direction.add("horizontalY");}
     	for(String taiille: taille) {
     		for(String couuleur: couleur) {
-    			for(String diirection:direction) {
-    				System.out.println("marche");
-    				recherche.add(String.format("%s %s %s", taiille, couuleur, diirection));
+    			if(taiille == "petit") {
+    				recherche.add(String.format("%s %s", taiille, couuleur));
+				}
+    			else {
+        			for(String diirection:direction) {
+        				
+        				System.out.println("marche");
+        				recherche.add(String.format("%s %s %s", taiille, couuleur, diirection));
+        				
+        			}
     				
     			}
+
     		}
     	}
     	

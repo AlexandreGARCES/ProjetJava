@@ -26,6 +26,7 @@ public class Construction implements Serializable{
 		this.createTerrain();
 	}
 	
+	
 	public Construction (ArrayList<Element> elements) {
 		this.base= elements;
 
