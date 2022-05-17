@@ -33,8 +33,8 @@ public class Construction implements Serializable{
 	}
 	
 	public void createTerrain() {
-		for(int i =-largeur/2; i< largeur/2; i++) {	
-    		for(int j = -longueur/2; j<longueur/2; j++) {
+		for(int i =-largeur/2; i<= largeur/2; i++) {	
+    		for(int j = -longueur/2; j<=longueur/2; j++) {
     			int[] pos = {i*50, 0, j*50};
     			Element box;
     			if(( -1<=i && 1 >= i) && (-1 <= j && 1 >= j)) {
