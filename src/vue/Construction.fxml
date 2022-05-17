@@ -50,12 +50,12 @@
                                        <children>
                                           <HBox alignment="CENTER" maxHeight="100.0" maxWidth="1400.0" prefHeight="100.0" prefWidth="1700.0" style="-fx-background-color: grey;">
                                              <children>
-                                                <Button fx:id="boutonUndo" alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="Undo">
+                                                <Button fx:id="boutonUndo" alignment="CENTER" mnemonicParsing="false" onAction="#fonctionUndo" prefHeight="50.0" prefWidth="120.0" text="Undo">
                                                    <HBox.margin>
                                                       <Insets right="50.0" />
                                                    </HBox.margin>
                                                 </Button>
-                                                <Button fx:id="boutonRedo" alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="Redo">
+                                                <Button fx:id="boutonRedo" alignment="CENTER" mnemonicParsing="false" onAction="#fonctionRedo" prefHeight="50.0" prefWidth="120.0" text="Redo">
                                                    <HBox.margin>
                                                       <Insets right="600.0" />
                                                    </HBox.margin>

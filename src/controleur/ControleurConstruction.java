@@ -103,10 +103,22 @@ public class ControleurConstruction extends Controleur implements Initializable 
     
     }
     
+    
+    
     @FXML
     void SauvegarderConstruction(ActionEvent event) {
     	//demander le nom et modifier pour que this.mod.sauvegarder(String nom);
     	this.mod.sauvegarder();
+    }
+    
+    @FXML
+    void fonctionRedo(ActionEvent event) {
+    	
+    }
+
+    @FXML
+    void fonctionUndo(ActionEvent event) {
+    	
     }
 
 }
