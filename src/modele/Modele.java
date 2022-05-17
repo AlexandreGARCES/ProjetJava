@@ -34,7 +34,7 @@ public class Modele extends Observable{
 	public static Construction constructionaAjouter;
 	
 	
-	public Construction constructionActuelle;
+	public  static Construction constructionActuelle;
 	public Construction sauvegarde;
 	
 	
@@ -113,7 +113,7 @@ public class Modele extends Observable{
 			copie.setNom(constructions.get(selection).getNom());
 		}
 
-		this.constructionActuelle=copie;
+		Modele.constructionActuelle=copie;
 		this.setChanged();
         this.notifyObservers();
 	}
@@ -142,7 +142,7 @@ public class Modele extends Observable{
 
 	public void raz(int couleur) {
 		//demander couleur
-		this.constructionActuelle= new Construction("terrain",couleur);
+		Modele.constructionActuelle= new Construction("terrain",couleur);
 		//Modele.constructionaAjouter = Modele.getConstructions().get("cube 1x1").copie(null);
 		this.setChanged();
         this.notifyObservers();
@@ -172,7 +172,7 @@ public class Modele extends Observable{
 	}
 	
 	public void sauvegarder() {
-		this.sauvegarde=this.constructionActuelle;
+		this.sauvegarde=Modele.constructionActuelle;
 	}
 	
 	public void sauvegarderSous(String nom) {
@@ -402,7 +402,7 @@ public void bloc_simple(int couleur, HashMap<String, Construction> elements) {
 		if (!(Modele.pileundo.isEmpty())){
 			Construction cstr = Modele.pileundo.pop();
 			Modele.pileredo.add(cstr);
-			this.constructionActuelle =cstr;
+			Modele.constructionActuelle =cstr;
 		}
 	}
 	
@@ -410,9 +410,13 @@ public void bloc_simple(int couleur, HashMap<String, Construction> elements) {
 		if (!(Modele.pileredo.isEmpty())){
 			Construction cstr = Modele.pileredo.pop();
 			Modele.pileundo.add(cstr);
-			this.constructionActuelle =cstr;
+			Modele.constructionActuelle =cstr;
 		}
 		
+	}
+	
+	public static void majPile() {
+		Modele.pileundo.add(Modele.constructionActuelle.copie(null));
 	}
 
 }

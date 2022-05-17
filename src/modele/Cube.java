@@ -121,6 +121,7 @@ public class Cube extends Element{
 		}
 		shape.setOnMouseClicked(event -> {
 			{if (Modele.mode == Modes.CONSTRUCTION) {
+				Modele.majPile();
 				if (event.getButton() == MouseButton.PRIMARY) {
 					if (this.getFils().isEmpty()) {///à changer si plusieurs enfants
 						

@@ -209,7 +209,6 @@ public class Controleur {
     			else {
         			for(String diirection:direction) {
         				
-        				System.out.println("marche");
         				recherche.add(String.format("%s %s %s", taiille, couuleur, diirection));
         				
         			}
@@ -220,7 +219,6 @@ public class Controleur {
     	}
     	
 
-    	System.out.println(recherche);
 
     	this.listeBlocs=this.mod.rechercherElement(recherche);
     	this.initialize(this.url, this.rbundle);
