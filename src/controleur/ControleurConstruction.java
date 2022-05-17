@@ -113,11 +113,13 @@ public class ControleurConstruction extends Controleur implements Initializable 
     
     @FXML
     void fonctionRedo(ActionEvent event) {
+    	this.mod.redo();
     	
     }
 
     @FXML
     void fonctionUndo(ActionEvent event) {
+    	this.mod.undo();
     	
     }
 
