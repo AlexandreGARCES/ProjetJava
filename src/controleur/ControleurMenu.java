@@ -13,13 +13,6 @@ import javafx.scene.image.ImageView;
 
 public class ControleurMenu extends Controleur{
 	
-	//-----------------------------------------------------
-	
-	//sauvegarderModele quand on quitte
-	
-	//-----------------------------------------------------
-	
-
     @FXML
     private Button boutonConstruction;
 

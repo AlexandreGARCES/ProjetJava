@@ -124,17 +124,6 @@ public class Controleur {
 	    Controleur.vue3D.addTouches(this.scene);
 	    
 	    Modele.setMode(fenetre=="Construction");
-	    
-	    
-	    //A SUPPRIMER APRES devrait être dans raz!!!!
-	    Cube c0 = new Cube(50, 50, 50, null, 0);
-		Cube c1 = new Cube(50, 50, 50, c0, 0);
-		ArrayList<Element> ar = new ArrayList<Element>();
-		ar.add(c0);
-		Construction constr = new Construction(ar);
-		Modele.constructionaAjouter = constr;
-		//A SUPPRIMER APRES
-	    
 	    window.setScene(this.scene);
 	    window.show();
 	}
@@ -146,16 +135,6 @@ public class Controleur {
 	    scene = new Scene(root);
 	    
 	    this.mod.raz(4);
-	    
-	    //A SUPPRIMER APRES devrait être dans raz!!!!
-	    Cube c0 = new Cube(50, 50, 50, null, 0);
-		Cube c1 = new Cube(50, 50, 50, c0, 0);
-		ArrayList<Element> ar = new ArrayList<Element>();
-		ar.add(c0);
-		Construction constr = new Construction(ar);
-		Modele.constructionaAjouter = constr;
-		//A SUPPRIMER APRES
-		
 	    window.setTitle("LEGO");
 	    window.setScene(scene);
 	    window.show();

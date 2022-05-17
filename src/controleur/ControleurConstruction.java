@@ -18,15 +18,7 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.Pane;
 
 public class ControleurConstruction extends Controleur implements Initializable {
-	
-	//-----------------------------------------------------
-	
-	//sauvegarderModele quand on quitte
-	//rechercheMultiCrit (pour avoir la liste des briques ou constructions qui nous intéressent pour construire)
-	//lorsque click sur un élément de la liste: change Modele.constructionAAjouter
 
-	//-----------------------------------------------------
-	
 	@FXML
     private SubScene subScene3D;
 	
@@ -97,17 +89,12 @@ public class ControleurConstruction extends Controleur implements Initializable 
     		this.mod.sauvegarde=null;
     		this.changerFenetre("Visualisation", event);
     	}
-    	
-    	
-    	//demander si on veux sauvegarder et si oui appeler this.mod.sauvegarder()
-    
     }
     
     
     
     @FXML
     void SauvegarderConstruction(ActionEvent event) {
-    	//demander le nom et modifier pour que this.mod.sauvegarder(String nom);
     	this.mod.sauvegarder();
     }
     

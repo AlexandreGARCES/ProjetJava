@@ -49,7 +49,6 @@ public class Modele extends Observable{
 		catch (Exception e) {
 		}
 		this.charger();
-		//this.creer_blocs();
 		this.chargerBlocs();
 		if (Modele.constructions == null) {
 			Modele.constructions = new HashMap<String,Construction>();
@@ -62,10 +61,6 @@ public class Modele extends Observable{
 		ar.add(c0);
 		Construction constr = new Construction(ar);
 		Modele.constructionaAjouter = constr.copie(null);
-		//Modele.constructionaAjouter = Modele.getConstructions().get("construction16").copie(null);
-		
-
-		
 	}
 
 	@SuppressWarnings("unchecked")
@@ -88,7 +83,7 @@ public class Modele extends Observable{
 	}
 	public static void setMode(boolean mode) {
 		if (mode) {
-			Modele.mode=Modes.CONSTRUCTION;///mettre sur bonton (controleurs)
+			Modele.mode=Modes.CONSTRUCTION;
 		}else {
 			Modele.mode=Modes.VISUALISATION;
 		}
@@ -132,9 +127,7 @@ public class Modele extends Observable{
 	}
 
 	public void raz(int couleur) {
-		//demander couleur
 		Modele.constructionActuelle= new Construction("terrain",couleur);
-		//Modele.constructionaAjouter = Modele.getConstructions().get("cube 1x1").copie(null);
 		this.setChanged();
         this.notifyObservers();
 	}
@@ -197,8 +190,6 @@ public class Modele extends Observable{
 		}	
 	}
 
-	//pour la sérialisation on as pas besoin de sérialiser les variables static non?
-
 	public static HashMap<String,Construction> getConstructions() {
 		return Modele.constructions;
 	}
@@ -208,7 +199,7 @@ public class Modele extends Observable{
 	}
 
 	public ArrayList<String> rechercherElement(ArrayList<String>  nomsBloc ) {
-		//penser à enlever la ligne au dessus
+
 		ArrayList<String> resultat=new ArrayList<String>();
 		ArrayList<String> elems=this.getListeElements();
 		

@@ -123,7 +123,7 @@ public class Cube extends Element{
 			{if (Modele.mode == Modes.CONSTRUCTION) {
 				Modele.majPile();
 				if (event.getButton() == MouseButton.PRIMARY) {
-					if (this.getFils().isEmpty()) {///à changer si plusieurs enfants
+					if (this.getFils().isEmpty()) {
 						if (Modele.constructionaAjouter != null) {
 							Construction cst = Modele.constructionaAjouter.copie(this);
 							System.out.println(cst.getBase().size());
@@ -131,14 +131,7 @@ public class Cube extends Element{
 									eleme.afficher(groupe);
 									this.getFils().add(eleme);
 								}
-								
 						}
-						
-							
-							
-							
-
-
 					}
 				}
 

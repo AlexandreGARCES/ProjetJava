@@ -18,19 +18,6 @@ public class ControleurVisualisation extends Controleur implements Initializable
 		this.constructions=this.mod.getListeConstructions();
 	}
 	
-	//-----------------------------------------------------
-	
-	//rechercheMultiCrit (Pour n'avoir que la liste des constructions qui nous intéressent)
-
-	/*
-	this.constructions.clear();
-	this.constructions.add("OUIIIIIIII");
-	this.constructions.add("NOOOOOOOOOOOOOOOOON");
-	this.initialize(this.url, this.rbundle);
-	*/
-	
-	//-----------------------------------------------------
-	
 	@FXML
     private SubScene subScene3D;
 
@@ -66,8 +53,8 @@ public class ControleurVisualisation extends Controleur implements Initializable
     
     @FXML
     void supprimerConstruction(ActionEvent event) {
-    	System.out.println(Modele.getConstructions());
     	Modele.getConstructions().remove(this.mod.constructionActuelle.getNom());
+    	this.mod.raz(4);
     	this.initialize(this.url, this.rbundle);
     }
     
