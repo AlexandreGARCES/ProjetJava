@@ -56,11 +56,6 @@ public class Modele extends Observable{
 		if (Modele.elements == null) {
 			Modele.elements = new HashMap<String,Construction>();
 		}
-		Cube c0 = new Cube(50, 50, 50, null, 6);
-		ArrayList<Element> ar = new ArrayList<Element>();
-		ar.add(c0);
-		Construction constr = new Construction(ar);
-		Modele.constructionaAjouter = constr.copie(null);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -365,24 +360,17 @@ public void bloc_simple(int couleur, HashMap<String, Construction> elements) {
 	
 }
 	public void undo() {
-		System.out.println("undo");
-
 		if (!(Modele.pileundo.isEmpty())){
-			System.out.println("undo marche");
-			System.out.println(Modele.constructionActuelle);
 			Construction cstr = Modele.pileundo.pop();
 			Modele.pileredo.add(Modele.constructionActuelle.copie(null));
 			Modele.constructionActuelle =cstr;
-			System.out.println(Modele.constructionActuelle);
 			this.setChanged();
 	        this.notifyObservers();
 		}
 	}
 	
 	public void redo() {
-		System.out.println("redo");
 		if (!(Modele.pileredo.isEmpty())){
-			System.out.println("redo non vide");
 			Construction cstr = Modele.pileredo.pop();
 			Modele.pileundo.add(Modele.constructionActuelle.copie(null));
 			Modele.constructionActuelle =cstr;
@@ -393,9 +381,7 @@ public void bloc_simple(int couleur, HashMap<String, Construction> elements) {
 	}
 	
 	public static void majPile() {
-		System.out.println("maj");
 		Modele.pileundo.add(Modele.constructionActuelle.copie(null));
-		System.out.println(Modele.pileundo.size());
 		Modele.pileredo.clear();
 
 	}

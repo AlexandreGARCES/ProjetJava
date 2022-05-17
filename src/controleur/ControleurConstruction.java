@@ -106,7 +106,6 @@ public class ControleurConstruction extends Controleur implements Initializable 
 
     @FXML
     void fonctionUndo(ActionEvent event) {
-    	System.out.println("fonction undo");
     	this.mod.undo();
     	
     }

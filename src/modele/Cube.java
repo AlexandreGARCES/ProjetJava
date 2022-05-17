@@ -126,7 +126,6 @@ public class Cube extends Element{
 					if (this.getFils().isEmpty()) {
 						if (Modele.constructionaAjouter != null) {
 							Construction cst = Modele.constructionaAjouter.copie(this);
-							System.out.println(cst.getBase().size());
 								for(Element eleme : cst.getBase()) {
 									eleme.afficher(groupe);
 									this.getFils().add(eleme);
